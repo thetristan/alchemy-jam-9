@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LogConfig" format=3 uid="uid://c83ekeh2u47h2"]
+
+[ext_resource type="Script" uid="uid://bbwyc40eh5md1" path="res://etc/log/log_config.gd" id="1_qxllf"]
+
+[resource]
+script = ExtResource("1_qxllf")
+log_level = 4
+metadata/_custom_type_script = "uid://bbwyc40eh5md1"

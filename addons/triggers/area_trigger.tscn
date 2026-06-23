@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0eg6pex50vdq"]
+
+[ext_resource type="Script" uid="uid://ch2jg00csl7ug" path="res://addons/triggers/area_trigger.gd" id="1_w32gi"]
+
+[node name="AreaTrigger" type="Area2D" unique_id=1965625231]
+rotation = -0.0005378371
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_w32gi")

@@ -1,0 +1,63 @@
+
+name: Build game artifact
+on: workflow_call
+concurrency: build-${{ github.ref }}
+env:
+  GODOT_VERSION: 4.7
+  GODOT_CHANNEL: "stable"
+  GODOT_PLATFORM: linux
+  GODOT_ARCH: x86_64
+  PROJECT_PATH: "."
+  RELEASE_TEMPLATES_DIR: ./build
+  EXPORT_DIR: ./build/web
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Cache Godot
+        id: cache_godot
+        uses: actions/cache@v5 
+        with: 
+          path: godot
+          key: ${{ runner.os }}-godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}
+
+      - name: Install Godot
+        if: steps.cache_godot.outputs.cache-hit != 'true'
+        run: |
+          GODOT_FILENAME="Godot_v${GODOT_VERSION}-${GODOT_CHANNEL}_${GODOT_PLATFORM}.${GODOT_ARCH}"
+          GODOT_URL="https://downloads.godotengine.org/?version=${GODOT_VERSION}&flavor=${GODOT_CHANNEL}&slug=linux.x86_64.zip&platform=linux.64"
+          echo "Downloading godot from ${GODOT_URL}" 
+          curl -L "$GODOT_URL" -o "${GODOT_FILENAME}.zip"
+          unzip "${GODOT_FILENAME}.zip"
+          mv ${GODOT_FILENAME} ./godot
+          chmod +x ./godot
+
+      - name: Check Godot Version
+        run: ./godot --version
+
+      - name: Unpack export templates
+        run: |
+          TEMPLATES_SRC="${RELEASE_TEMPLATES_DIR}/${GODOT_VERSION}-${GODOT_CHANNEL}"
+          TEMPLATES_DST=~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_CHANNEL}
+          mkdir -p ${TEMPLATES_DST}
+          cp ${TEMPLATES_SRC}/* ${TEMPLATES_DST}
+
+      - name: Delete orphaned files
+        run: python3 bin/find-orphans --delete
+
+      - name: Web build
+        run: |
+          mkdir -v -p ${EXPORT_DIR}
+          cd $PROJECT_PATH
+          ./godot --headless --verbose --export-debug "Web" "${EXPORT_DIR}/index.html"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+            name: web-export
+            path: ${{ env.EXPORT_DIR }}

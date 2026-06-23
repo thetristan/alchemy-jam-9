@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://t1ksuvfa1j8y"]
+
+[ext_resource type="Script" uid="uid://ccllvf71qjvcl" path="res://ui/debug_container/debug_container.gd" id="1_62b1y"]
+
+[node name="DebugContainer" type="MarginContainer" unique_id=2076150927]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_62b1y")
+
+[node name="WatchExpressions" type="GridContainer" parent="." unique_id=2120920564]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 0
+columns = 3

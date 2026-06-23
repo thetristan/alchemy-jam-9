@@ -1,0 +1,7 @@
+initial_scene: title
+autoload: true
+scenes:
+  title: res://ui/title/title.tscn
+  game: res://game/game.tscn
+  paused: res://ui/pause/pause.tscn
+  options: res://ui/options/options.tscn

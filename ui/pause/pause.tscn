@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ddinij2xyjdfq"]
+
+[ext_resource type="Script" uid="uid://tt15gsoh0782" path="res://ui/pause/pause.gd" id="1_x1pg1"]
+
+[node name="Pause" type="CanvasLayer" unique_id=1266539474]
+layer = 5
+script = ExtResource("1_x1pg1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=418077688]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=2047838048]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1914677586]
+layout_mode = 2
+
+[node name="PausedTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=740951354]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=968279987]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume Game"
+
+[node name="Options" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=643664198]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=259228197]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit To Title"

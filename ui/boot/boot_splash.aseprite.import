@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://6nh20t62wx8d"
+path="res://.godot/imported/boot_splash.aseprite-013982099af948513a3dbb6a02a370a1.res"
+
+[deps]
+
+source_file="res://ui/boot/boot_splash.aseprite"
+dest_files=["res://.godot/imported/boot_splash.aseprite-013982099af948513a3dbb6a02a370a1.res"]
+
+[params]
+

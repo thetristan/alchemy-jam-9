@@ -1,0 +1,53 @@
+name: Build and publish to itch.io
+on: 
+  push:
+    branches:
+      - release
+
+env:
+  EXPORT_DIR: build/web
+  ITCHIO_USERNAME: tbleazy
+  ITCHIO_GAME: alchemy-jam-9
+
+jobs:
+  build:
+    uses:
+      ./.github/workflows/build.yml
+
+  publish-web:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v5
+        with: 
+          name: web-export
+          path: ${{ env.EXPORT_DIR }}
+
+      - name: Cache Butler
+        id: cache_butler
+        uses: actions/cache@v5 
+        with: 
+          path: butler
+          key: ${{ runner.os }}-butler
+
+      - name: Install Butler
+        if: steps.cache_butler.outputs.cache-hit != 'true'
+        run: |
+          curl -L "https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default" -o butler.zip
+          unzip butler.zip
+          file butler
+          ls -la
+
+      - name: Publish to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          git rev-parse --short HEAD > version.txt
+          ./butler push ${EXPORT_DIR} ${ITCHIO_USERNAME}/${ITCHIO_GAME}:release --userversion-file version.txt
