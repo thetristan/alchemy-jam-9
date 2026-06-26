@@ -29,6 +29,16 @@ func on_exit() -> void:
 
 func on_physics_process(delta: float) -> void:
 	roller.velocity += roller.get_gravity() * delta
+
 	if is_rolling:
+		var frame: int = roller.sprite.frame
+		var frame_progress: float = roller.sprite.frame_progress
+		if roller.is_on_floor():
+			roller.sprite.animation = "roll"
+		else:
+			roller.sprite.animation = "air_roll"
+		roller.sprite.set_frame_and_progress(frame, frame_progress)
+
 		roller.velocity.x = move_toward(roller.velocity.x, roller.direction * Roller.ROLL_SPEED, Roller.ROLL_ACCEL * delta)
+
 	roller.move_and_slide()
