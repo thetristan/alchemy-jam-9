@@ -36,6 +36,7 @@ func on_enter() -> void:
 	player.top_wheel_sprite.play("appear")
 	player.bottom_wheel_sprite.speed_scale = 1
 	player.bottom_wheel_sprite.play("appear")
+
 	await player.top_wheel_sprite.animation_finished
 	player.top_wheel_sprite.play("forward")
 	player.bottom_wheel_sprite.play("forward")
@@ -56,6 +57,7 @@ func on_exit() -> void:
 	player.top_wheel_sprite.play_backwards("appear")
 	player.bottom_wheel_sprite.speed_scale = 1
 	player.bottom_wheel_sprite.play_backwards("appear")
+
 	await player.top_wheel_sprite.animation_finished
 	player.top_wheel_sprite.hide()
 	player.bottom_wheel_sprite.hide()
@@ -119,15 +121,26 @@ func apply_rail_movement(delta: float) -> void:
 
 	prev_direction = direction
 
+	# Lock the follower to the player's point on the rail, then step it forward by rail_motion.
+	# Moving by the follower's own step keeps travel tied to the sign of current_speed, so an
+	# obstacle that shoves the body along the rail can't reverse our direction and re-pin us.
+	var foot_local: Vector2 = player.attached_rail.path.to_local(player.global_position)
+	player.rail_follower.progress = player.attached_rail.path.curve.get_closest_offset(foot_local)
+	var foot_pos: Vector2 = player.rail_follower.global_position
 	player.rail_follower.progress += rail_motion
 
-	# Check for collisions with world geometry
-	var direction_along_rail: Vector2 = player.global_position.direction_to(player.rail_follower.global_position)
-	player.velocity = direction_along_rail * absf(player.current_speed)
+	# The rail step, plus only the perpendicular part of the pull back onto the rail (drop the
+	# tangential part so re-centering the body never fights the step).
+	var step: Vector2 = player.rail_follower.global_position - foot_pos
+	var to_rail: Vector2 = foot_pos - player.global_position
+	var tangent: Vector2 = step.normalized()
+	var motion: Vector2 = step + to_rail - tangent * to_rail.dot(tangent)
+	player.velocity = motion / delta
 
-	var motion: Vector2 = player.velocity * delta
 	var collision: KinematicCollision2D = player.move_and_collide(motion)
-	var hit_wall: bool = collision != null
+	# Only a block if we're driving into the surface. Moving away from a wall we're still
+	# touching also reports a collision, so checking the normal keeps the stop reversible.
+	var hit_wall: bool = collision != null and collision.get_normal().dot(motion) < 0.0
 	if hit_wall:
 		player.move_and_collide(collision.get_remainder())
 		var local_point: Vector2 = player.attached_rail.path.to_local(player.global_position)
@@ -150,7 +163,7 @@ func apply_rail_movement(delta: float) -> void:
 		player.current_speed = 0
 		if not has_recoiled and not (rotation_tween != null and rotation_tween.is_running()):
 			has_recoiled = true
-			var recoil_sign: float = signf(direction_along_rail.x) if hit_wall else (-1.0 if at_left_end else 1.0)
+			var recoil_sign: float = signf(rail_motion) if hit_wall else (-1.0 if at_left_end else 1.0)
 			play_recoil(recoil_sign)
 	else:
 		# Free to move — allow the recoil to play again on the next fresh contact.

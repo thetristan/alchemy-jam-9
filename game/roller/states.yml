@@ -1,0 +1,5 @@
+name: Roller
+states:
+- idle
+- rolling
+- exploding
