@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dfgof4u6ldq6q"]
+
+[ext_resource type="SpriteFrames" uid="uid://dm333yge7pxev" path="res://game/roller/roller_enemy.aseprite" id="1_v2roq"]
+
+[node name="Roller" type="CharacterBody2D" unique_id=40589415]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1031694152]
+unique_name_in_owner = true
+position = Vector2(-23, -22)
+sprite_frames = ExtResource("1_v2roq")
+animation = &"idle"
+autoplay = "idle"

@@ -1,0 +1,8 @@
+name: Player
+states:
+  - idle
+  - moving
+  - jumping
+  - falling
+  - hanging
+  - disabled

@@ -1,0 +1,4 @@
+name: Trapper
+states:
+  - idle
+  - snapping

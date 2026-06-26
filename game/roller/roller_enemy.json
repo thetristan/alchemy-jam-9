@@ -1,0 +1,235 @@
+{ "frames": [
+   {
+    "filename": "roller_enemy 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 1000
+   },
+   {
+    "filename": "roller_enemy 1.aseprite",
+    "frame": { "x": 146, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 2.aseprite",
+    "frame": { "x": 292, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 3.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 1000
+   },
+   {
+    "filename": "roller_enemy 4.aseprite",
+    "frame": { "x": 438, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 111
+   },
+   {
+    "filename": "roller_enemy 5.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 6.aseprite",
+    "frame": { "x": 584, "y": 0, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 7.aseprite",
+    "frame": { "x": 0, "y": 90, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 8.aseprite",
+    "frame": { "x": 146, "y": 90, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 9.aseprite",
+    "frame": { "x": 292, "y": 90, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 10.aseprite",
+    "frame": { "x": 438, "y": 90, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 11.aseprite",
+    "frame": { "x": 584, "y": 90, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 12.aseprite",
+    "frame": { "x": 0, "y": 180, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 13.aseprite",
+    "frame": { "x": 146, "y": 180, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 14.aseprite",
+    "frame": { "x": 292, "y": 180, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 15.aseprite",
+    "frame": { "x": 438, "y": 180, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 16.aseprite",
+    "frame": { "x": 584, "y": 180, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 42
+   },
+   {
+    "filename": "roller_enemy 17.aseprite",
+    "frame": { "x": 0, "y": 270, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 18.aseprite",
+    "frame": { "x": 146, "y": 270, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 19.aseprite",
+    "frame": { "x": 292, "y": 270, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 20.aseprite",
+    "frame": { "x": 438, "y": 270, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 21.aseprite",
+    "frame": { "x": 584, "y": 270, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 22.aseprite",
+    "frame": { "x": 0, "y": 360, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   },
+   {
+    "filename": "roller_enemy 23.aseprite",
+    "frame": { "x": 146, "y": 360, "w": 144, "h": 88 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 88 },
+    "sourceSize": { "w": 144, "h": 88 },
+    "duration": 83
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.17-arm64",
+  "image": "roller_enemy.png",
+  "format": "I8",
+  "size": { "w": 728, "h": 448 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 4, "direction": "forward", "color": "#ffffffff" },
+   { "name": "preroll", "from": 5, "to": 8, "direction": "forward", "repeat": "1", "color": "#ffffffff" },
+   { "name": "roll", "from": 9, "to": 16, "direction": "forward", "color": "#ffffffff" },
+   { "name": "explode", "from": 17, "to": 23, "direction": "forward", "repeat": "1", "color": "#ffffffff" }
+  ],
+  "slices": [
+  ]
+ }
+}

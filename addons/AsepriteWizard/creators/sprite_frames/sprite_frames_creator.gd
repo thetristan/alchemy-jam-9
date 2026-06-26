@@ -83,19 +83,19 @@ func _load_or_create_texture_resource(sprite_sheet: String, options: Dictionary)
 	if not options.get("should_create_portable_texture", false):
 		var tex = _load_texture(sprite_sheet)
 		if tex == null:
-			return { "texture": null, "error": true, "extra_gen_files": [] }
-		return { "texture": tex, "extra_gen_files": [] }
+			return {"texture": null, "error": true, "extra_gen_files": []}
+		return {"texture": tex, "extra_gen_files": []}
 
 	if options.get("sheet_base_path", "") == "":
 		var tex = create_packed_texture(sprite_sheet)
 		if tex == null:
-			return { "texture": null, "error": true, "extra_gen_files": [] }
-		return { "texture": tex, "extra_gen_files": [] }
+			return {"texture": null, "error": true, "extra_gen_files": []}
+		return {"texture": tex, "extra_gen_files": []}
 
-	var texture_path = "%s.%s.texture.res" % [options.sheet_base_path, sprite_sheet.get_file().get_basename() ]
+	var texture_path = "%s.%s.texture.res" % [options.sheet_base_path, sprite_sheet.get_file().get_basename()]
 	var tex = create_packed_texture(sprite_sheet, texture_path)
 	if tex == null:
-		return { "texture": null, "error": true, "extra_gen_files": [texture_path] }
+		return {"texture": null, "error": true, "extra_gen_files": [texture_path]}
 
 	return {
 		"texture": tex,
@@ -140,13 +140,13 @@ func _create_sprite_frames_with_animations(content: Dictionary, texture, options
 				selected_frames,
 				texture,
 				frame_rect,
-				{ "should_round_fps": options.get("should_round_fps", true) },
+				{"should_round_fps": options.get("should_round_fps", true)},
 				tag.direction,
 				int(tag.get("repeat", -1)),
 				frame_cache
 			)
 	else:
-		_add_animation_frames(sprite_frames, "default", frames, texture, frame_rect, { "should_round_fps": options.get("should_round_fps", true) })
+		_add_animation_frames(sprite_frames, "default", frames, texture, frame_rect, {"should_round_fps": options.get("should_round_fps", true)})
 
 	return sprite_frames
 
@@ -204,7 +204,7 @@ func _add_animation_frames(
 
 func _calculate_fps(min_duration: int, should_round: bool) -> float:
 	if should_round:
-		return ceil(1000.0 / min_duration)
+		return round(1000.0 / min_duration)
 	return 1000.0 / min_duration
 
 
@@ -248,8 +248,8 @@ func _add_to_sprite_frames(
 	frame_cache: Dictionary,
 	frame_rect: Variant,
 ):
-	var atlas : AtlasTexture = _create_atlastexture_from_frame(texture, frame, sprite_frames, frame_cache, frame_rect)
-	var duration = frame.duration / min_duration
+	var atlas: AtlasTexture = _create_atlastexture_from_frame(texture, frame, sprite_frames, frame_cache, frame_rect)
+	var duration = round(frame.duration / min_duration)
 	sprite_frames.add_frame(animation_name, atlas, duration)
 
 

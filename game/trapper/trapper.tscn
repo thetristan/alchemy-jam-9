@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dit8pp216brcs"]
+
+[ext_resource type="Script" uid="uid://xhccmv56n8rx" path="res://game/trapper/trapper.gd" id="1_0b7wn"]
+[ext_resource type="SpriteFrames" uid="uid://d18rmvgfy3d2e" path="res://game/trapper/trapper.aseprite" id="2_bsi05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(27, 18)
+
+[node name="Trapper" type="Node2D" unique_id=855137320]
+script = ExtResource("1_0b7wn")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1979443698]
+unique_name_in_owner = true
+position = Vector2(1, -8)
+sprite_frames = ExtResource("2_bsi05")
+animation = &"idle"
+
+[node name="CollisionArea" type="Area2D" parent="." unique_id=1036168744]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Collider" type="CollisionShape2D" parent="CollisionArea" unique_id=2124786056]
+unique_name_in_owner = true
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_phmfx")

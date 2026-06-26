@@ -8,7 +8,7 @@ const SFX_VOLUME_KEY: StringName = &"sfx_volume"
 
 const OPTIONS_PATH: String = "user://options.dat"
 
-@export var debug_mode: bool = false
+@export var debug_mode: bool = true
 
 var music_volume: ObservableFloat = ObservableFloat.new()
 var sfx_volume: ObservableFloat = ObservableFloat.new()

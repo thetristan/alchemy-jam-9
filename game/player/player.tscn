@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dpolnluglrj6t"]
+
+[ext_resource type="Script" uid="uid://btrq6xvjt74xj" path="res://game/player/player.gd" id="1_obar5"]
+[ext_resource type="SpriteFrames" uid="uid://brwopi85ewuvw" path="res://game/player/player_wheel.aseprite" id="2_8soms"]
+[ext_resource type="SpriteFrames" uid="uid://ctsthe8euodsb" path="res://game/player/player.aseprite" id="2_b2mth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obar5"]
+size = Vector2(11, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(15, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8soms"]
+size = Vector2(5, 15)
+
+[node name="Player" type="CharacterBody2D" unique_id=1546266692]
+collision_layer = 0
+floor_snap_length = 4.0
+script = ExtResource("1_obar5")
+
+[node name="AttachRayCast" type="RayCast2D" parent="." unique_id=947013060]
+unique_name_in_owner = true
+position = Vector2(0, 8)
+target_position = Vector2(0, -8)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RailFollower" type="PathFollow2D" parent="." unique_id=2084326935]
+unique_name_in_owner = true
+rotates = false
+loop = false
+
+[node name="ColorRect" type="ColorRect" parent="RailFollower" unique_id=1748400581]
+visible = false
+z_index = 100
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+color = Color(1, 0, 0, 1)
+
+[node name="TopWheelSprite" type="AnimatedSprite2D" parent="." unique_id=1788040248]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+sprite_frames = ExtResource("2_8soms")
+animation = &"forward"
+
+[node name="BottomWheelSprite" type="AnimatedSprite2D" parent="." unique_id=154849319]
+unique_name_in_owner = true
+position = Vector2(0, 5)
+sprite_frames = ExtResource("2_8soms")
+animation = &"forward"
+frame = 3
+
+[node name="SpriteGroup" type="CanvasGroup" parent="." unique_id=573322158]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="SpriteGroup" unique_id=2072297347]
+unique_name_in_owner = true
+position = Vector2(0, 5)
+sprite_frames = ExtResource("2_b2mth")
+animation = &"idle"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1577478934]
+unique_name_in_owner = true
+position = Vector2(0, 27)
+collision_layer = 2
+collision_mask = 0
+
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox" unique_id=170723024]
+unique_name_in_owner = true
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_obar5")
+
+[node name="WorldCollider" type="CollisionShape2D" parent="." unique_id=914786236]
+unique_name_in_owner = true
+position = Vector2(-0.5, 26)
+shape = SubResource("RectangleShape2D_phmfx")
+
+[node name="WheelCollider" type="CollisionShape2D" parent="." unique_id=1951866853]
+unique_name_in_owner = true
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_8soms")

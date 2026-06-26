@@ -1,0 +1,69 @@
+{ "frames": [
+   {
+    "filename": "blaster_enemy 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 1000
+   },
+   {
+    "filename": "blaster_enemy 1.aseprite",
+    "frame": { "x": 80, "y": 0, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 83
+   },
+   {
+    "filename": "blaster_enemy 2.aseprite",
+    "frame": { "x": 160, "y": 0, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 83
+   },
+   {
+    "filename": "blaster_enemy 3.aseprite",
+    "frame": { "x": 0, "y": 44, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 83
+   },
+   {
+    "filename": "blaster_enemy 4.aseprite",
+    "frame": { "x": 80, "y": 44, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 83
+   },
+   {
+    "filename": "blaster_enemy 5.aseprite",
+    "frame": { "x": 160, "y": 44, "w": 80, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 44 },
+    "sourceSize": { "w": 80, "h": 44 },
+    "duration": 83
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.17-arm64",
+  "image": "blaster_enemy.png",
+  "format": "I8",
+  "size": { "w": 240, "h": 88 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "slices": [
+  ]
+ }
+}

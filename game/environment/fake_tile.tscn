@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1rv8e2rm4xgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(32, 32)
+
+[node name="FakeTile" type="ColorRect" unique_id=1280716418]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.32999998, 1, 0.3969999, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1977520763]
+position = Vector2(16, 16)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1549187702]
+shape = SubResource("RectangleShape2D_phmfx")

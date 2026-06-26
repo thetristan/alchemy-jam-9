@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ty2w3cwxyhag"]
+
+[ext_resource type="Script" uid="uid://c5vuatp5yxhsa" path="res://game/rail/rail.gd" id="1_b5nf0"]
+
+[node name="Rail" type="Area2D" unique_id=739483624]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_b5nf0")
