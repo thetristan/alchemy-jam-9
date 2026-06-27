@@ -8,11 +8,14 @@ extends RefCounted
 signal transitioned(from_state: PlayerState, to_state: PlayerState)
 
 var idle_state: PlayerStateIdle
+var hit_state: PlayerStateHit
 var moving_state: PlayerStateMoving
 var jumping_state: PlayerStateJumping
 var falling_state: PlayerStateFalling
 var hanging_state: PlayerStateHanging
 var disabled_state: PlayerStateDisabled
+var dying_state: PlayerStateDying
+var dead_state: PlayerStateDead
 
 var current_state: PlayerState
 var transition_id: int = 0
@@ -20,11 +23,14 @@ var transition_id: int = 0
 
 func _init(player_: Player) -> void:
 	idle_state = PlayerStateIdle.new(player_, self)
+	hit_state = PlayerStateHit.new(player_, self)
 	moving_state = PlayerStateMoving.new(player_, self)
 	jumping_state = PlayerStateJumping.new(player_, self)
 	falling_state = PlayerStateFalling.new(player_, self)
 	hanging_state = PlayerStateHanging.new(player_, self)
 	disabled_state = PlayerStateDisabled.new(player_, self)
+	dying_state = PlayerStateDying.new(player_, self)
+	dead_state = PlayerStateDead.new(player_, self)
 	_enter_state(idle_state)
 
 
@@ -58,6 +64,10 @@ func transition_to_idle_state() -> void:
 	transition_to(idle_state)
 
 
+func transition_to_hit_state() -> void:
+	transition_to(hit_state)
+
+
 func transition_to_moving_state() -> void:
 	transition_to(moving_state)
 
@@ -76,6 +86,14 @@ func transition_to_hanging_state() -> void:
 
 func transition_to_disabled_state() -> void:
 	transition_to(disabled_state)
+
+
+func transition_to_dying_state() -> void:
+	transition_to(dying_state)
+
+
+func transition_to_dead_state() -> void:
+	transition_to(dead_state)
 
 
 func _enter_state(state: PlayerState) -> void:

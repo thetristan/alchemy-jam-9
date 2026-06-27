@@ -1,12 +1,14 @@
 class_name Blaster
 extends Node2D
 
+@export var auto: bool = true
 @export var face_left: bool = true
 
 var fsm: BlasterFSM
 
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var projectile_spawn: Marker2D = %ProjectileSpawn
+@onready var on_screen_notifier: VisibleOnScreenNotifier2D = %OnScreenNotifier
 
 
 func _ready() -> void:

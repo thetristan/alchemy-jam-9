@@ -12,3 +12,12 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	blaster.sprite.play("fire")
+	blaster.sprite.frame_changed.connect(_on_frame_changed)
+	await blaster.sprite.animation_finished
+	blaster.sprite.frame_changed.disconnect(_on_frame_changed)
+	fsm.transition_to_idle_state()
+	
+
+func _on_frame_changed() -> void:
+	if blaster.sprite.frame == 4:
+		Projectile.spawn(blaster.projectile_spawn.global_position, Vector2.LEFT)

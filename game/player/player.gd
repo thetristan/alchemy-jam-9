@@ -11,6 +11,7 @@ const JUMP_BUFFER_TIME: float = 0.1
 const VARIABLE_JUMP_TIME: float = 0.2
 const TERMINAL_VELOCITY: float = 400
 const JUMP_HEIGHT: float = -260
+const LAND_CROUCH_TIME: float = 0.1
 
 const RAIL_SPEED: float = 250
 const RAIL_ACCEL_SPEED: float = 500
@@ -33,6 +34,7 @@ const MIN_HEIGHT: float = 48
 
 var was_on_floor: bool
 var was_dropped: bool
+var landed: bool
 var direction: float
 var last_direction: float
 var current_speed: float
@@ -73,8 +75,7 @@ var input_queue: Array[PlayerInput] = []
 @onready var hit_box: Area2D = %HitBox
 @onready var hit_box_collider: CollisionShape2D = %HitBoxCollider
 @onready var rail_follower: PathFollow2D = %RailFollower
-@onready var top_wheel_sprite: AnimatedSprite2D = %TopWheelSprite
-@onready var bottom_wheel_sprite: AnimatedSprite2D = %BottomWheelSprite
+@onready var wheel_sprite: AnimatedSprite2D = %WheelSprite
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var sprite_group: CanvasGroup = %SpriteGroup
 
@@ -84,8 +85,7 @@ func _ready() -> void:
 	wheel_collider.disabled = true
 
 	# Hide sprites
-	top_wheel_sprite.hide()
-	bottom_wheel_sprite.hide()
+	wheel_sprite.hide()
 
 	fsm = PlayerFSM.new(self)
 	fsm.transitioned.connect(func(from, to) -> void:
@@ -104,6 +104,10 @@ func _physics_process(delta: float) -> void:
 	_update_input(delta)
 	fsm.physics_process(delta)
 
+	# Snap to floor
+	if is_on_floor():
+		global_position.y = roundf(global_position.y)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	fsm.input(event)
@@ -120,3 +124,7 @@ func _update_input(delta: float) -> void:
 
 func push_input(scripted_input: PlayerInput) -> void:
 	input_queue.push_back(scripted_input)
+
+
+func hit(direction: Vector2) -> void:
+	fsm.transition_to_hit_state(direction)

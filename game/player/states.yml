@@ -1,8 +1,11 @@
 name: Player
 states:
   - idle
+  - hit
   - moving
   - jumping
   - falling
   - hanging
   - disabled
+  - dying
+  - dead

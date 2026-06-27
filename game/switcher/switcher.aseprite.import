@@ -2,13 +2,13 @@
 
 importer="aseprite_wizard.plugin.spriteframes"
 type="SpriteFrames"
-uid="uid://bgi7bondl4d75"
-path="res://.godot/imported/projectile.aseprite-adf99235943156e01d107b5771c5a35e.res"
+uid="uid://ckoghchof7dk0"
+path="res://.godot/imported/switcher.aseprite-6412a9f038668bc198b83639054bf88d.res"
 
 [deps]
 
-source_file="res://game/projectile/projectile.aseprite"
-dest_files=["res://.godot/imported/projectile.aseprite-adf99235943156e01d107b5771c5a35e.res"]
+source_file="res://game/switcher/switcher.aseprite"
+dest_files=["res://.godot/imported/switcher.aseprite-6412a9f038668bc198b83639054bf88d.res"]
 
 [params]
 

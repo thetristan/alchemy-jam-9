@@ -10,6 +10,10 @@ func _to_string() -> String:
 
 ### END GENERATED CONTENT ###
 
+
+func on_enter() -> void:
+	play_grounded_anim("moving")
+
  
 func on_physics_process(delta: float) -> void:
 	apply_movement(delta)

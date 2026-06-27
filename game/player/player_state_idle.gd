@@ -12,7 +12,7 @@ func _to_string() -> String:
 
 
 func on_enter() -> void:
-	player.sprite.play("idle")
+	play_grounded_anim("idle")
 
 
 func on_physics_process(delta: float) -> void:

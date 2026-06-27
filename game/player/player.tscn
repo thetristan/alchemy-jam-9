@@ -51,21 +51,11 @@ sprite_frames = ExtResource("2_b2mth")
 animation = &"idle"
 flip_h = true
 
-[node name="WheelGroup" type="CanvasGroup" parent="." unique_id=2001779355]
-position = Vector2(1, 0)
-
-[node name="TopWheelSprite" type="AnimatedSprite2D" parent="WheelGroup" unique_id=1788040248]
+[node name="WheelSprite" type="AnimatedSprite2D" parent="." unique_id=1788040248]
 unique_name_in_owner = true
-position = Vector2(0, -3)
+position = Vector2(1, 1)
 sprite_frames = ExtResource("2_8soms")
 animation = &"forward"
-
-[node name="BottomWheelSprite" type="AnimatedSprite2D" parent="WheelGroup" unique_id=154849319]
-unique_name_in_owner = true
-position = Vector2(0, 5)
-sprite_frames = ExtResource("2_8soms")
-animation = &"forward"
-frame = 3
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1577478934]
 unique_name_in_owner = true

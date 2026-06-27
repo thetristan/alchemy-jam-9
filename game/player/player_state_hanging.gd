@@ -15,6 +15,7 @@ var recoil_direction: float
 var has_recoiled: bool
 var prev_direction: float
 var is_attached: bool
+var move_anim_reversed: bool
 
 func on_enter() -> void:
 	player.wheel_collider.disabled = false
@@ -32,17 +33,12 @@ func on_enter() -> void:
 	player.rail_follower.progress = progress
 	player.global_position = player.rail_follower.global_position
 
-	player.top_wheel_sprite.show()
-	player.bottom_wheel_sprite.show()
-	player.top_wheel_sprite.speed_scale = 1
-	player.top_wheel_sprite.play("appear")
-	player.bottom_wheel_sprite.speed_scale = 1
-	player.bottom_wheel_sprite.play("appear")
+	player.wheel_sprite.show()
+	player.wheel_sprite.speed_scale = 1
+	player.wheel_sprite.play("appear")
 
-	await player.top_wheel_sprite.animation_finished
-	player.top_wheel_sprite.play("forward")
-	player.bottom_wheel_sprite.play("forward")
-	player.bottom_wheel_sprite.frame = 3
+	await player.wheel_sprite.animation_finished
+	player.wheel_sprite.play("forward")
 	has_recoiled = false
 	prev_direction = 0.0
 	is_attached = true
@@ -55,14 +51,11 @@ func on_exit() -> void:
 	player.attached_rail = null
 	player.rail_follower.reparent(player)
 	player.rail_follower.global_position = player.global_position
-	player.top_wheel_sprite.speed_scale = 1
-	player.top_wheel_sprite.play_backwards("appear")
-	player.bottom_wheel_sprite.speed_scale = 1
-	player.bottom_wheel_sprite.play_backwards("appear")
+	player.wheel_sprite.speed_scale = 1
+	player.wheel_sprite.play_backwards("appear")
 
-	await player.top_wheel_sprite.animation_finished
-	player.top_wheel_sprite.hide()
-	player.bottom_wheel_sprite.hide()
+	await player.wheel_sprite.animation_finished
+	player.wheel_sprite.hide()
 
 	if rotation_tween:
 		rotation_tween.kill()
@@ -78,10 +71,8 @@ func on_physics_process(delta: float) -> void:
 	apply_rail_movement(delta)
 	if is_attached:
 		var speed_scale: float = 2 * player.current_speed / Player.RAIL_SPEED
-		if player.top_wheel_sprite.animation == "forward":
-			player.top_wheel_sprite.speed_scale = speed_scale
-		if player.bottom_wheel_sprite.animation == "forward":
-			player.bottom_wheel_sprite.speed_scale = - speed_scale
+		if player.wheel_sprite.animation == "forward":
+			player.wheel_sprite.speed_scale = speed_scale
 
 
 func apply_rail_movement(delta: float) -> void:
@@ -98,6 +89,28 @@ func apply_rail_movement(delta: float) -> void:
 		player.direction = direction
 	else:
 		player.current_speed = move_toward(player.current_speed, 0, Player.RAIL_DECEL_SPEED * delta)
+
+
+	var want_reverse: bool = is_zero_approx(direction)
+	if want_reverse:
+		# Key released. Run the move clip backwards and only settle into "hanging"
+		# once that reverse has actually finished playing (not when speed hits 0).
+		if player.sprite.animation == "hanging_move":
+			if not move_anim_reversed:
+				move_anim_reversed = true
+				player.sprite.play_backwards("hanging_move")
+			elif not player.sprite.is_playing():
+				player.sprite.play("hanging")
+		elif player.sprite.animation != "hanging":
+			player.sprite.play("hanging")
+	else:
+		# Key held.
+		if absf(player.current_speed) > 0:
+			if player.sprite.animation != "hanging_move" or move_anim_reversed:
+				move_anim_reversed = false
+				player.sprite.play("hanging_move")
+		elif player.sprite.animation != "hanging":
+			player.sprite.play("hanging")
 
 	var rail_motion: float = player.current_speed * delta
 	var rotation_tween_active: bool = rotation_tween != null and rotation_tween.is_running()

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d2wo1dnnn8h63"]
+
+[ext_resource type="SpriteFrames" uid="uid://ckoghchof7dk0" path="res://game/switcher/switcher.aseprite" id="1_1x5jh"]
+
+[node name="Switcher" type="Node2D" unique_id=422995893]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1217296176]
+sprite_frames = ExtResource("1_1x5jh")
+animation = &"on"
+autoplay = "on"

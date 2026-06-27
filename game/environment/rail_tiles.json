@@ -1,6 +1,6 @@
 { "frames": [
    {
-    "filename": "rail_tiles (Tiles).aseprite",
+    "filename": "rail_tiles.aseprite",
     "frame": { "x": 0, "y": 0, "w": 128, "h": 128 },
     "rotated": false,
     "trimmed": false,

@@ -31,7 +31,7 @@ func _ready() -> void:
 			continue
 		var node: Node = get_node_or_null(watch.node_path)
 		if not node:
-			Log.warn(self , _ready, "node not found at '%s'" % watch.node_path)
+			Log.warn(self, _ready, "node not found at '%s'" % watch.node_path)
 			continue
 		var alias: String = watch.node_alias if watch.node_alias else str(watch.node_path.slice(-1))
 		_add_watch(node, watch.expressions, alias)
@@ -87,7 +87,7 @@ func _add_watch(node: Node, expressions: Array[String], alias: String = "") -> v
 		var expression: Expression = Expression.new()
 		var error: Error = expression.parse(expr)
 		if error != OK:
-			Log.warn(self , _add_watch, "failed to parse expression '%s': %s" % [expr, error_string(error)])
+			Log.warn(self, _add_watch, "failed to parse expression '%s': %s" % [expr, error_string(error)])
 			continue
 
 		watched_nodes[key] = node

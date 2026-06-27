@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://d18rmvgfy3d2e" path="res://game/trapper/trapper.aseprite" id="2_bsi05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
-size = Vector2(27, 18)
+size = Vector2(23, 18)
 
 [node name="Trapper" type="Node2D" unique_id=855137320]
 script = ExtResource("1_0b7wn")
@@ -23,5 +23,6 @@ monitorable = false
 
 [node name="Collider" type="CollisionShape2D" parent="CollisionArea" unique_id=2124786056]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0.5, -9)
 shape = SubResource("RectangleShape2D_phmfx")

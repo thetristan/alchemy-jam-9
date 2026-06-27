@@ -14,6 +14,7 @@ func on_enter() -> void:
 	if player.was_on_floor and not player.was_dropped:
 		player.coyote_time_remaining = Player.COYOTE_TIME
 	player.was_dropped = false
+	player.sprite.play("falling")
 
 
 func on_exit() -> void:
@@ -44,9 +45,11 @@ func on_physics_process(delta: float) -> void:
 		return
 
 	if is_idle():
+		player.landed = true
 		fsm.transition_to(fsm.idle_state)
 		return
 
 	if is_moving():
+		player.landed = true
 		fsm.transition_to(fsm.moving_state)
 		return

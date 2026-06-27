@@ -22,6 +22,7 @@ func on_enter() -> void:
 	jump_time_remaining = Player.VARIABLE_JUMP_TIME
 	jump_active = true
 	player.velocity.y = Player.JUMP_HEIGHT
+	player.sprite.play("jumping")
 
 
 func on_exit() -> void:

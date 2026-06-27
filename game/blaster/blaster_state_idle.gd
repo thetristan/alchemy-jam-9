@@ -10,5 +10,20 @@ func _to_string() -> String:
 
 ### END GENERATED CONTENT ###
 
+const FIRE_DELAY: float = 1
+
+var _fire_delay_remaining: float
+
+
 func on_enter() -> void:
 	blaster.sprite.play("idle")
+
+
+func on_process(delta: float) -> void:
+	if blaster.auto:
+		_fire_delay_remaining -= delta
+		if _fire_delay_remaining < 0:
+			_fire_delay_remaining = FIRE_DELAY
+			if blaster.on_screen_notifier.is_on_screen():
+				fsm.transition_to_firing_state()
+				return

@@ -27,6 +27,20 @@ func on_physics_process(delta: float) -> void: pass
 
 ### END GENERATED CONTENT ###
 
+func play_grounded_anim(settle_anim: String) -> void:
+	# If we just landed from a fall, play the crouch first, then settle into the
+	# given animation; otherwise play it straight away. The transition guard keeps
+	# the deferred settle from stomping a state we left during the crouch.
+	if player.landed:
+		player.landed = false
+		player.sprite.play("crouch")
+		var trans_id: int = fsm.transition_id
+		await Util.timer(Player.LAND_CROUCH_TIME)
+		if trans_id != fsm.transition_id:
+			return
+	player.sprite.play(settle_anim)
+
+
 func is_idle() -> bool:
 	var on_floor: bool = player.is_on_floor()
 	var not_moving: bool = is_zero_approx(player.current_speed) and player.velocity.y >= 0
