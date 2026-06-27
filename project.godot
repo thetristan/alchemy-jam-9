@@ -47,6 +47,12 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/limbo_console/plugin.cfg", "res://addons/triggers/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray"
+}
+
 [gui]
 
 theme/default_font_antialiasing=0

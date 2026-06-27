@@ -11,7 +11,8 @@ var direction: float = 1
 
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var world_collider: CollisionShape2D = %WorldCollider
-@onready var player_ray_cast: RayCast2D = %PlayerRayCast
+@onready var upper_player_ray_cast: RayCast2D = %UpperPlayerRayCast
+@onready var lower_player_ray_cast: RayCast2D = %LowerPlayerRayCast
 @onready var hit_box: Area2D = %HitBox
 @onready var hit_box_collider: CollisionShape2D = %HitBoxCollider
 
@@ -19,7 +20,8 @@ func _ready() -> void:
 	if face_left:
 		sprite.flip_h = true
 		sprite.offset.x *= -1
-		player_ray_cast.target_position.x *= -1
+		upper_player_ray_cast.target_position.x *= -1
+		lower_player_ray_cast.target_position.x *= -1
 		direction = -1
 		
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c71bu5jcx37vb"]
+
+[ext_resource type="SpriteFrames" uid="uid://enc5d73df0ih" path="res://game/blaster/blaster_enemy.aseprite" id="1_ic4ry"]
+[ext_resource type="Script" uid="uid://ci5kykkbt8hh2" path="res://game/blaster/blaster.gd" id="1_wskt1"]
+[ext_resource type="PackedScene" uid="uid://uo0vo31abise" path="res://game/projectile/projectile.tscn" id="3_walhf"]
+
+[node name="Blaster" type="Node2D" unique_id=2103290764]
+script = ExtResource("1_wskt1")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1996828067]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+sprite_frames = ExtResource("1_ic4ry")
+animation = &"idle"
+frame_progress = 0.91472125
+offset = Vector2(-12, 0)
+
+[node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=1409629005]
+unique_name_in_owner = true
+position = Vector2(-24, -13)
+
+[node name="Projectile" parent="." unique_id=922085841 instance=ExtResource("3_walhf")]

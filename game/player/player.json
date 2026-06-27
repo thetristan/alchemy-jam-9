@@ -64,7 +64,7 @@
    },
    {
     "filename": "player 7.aseprite",
-    "frame": { "x": 64, "y": 96, "w": 32, "h": 96 },
+    "frame": { "x": 32, "y": 192, "w": 32, "h": 96 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 96 },
@@ -73,6 +73,15 @@
    },
    {
     "filename": "player 8.aseprite",
+    "frame": { "x": 64, "y": 0, "w": 32, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 96 },
+    "sourceSize": { "w": 32, "h": 96 },
+    "duration": 83
+   },
+   {
+    "filename": "player 9.aseprite",
     "frame": { "x": 64, "y": 0, "w": 32, "h": 96 },
     "rotated": false,
     "trimmed": false,

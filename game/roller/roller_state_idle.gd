@@ -12,12 +12,14 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	roller.sprite.play("idle")
-	roller.player_ray_cast.enabled = true
+	roller.upper_player_ray_cast.enabled = true
+	roller.lower_player_ray_cast.enabled = true
 	roller.hit_box.area_entered.connect(on_hit)
 
 
 func on_exit() -> void:
-	roller.player_ray_cast.enabled = false
+	roller.upper_player_ray_cast.enabled = false
+	roller.lower_player_ray_cast.enabled = false
 	roller.hit_box.area_entered.disconnect(on_hit)
 
 
@@ -25,6 +27,9 @@ func on_physics_process(delta: float) -> void:
 	roller.velocity += roller.get_gravity() * delta
 	roller.move_and_slide()
 
-	if roller.player_ray_cast.is_colliding():
+	var detected_player: bool = roller.upper_player_ray_cast.is_colliding() \
+		or roller.lower_player_ray_cast.is_colliding()
+
+	if detected_player:
 		fsm.transition_to_rolling_state()
 		return

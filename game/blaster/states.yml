@@ -1,0 +1,4 @@
+name: Blaster
+states:
+- idle
+- firing

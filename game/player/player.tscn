@@ -5,10 +5,10 @@
 [ext_resource type="SpriteFrames" uid="uid://ctsthe8euodsb" path="res://game/player/player.aseprite" id="2_b2mth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obar5"]
-size = Vector2(11, 21)
+size = Vector2(10, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
-size = Vector2(15, 22)
+size = Vector2(16, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8soms"]
 size = Vector2(5, 15)
@@ -40,19 +40,6 @@ offset_right = 2.0
 offset_bottom = 2.0
 color = Color(1, 0, 0, 1)
 
-[node name="TopWheelSprite" type="AnimatedSprite2D" parent="." unique_id=1788040248]
-unique_name_in_owner = true
-position = Vector2(0, -3)
-sprite_frames = ExtResource("2_8soms")
-animation = &"forward"
-
-[node name="BottomWheelSprite" type="AnimatedSprite2D" parent="." unique_id=154849319]
-unique_name_in_owner = true
-position = Vector2(0, 5)
-sprite_frames = ExtResource("2_8soms")
-animation = &"forward"
-frame = 3
-
 [node name="SpriteGroup" type="CanvasGroup" parent="." unique_id=573322158]
 unique_name_in_owner = true
 position = Vector2(0, 1)
@@ -62,6 +49,23 @@ unique_name_in_owner = true
 position = Vector2(0, 5)
 sprite_frames = ExtResource("2_b2mth")
 animation = &"idle"
+flip_h = true
+
+[node name="WheelGroup" type="CanvasGroup" parent="." unique_id=2001779355]
+position = Vector2(1, 0)
+
+[node name="TopWheelSprite" type="AnimatedSprite2D" parent="WheelGroup" unique_id=1788040248]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+sprite_frames = ExtResource("2_8soms")
+animation = &"forward"
+
+[node name="BottomWheelSprite" type="AnimatedSprite2D" parent="WheelGroup" unique_id=154849319]
+unique_name_in_owner = true
+position = Vector2(0, 5)
+sprite_frames = ExtResource("2_8soms")
+animation = &"forward"
+frame = 3
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1577478934]
 unique_name_in_owner = true
@@ -71,15 +75,15 @@ collision_mask = 0
 
 [node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox" unique_id=170723024]
 unique_name_in_owner = true
-position = Vector2(-0.5, -1.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_obar5")
 
 [node name="WorldCollider" type="CollisionShape2D" parent="." unique_id=914786236]
 unique_name_in_owner = true
-position = Vector2(-0.5, 26)
+position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_phmfx")
 
 [node name="WheelCollider" type="CollisionShape2D" parent="." unique_id=1951866853]
 unique_name_in_owner = true
-position = Vector2(-0.5, 0.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_8soms")

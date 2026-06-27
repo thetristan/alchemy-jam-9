@@ -10,10 +10,17 @@ func _to_string() -> String:
 
 ### END GENERATED CONTENT ###
 
+const FALLEN_THRESHOLD: float = 216
+
 var is_rolling: bool
+var was_on_floor: bool
+var distance_fallen: float
+
 
 func on_enter() -> void:
 	is_rolling = false
+	was_on_floor = true
+	distance_fallen = 0
 	roller.hit_box.area_entered.connect(on_hit)
 
 	roller.sprite.play("preroll")
@@ -29,6 +36,16 @@ func on_exit() -> void:
 
 func on_physics_process(delta: float) -> void:
 	roller.velocity += roller.get_gravity() * delta
+	distance_fallen += roller.velocity.y * delta
+
+	var fall_threshold_met: bool = roller.is_on_floor() \
+		and not was_on_floor \
+		and distance_fallen > FALLEN_THRESHOLD
+	if fall_threshold_met or roller.is_on_wall():
+		fsm.transition_to_exploding_state()
+		return
+
+	was_on_floor = roller.is_on_floor()
 
 	if is_rolling:
 		var frame: int = roller.sprite.frame

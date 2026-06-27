@@ -296,11 +296,11 @@
   "size": { "w": 874, "h": 448 },
   "scale": "1",
   "frameTags": [
-   { "name": "idle", "from": 0, "to": 4, "direction": "forward", "color": "#ffffffff" },
-   { "name": "preroll", "from": 5, "to": 8, "direction": "forward", "repeat": "1", "color": "#ffffffff" },
-   { "name": "roll", "from": 9, "to": 16, "direction": "forward", "color": "#ffffffff" },
-   { "name": "air_roll", "from": 17, "to": 24, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 25, "to": 31, "direction": "forward", "repeat": "1", "color": "#ffffffff" }
+   { "name": "idle", "from": 0, "to": 4, "direction": "forward", "color": "#a5a5a7ff" },
+   { "name": "preroll", "from": 5, "to": 8, "direction": "forward", "repeat": "1" },
+   { "name": "roll", "from": 9, "to": 16, "direction": "forward" },
+   { "name": "air_roll", "from": 17, "to": 24, "direction": "forward" },
+   { "name": "explode", "from": 25, "to": 31, "direction": "forward", "repeat": "1" }
   ],
   "slices": [
   ]

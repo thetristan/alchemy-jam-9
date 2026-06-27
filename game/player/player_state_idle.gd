@@ -11,6 +11,10 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 
+func on_enter() -> void:
+	player.sprite.play("idle")
+
+
 func on_physics_process(delta: float) -> void:
 	apply_stretch(delta)
 	apply_movement(delta)

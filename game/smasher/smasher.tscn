@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d3xkpb3te04m7"]
+
+[ext_resource type="SpriteFrames" uid="uid://yf5yr2ullt2w" path="res://game/smasher/smasher_enemy.aseprite" id="1_3a0ip"]
+[ext_resource type="Script" uid="uid://bld7lgu8e2vue" path="res://game/smasher/smasher.gd" id="1_7nuwo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(16, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ip"]
+size = Vector2(16, 20)
+
+[node name="Smasher" type="CharacterBody2D" unique_id=1928963560]
+script = ExtResource("1_7nuwo")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=888775294]
+unique_name_in_owner = true
+sprite_frames = ExtResource("1_3a0ip")
+animation = &"idle"
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=2047890135]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_phmfx")
+
+[node name="PlayerRayCast" type="RayCast2D" parent="." unique_id=197925374]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+target_position = Vector2(0, 180)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="WorldRayCast" type="RayCast2D" parent="." unique_id=1384342017]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+target_position = Vector2(0, 180)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="HitBox" type="Area2D" parent="." unique_id=505012582]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox" unique_id=658019690]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_3a0ip")

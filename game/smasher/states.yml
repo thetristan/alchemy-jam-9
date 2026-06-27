@@ -1,0 +1,6 @@
+name: Smasher
+states:
+- idle
+- patrolling
+- smashing
+- exploding

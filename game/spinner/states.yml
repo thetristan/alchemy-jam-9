@@ -1,0 +1,7 @@
+name: Spinner
+states:
+- idle
+- name: spinning
+  data: 
+  - target_node: Node2D
+- exploding

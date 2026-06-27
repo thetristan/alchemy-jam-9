@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/blaster_enemy.aseprite-5a7d6c2a9fc8f976723f6d
 
 [params]
 
-layer/exclude_layers_pattern="[H]"
+layer/exclude_layers_pattern="\\[H\\]"
 layer/only_visible_layers=true
 sheet/sheet_type="packed"
 sheet/sheet_columns=12

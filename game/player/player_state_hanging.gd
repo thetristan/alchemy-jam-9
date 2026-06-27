@@ -22,6 +22,8 @@ func on_enter() -> void:
 	player.attached_rail = intersecting_rail()
 	Log.info(self, on_enter, "Attaching to rail %s" % player.attached_rail)
 
+	player.sprite.play("hanging")
+
 	var collision_point: Vector2 = player.attach_ray_cast.get_collision_point()
 	var local_point: Vector2 = player.attached_rail.path.to_local(collision_point)
 	var progress: float = player.attached_rail.path.curve.get_closest_offset(local_point)

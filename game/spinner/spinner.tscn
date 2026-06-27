@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://t3cpg6sjplyo"]
+
+[ext_resource type="Script" uid="uid://dwjfkpp7iktdn" path="res://game/spinner/spinner.gd" id="1_f4um7"]
+[ext_resource type="SpriteFrames" uid="uid://dl4lhlq7eelrm" path="res://game/spinner/spinner_enemy.aseprite" id="1_q113a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_048ok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phmfx"]
+radius = 96.0
+
+[node name="Spinner" type="Node2D" unique_id=71843883]
+script = ExtResource("1_f4um7")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1691013605]
+unique_name_in_owner = true
+sprite_frames = ExtResource("1_q113a")
+animation = &"speed_up"
+offset = Vector2(0.5, -0.5)
+
+[node name="TargetSprite" type="AnimatedSprite2D" parent="." unique_id=2097796498]
+unique_name_in_owner = true
+top_level = true
+sprite_frames = ExtResource("1_q113a")
+animation = &"target"
+frame = 2
+frame_progress = 1.0
+offset = Vector2(0.5, -0.5)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=685444467]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox" unique_id=85164591]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_048ok")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1165501307]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionCollider" type="CollisionShape2D" parent="PlayerDetection" unique_id=1913364073]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_phmfx")

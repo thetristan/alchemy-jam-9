@@ -1,6 +1,6 @@
 { "frames": [
    {
-    "filename": "world_tiles.aseprite",
+    "filename": "world_tiles (Flattened).aseprite",
     "frame": { "x": 0, "y": 0, "w": 256, "h": 256 },
     "rotated": false,
     "trimmed": false,

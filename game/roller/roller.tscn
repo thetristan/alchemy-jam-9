@@ -17,7 +17,7 @@ script = ExtResource("1_5ftwp")
 unique_name_in_owner = true
 position = Vector2(0, -14)
 sprite_frames = ExtResource("1_v2roq")
-animation = &"air_roll"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(-23, -8)
 
@@ -26,9 +26,17 @@ unique_name_in_owner = true
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_y36n6")
 
-[node name="PlayerRayCast" type="RayCast2D" parent="." unique_id=1746572838]
+[node name="LowerPlayerRayCast" type="RayCast2D" parent="." unique_id=1746572838]
 unique_name_in_owner = true
-position = Vector2(0, -14)
+position = Vector2(0, -8)
+target_position = Vector2(180, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="UpperPlayerRayCast" type="RayCast2D" parent="." unique_id=1941036670]
+unique_name_in_owner = true
+position = Vector2(0, -24)
 target_position = Vector2(180, 0)
 collision_mask = 2
 collide_with_areas = true
