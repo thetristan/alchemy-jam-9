@@ -47,9 +47,6 @@ jobs:
           mkdir -p ${TEMPLATES_DST}
           cp ${TEMPLATES_SRC}/* ${TEMPLATES_DST}
 
-      - name: Delete orphaned files
-        run: python3 bin/find-orphans --delete
-
       - name: Web build
         run: |
           mkdir -v -p ${EXPORT_DIR}
