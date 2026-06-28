@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const ROLL_SPEED: float = 300
 const ROLL_ACCEL: float = 1000
+const DAMAGE_AMOUNT: int = 4
+const KNOCKBACK_AMOUNT: float = 800
 
 @export var face_left: bool
 

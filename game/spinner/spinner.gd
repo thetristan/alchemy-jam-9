@@ -3,6 +3,8 @@ extends Node2D
 
 const SPIN_SPEED: float = 250
 const TARGETING_DELAY: float = 0.5
+const DAMAGE_AMOUNT: int = 1
+const KNOCKBACK_AMOUNT: float = 400
 
 var fsm: SpinnerFSM
 

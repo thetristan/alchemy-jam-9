@@ -46,7 +46,7 @@ func on_enter() -> void:
 
 func on_exit() -> void:
 	is_attached = false
-	player.wheel_collider.disabled = true
+	player.wheel_collider.set_deferred("disabled", true)
 	player.attach_ray_cast.add_exception(player.attached_rail)
 	player.attached_rail = null
 	player.rail_follower.reparent(player)

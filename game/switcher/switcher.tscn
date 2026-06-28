@@ -1,10 +1,27 @@
 [gd_scene format=3 uid="uid://d2wo1dnnn8h63"]
 
 [ext_resource type="SpriteFrames" uid="uid://ckoghchof7dk0" path="res://game/switcher/switcher.aseprite" id="1_1x5jh"]
+[ext_resource type="Script" uid="uid://dqciubk4i77cy" path="res://game/switcher/switcher.gd" id="1_tj4xr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj4xr"]
+size = Vector2(33, 18)
 
 [node name="Switcher" type="Node2D" unique_id=422995893]
+script = ExtResource("1_tj4xr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1217296176]
+unique_name_in_owner = true
+position = Vector2(0, -16)
 sprite_frames = ExtResource("1_1x5jh")
 animation = &"on"
-autoplay = "on"
+
+[node name="Trigger" type="Area2D" parent="." unique_id=437906609]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Collider" type="CollisionShape2D" parent="Trigger" unique_id=1094468355]
+unique_name_in_owner = true
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_tj4xr")

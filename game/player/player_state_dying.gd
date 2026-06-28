@@ -9,3 +9,9 @@ func _to_string() -> String:
 	return "dying"
 
 ### END GENERATED CONTENT ###
+
+func on_enter() -> void:
+	player.hit_box_collider.set_deferred("disabled", true)
+	player.sprite.play("dying")
+	await player.sprite.animation_finished
+	player.hide()

@@ -3,6 +3,7 @@ extends Node2D
 
 @export var auto: bool = true
 @export var face_left: bool = true
+@export var delay: float
 
 var fsm: BlasterFSM
 

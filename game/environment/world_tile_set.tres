@@ -2,6 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://c2ak5i8r1dmub" path="res://game/environment/world_tiles.aseprite" id="1_v1ybw"]
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_v1ybw"]
+tile_data = PackedInt32Array(0, 1245185, 0, 65536, 1245185, 1, 1, 1310721, 0, 65537, 1310721, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_yx2ri"]
+tile_data = PackedInt32Array(0, 1376257, 0, 65536, 1376257, 1, 1, 1441793, 0, 65537, 1441793, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_pt2hb"]
+tile_data = PackedInt32Array(0, 1507329, 0, 65536, 1507329, 1, 1, 1572865, 0, 65537, 1572865, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3vho3"]
 texture = ExtResource("1_v1ybw")
 texture_region_size = Vector2i(8, 8)
@@ -937,9 +946,18 @@ texture_region_size = Vector2i(8, 8)
 22:19/0 = 0
 22:18/0 = 0
 23:19/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+25:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+25:6/0/physics_layer_0/polygon_0/one_way = true
+25:7/0 = 0
+24:7/0 = 0
 
 [resource]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_3vho3")
+pattern_0 = SubResource("TileMapPattern_v1ybw")
+pattern_1 = SubResource("TileMapPattern_yx2ri")
+pattern_2 = SubResource("TileMapPattern_pt2hb")

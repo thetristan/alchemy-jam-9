@@ -13,10 +13,15 @@ func _to_string() -> String:
 const FIRE_DELAY: float = 1
 
 var _fire_delay_remaining: float
+var _initial_delay_applied: bool
 
 
 func on_enter() -> void:
 	blaster.sprite.play("idle")
+
+	if not _initial_delay_applied:
+		_initial_delay_applied = true
+		_fire_delay_remaining = blaster.delay
 
 
 func on_process(delta: float) -> void:

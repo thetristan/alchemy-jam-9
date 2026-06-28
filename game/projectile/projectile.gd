@@ -1,6 +1,7 @@
 class_name Projectile
 extends Area2D
 
+const DAMAGE_AMOUNT: int = 3
 const SPEED: float = 150
 
 var _direction: Vector2 = Vector2(1, 0)
@@ -38,6 +39,10 @@ func _physics_process(delta: float) -> void:
 func _on_hit(area: Area2D) -> void:
 	_live = false
 	await get_tree().process_frame
+	var player_hit_box: PlayerHitBox = area as PlayerHitBox
+	if player_hit_box:
+		player_hit_box.hit(DAMAGE_AMOUNT, global_position, 400)
+
 	sprite.play("explode")
 	await sprite.animation_finished
 	queue_free()

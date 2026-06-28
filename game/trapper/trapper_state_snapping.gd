@@ -11,7 +11,26 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 func on_enter() -> void:
+	trapper.hit_box.area_entered.connect(_on_hit_box_entered)
+	trapper.hit_box_collider.set_deferred("disabled", trapper.sprite.frame not in [0, 1])
+	trapper.sprite.frame_changed.connect(_on_frame_changed)
 	trapper.sprite.play("activate")
 	await trapper.sprite.animation_finished
 	await Util.timer(Trapper.RESET_TIME)
 	fsm.transition_to_idle_state()
+
+
+func on_exit() -> void:
+	trapper.hit_box.area_entered.disconnect(_on_hit_box_entered)
+	trapper.sprite.frame_changed.disconnect(_on_frame_changed)
+	trapper.hit_box_collider.set_deferred("disabled", true)
+
+
+func _on_frame_changed() -> void:
+	trapper.hit_box_collider.set_deferred("disabled", trapper.sprite.frame != 2)
+
+
+func _on_hit_box_entered(area: Area2D) -> void:
+	var player_hit_box: PlayerHitBox = area as PlayerHitBox
+	if player_hit_box:
+		player_hit_box.hit(Trapper.DAMAGE_AMOUNT, trapper.global_position, Trapper.KNOCKBACK_AMOUNT)

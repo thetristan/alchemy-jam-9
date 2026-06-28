@@ -27,5 +27,9 @@ func on_physics_process(delta: float) -> void: pass
 
 ### END GENERATED CONTENT ###
 
-func on_hit(_area: Area2D) -> void:
+func on_hit(area: Area2D) -> void:
+	var player_hit_box: PlayerHitBox = area as PlayerHitBox
+	if player_hit_box:
+		player_hit_box.hit(Roller.DAMAGE_AMOUNT, roller.global_position, Roller.KNOCKBACK_AMOUNT)
+
 	fsm.transition_to_exploding_state()

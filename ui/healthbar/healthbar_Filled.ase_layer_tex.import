@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://dtvyyhdrj57rx"
+path="res://.godot/imported/healthbar_Filled.ase_layer_tex-27d12150358e0a7119096774a0654c82.res"
+
+[deps]
+
+source_file="res://ui/healthbar/healthbar_Filled.ase_layer_tex"
+dest_files=["res://.godot/imported/healthbar_Filled.ase_layer_tex-27d12150358e0a7119096774a0654c82.res"]
+
+[params]
+

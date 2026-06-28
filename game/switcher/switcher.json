@@ -62,7 +62,7 @@
   "size": { "w": 148, "h": 66 },
   "scale": "1",
   "frameTags": [
-   { "name": "on", "from": 1, "to": 5, "direction": "forward", "color": "#000000ff" }
+   { "name": "on", "from": 1, "to": 5, "direction": "forward", "repeat": "1", "color": "#000000ff" }
   ],
   "slices": [
   ]

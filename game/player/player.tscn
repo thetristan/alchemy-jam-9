@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btrq6xvjt74xj" path="res://game/player/player.gd" id="1_obar5"]
 [ext_resource type="SpriteFrames" uid="uid://brwopi85ewuvw" path="res://game/player/player_wheel.aseprite" id="2_8soms"]
 [ext_resource type="SpriteFrames" uid="uid://ctsthe8euodsb" path="res://game/player/player.aseprite" id="2_b2mth"]
+[ext_resource type="Script" uid="uid://vtntulp0gbq5" path="res://game/player/player_hit_box.gd" id="4_a4w0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obar5"]
 size = Vector2(10, 21)
@@ -17,6 +18,7 @@ size = Vector2(5, 15)
 collision_layer = 0
 floor_snap_length = 4.0
 script = ExtResource("1_obar5")
+metadata/_edit_horizontal_guides_ = [37.0]
 
 [node name="AttachRayCast" type="RayCast2D" parent="." unique_id=947013060]
 unique_name_in_owner = true
@@ -46,9 +48,9 @@ position = Vector2(0, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="SpriteGroup" unique_id=2072297347]
 unique_name_in_owner = true
-position = Vector2(0, 5)
+position = Vector2(0, 13)
 sprite_frames = ExtResource("2_b2mth")
-animation = &"idle"
+animation = &"dying"
 flip_h = true
 
 [node name="WheelSprite" type="AnimatedSprite2D" parent="." unique_id=1788040248]
@@ -62,6 +64,7 @@ unique_name_in_owner = true
 position = Vector2(0, 27)
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("4_a4w0n")
 
 [node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox" unique_id=170723024]
 unique_name_in_owner = true
@@ -77,3 +80,7 @@ shape = SubResource("RectangleShape2D_phmfx")
 unique_name_in_owner = true
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_8soms")
+
+[node name="KnockbackOrigin" type="Marker2D" parent="." unique_id=1058010897]
+unique_name_in_owner = true
+position = Vector2(0, 27)

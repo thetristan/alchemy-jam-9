@@ -1,8 +1,18 @@
 class_name Player
 extends CharacterBody2D
 
+
+const GROUP: String = "player"
+
 static var NOOP_INPUT: PlayerInput = PlayerInputNoop.new()
 static var REAL_INPUT: PlayerInput = PlayerInputReal.new()
+
+static func get_instance() -> Player:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if not tree:
+		return null
+
+	return tree.get_first_node_in_group(GROUP) as Player
 
 
 const DEFAULT_SNAP_LENGTH: float = 4.0
@@ -29,6 +39,7 @@ const STRETCH_SPEED: float = 150
 const MAX_HEIGHT: float = 128
 const MIN_HEIGHT: float = 48
 
+const MAX_HEALTH: int = 12
 
 @export var disable_real_input: bool
 
@@ -40,8 +51,21 @@ var last_direction: float
 var current_speed: float
 var coyote_time_remaining: float
 var jump_buffer_time_remaining: float
+var knockback_velocity: Vector2
+var knockback_duration: float
 
 var attached_rail: Rail
+
+var health: int = MAX_HEALTH:
+	set(new_val):
+		if health == new_val:
+			return
+
+		health = clampi(new_val, 0, MAX_HEALTH)
+		SignalBus.player_health_changed.emit(health, MAX_HEALTH)
+		if health == 0:
+			fsm.transition_to_dying_state()
+
 
 var height: float = MIN_HEIGHT:
 	set(new_val):
@@ -78,13 +102,13 @@ var input_queue: Array[PlayerInput] = []
 @onready var wheel_sprite: AnimatedSprite2D = %WheelSprite
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var sprite_group: CanvasGroup = %SpriteGroup
+@onready var knockback_origin: Marker2D = %KnockbackOrigin
 
 
 func _ready() -> void:
-	# Disable wheel collisions for now
-	wheel_collider.disabled = true
+	add_to_group(GROUP)
 
-	# Hide sprites
+	wheel_collider.disabled = true
 	wheel_sprite.hide()
 
 	fsm = PlayerFSM.new(self)
@@ -110,6 +134,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug"):
+		if fsm.current_state == fsm.debug_state:
+			fsm.transition_to_idle_state()
+		else:
+			fsm.transition_to_debug_state()
+		return
+
 	fsm.input(event)
 
 
@@ -126,5 +157,17 @@ func push_input(scripted_input: PlayerInput) -> void:
 	input_queue.push_back(scripted_input)
 
 
-func hit(direction: Vector2) -> void:
-	fsm.transition_to_hit_state(direction)
+func kill() -> void:
+	health = 0
+
+
+func hit(amount: int, damage_origin: Vector2, force: float, duration: float = 0.2) -> void:
+	if fsm.current_state in [fsm.hit_state, fsm.dying_state]:
+		return
+
+	health -= amount
+
+	var knockback_direction: Vector2 = knockback_origin.global_position.direction_to(damage_origin)
+	knockback_duration += duration
+	knockback_velocity = knockback_direction * force
+	fsm.transition_to_hit_state()

@@ -11,6 +11,31 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 func on_enter() -> void:
-	pass
+	if is_dead():
+		return
+
+	player.sprite.play("hit")
 	await player.sprite.animation_finished
-	fsm.transition_to_idle_state()
+
+
+func on_physics_process(delta: float) -> void:
+	if is_dead():
+		return
+
+	if player.knockback_duration <= 0:
+		fsm.transition_to_idle_state()
+		return
+
+	apply_knockback(delta)
+
+
+func apply_knockback(delta: float) -> void:
+	player.knockback_velocity = player.knockback_velocity.lerp(Vector2.ZERO, 100.0 * delta)
+	apply_gravity(delta)
+	player.velocity += player.knockback_velocity
+	player.move_and_slide()
+	player.knockback_duration -= delta
+
+
+func is_dead() -> bool:
+	return player.health <= 0

@@ -1,13 +1,20 @@
 class_name Trapper
 extends Node2D
 
-const RESET_TIME: float = 2.0
+const DAMAGE_AMOUNT: int = 2
+const KNOCKBACK_AMOUNT: float = 400
+const RESET_TIME: float = 2
+const IDLE_JIGGLE_MIN_DELAY: float = 0.5
+const IDLE_JIGGLE_MAX_DELAY: float = 2.5
 
 var fsm: TrapperFSM
 
 @onready var sprite: AnimatedSprite2D = %Sprite
-@onready var collision_area: Area2D = %CollisionArea
+@onready var trigger: Area2D = %Trigger
 @onready var collider: CollisionShape2D = %Collider
+@onready var hit_box: Area2D = %HitBox
+@onready var hit_box_collider: CollisionPolygon2D = %HitBoxCollider
+
 
 func _ready() -> void:
 	fsm = TrapperFSM.new(self)

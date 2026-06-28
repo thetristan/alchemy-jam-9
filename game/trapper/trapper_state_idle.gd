@@ -12,13 +12,29 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	trapper.collider.set_deferred("disabled", false)
-	trapper.collision_area.area_entered.connect(_on_collision)
-	trapper.sprite.play("idle")
+	trapper.trigger.area_entered.connect(_on_collision)
+	trapper.sprite.animation = &"idle"
+	_jiggle_loop()
+
+
+func _jiggle_loop() -> void:
+	var trans_id: int = fsm.transition_id
+	while trans_id == fsm.transition_id:
+		await Util.timer(randf_range(Trapper.IDLE_JIGGLE_MIN_DELAY, Trapper.IDLE_JIGGLE_MAX_DELAY))
+		if trans_id != fsm.transition_id:
+			return
+
+		trapper.sprite.play("idle")
+		await trapper.sprite.animation_finished
+		if trans_id != fsm.transition_id:
+			return
+
+		trapper.sprite.frame = 0
 
 
 func on_exit() -> void:
 	trapper.collider.set_deferred("disabled", true)
-	trapper.collision_area.area_entered.disconnect(_on_collision)
+	trapper.trigger.area_entered.disconnect(_on_collision)
 
 
 func _on_collision(_area: Area2D) -> void:

@@ -51,7 +51,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
     "sourceSize": { "w": 48, "h": 48 },
-    "duration": 125
+    "duration": 83
    },
    {
     "filename": "trapper 6.aseprite",
@@ -98,8 +98,8 @@
   "size": { "w": 144, "h": 144 },
   "scale": "1",
   "frameTags": [
-   { "name": "idle", "from": 0, "to": 4, "direction": "forward" },
-   { "name": "activate", "from": 5, "to": 9, "direction": "forward", "repeat": "1" }
+   { "name": "idle", "from": 0, "to": 4, "direction": "forward", "repeat": "1" },
+   { "name": "activate", "from": 5, "to": 8, "direction": "forward", "repeat": "1" }
   ],
   "slices": [
   ]
