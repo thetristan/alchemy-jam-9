@@ -15,3 +15,12 @@ func on_enter() -> void:
 	player.sprite.play("dying")
 	await player.sprite.animation_finished
 	player.hide()
+
+	var static_fx: StaticFX = StaticFX.get_instance()
+	var palette_shader: PaletteShader = PaletteShader.get_instance()
+	var tween: Tween = player.create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(static_fx, "coverage", 1, 1)
+	tween.tween_property(static_fx, "column_strength", 0, 1)
+	tween.tween_property(palette_shader, "brightness", 1, 1)
+	await tween.finished

@@ -32,11 +32,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func on_focus() -> void:
 	await get_tree().process_frame
+	PaletteShader.get_instance().brightness = -0.3
 	_focused = true
 	_enable_buttons()
 	
 	
 func on_blur() -> void:
+	PaletteShader.get_instance().brightness = 0
 	_focused = false
 	_disable_buttons()
 

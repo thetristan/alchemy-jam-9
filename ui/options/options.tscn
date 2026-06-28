@@ -1,61 +1,199 @@
 [gd_scene format=3 uid="uid://c4gdvb5bxs7bx"]
 
 [ext_resource type="Script" uid="uid://bv3hr8rotk5gk" path="res://ui/options/options.gd" id="1_gsckh"]
+[ext_resource type="Texture2D" uid="uid://blfplu7md66eb" path="res://ui/hud/hud_panel_bg.webp" id="2_lpsnn"]
+[ext_resource type="Texture2D" uid="uid://daa63shhwrkc5" path="res://ui/options/options_icons.webp" id="3_2j2dl"]
+[ext_resource type="Texture2D" uid="uid://dvjaxbg44lswm" path="res://ui/hud/hud_rule.webp" id="3_f75v3"]
+[ext_resource type="PackedScene" uid="uid://dlmfmuoxw3jie" path="res://ui/button/keyboard_button.tscn" id="5_m4e3p"]
+[ext_resource type="Script" uid="uid://d1aq5yy7ekcna" path="res://ui/hslider/keyboard_hslider.gd" id="5_xoydh"]
+[ext_resource type="Script" uid="uid://bls8vj3kpfbqd" path="res://ui/check_button/keyboard_check_button.gd" id="6_7oucm"]
+[ext_resource type="StyleBox" uid="uid://b212p6xgj4o7i" path="res://ui/button/button_pressed_style_box.tres" id="8_7oucm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phmfx"]
+atlas = ExtResource("2_lpsnn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrjyy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = SubResource("AtlasTexture_phmfx")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7oucm"]
+font_size = 8
+font_color = Color(0.4862745, 0.4862745, 0.4862745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oucm"]
+content_margin_top = 1.0
+texture = ExtResource("3_f75v3")
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4e3p"]
+atlas = ExtResource("3_2j2dl")
+region = Rect2(2, 2, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoydh"]
+atlas = ExtResource("3_2j2dl")
+region = Rect2(10, 2, 8, 8)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phmfx"]
 
 [node name="Options" type="CanvasLayer" unique_id=643608221]
 process_mode = 3
 layer = 10
 script = ExtResource("1_gsckh")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=540803500]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=308940330]
+process_mode = 3
+offset_right = 256.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=707235734]
-custom_minimum_size = Vector2(320, 0)
+[node name="BG" type="ColorRect" parent="MarginContainer2" unique_id=729786728]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2" unique_id=1071539323]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrjyy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1235680808]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer" unique_id=547665982]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer" unique_id=70618290]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer" unique_id=1771953638]
 layout_mode = 2
 
-[node name="OptionsTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=113481332]
+[node name="OptionsTitle" type="Label" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=380021014]
 layout_mode = 2
-text = "Options"
+text = "-OPTIONS-"
+label_settings = SubResource("LabelSettings_7oucm")
 horizontal_alignment = 1
 
-[node name="Music" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=980006543]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=754756276]
 layout_mode = 2
-text = "Music"
-horizontal_alignment = 1
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxTexture_7oucm")
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1129099917]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1989389973]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1040588394]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=148054080]
+layout_mode = 2
+
+[node name="MusicIcon" type="TextureRect" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2059083521]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 8)
+custom_maximum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_m4e3p")
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1129099917]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
+value = 0.5
+script = ExtResource("5_xoydh")
+bottom_neighbor = NodePath("../../HBoxContainer3/SFXSlider")
 
-[node name="SFX" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=506834359]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1421433713]
 layout_mode = 2
-text = "SFX"
-horizontal_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1188092268]
+[node name="SFXIcon" type="TextureRect" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=959671289]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 8)
+custom_maximum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_xoydh")
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1188092268]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
+value = 0.5
+script = ExtResource("5_xoydh")
+top_neighbor = NodePath("../../HBoxContainer2/MusicSlider")
+bottom_neighbor = NodePath("../../HBoxContainer4/CRTToggle")
 
-[node name="Save" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1025912120]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1824037955]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=757378538]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_phmfx")
+
+[node name="CRTToggle" type="CheckButton" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1017311438]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 10)
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+button_pressed = true
+alignment = 1
+script = ExtResource("6_7oucm")
+top_neighbor = NodePath("../../HBoxContainer3/SFXSlider")
+bottom_neighbor = NodePath("../../../../../../HBoxContainer/Save")
+
+[node name="CRTLabel" type="Label" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=63351724]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CRT FILTER"
+label_settings = SubResource("LabelSettings_7oucm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer" unique_id=367472306]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Save" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=73595988 instance=ExtResource("5_m4e3p")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 24)
 layout_mode = 2
 text = "Save"
+selected_stylebox = ExtResource("8_7oucm")
+top_neighbor = NodePath("../../MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/CRTToggle")
+right_neighbor = NodePath("../Cancel")
 
-[node name="Cancel" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=565415695]
+[node name="Cancel" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1858653461 instance=ExtResource("5_m4e3p")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 24)
 layout_mode = 2
 text = "Cancel"
+selected_stylebox = ExtResource("8_7oucm")
+top_neighbor = NodePath("../../MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/CRTToggle")
+left_neighbor = NodePath("../Save")

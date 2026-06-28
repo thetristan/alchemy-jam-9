@@ -1,3 +1,39 @@
 [gd_resource type="Theme" format=3 uid="uid://cssori3di6xfl"]
 
+[ext_resource type="FontFile" uid="uid://coh3n4jf1iac" path="res://fonts/Everyday_Typical.ttf" id="1_mcy2b"]
+[ext_resource type="FontFile" uid="uid://c7qsd7sbptvsn" path="res://fonts/Everyday_Slight.ttf" id="1_vnaw2"]
+[ext_resource type="StyleBox" uid="uid://dhe7y1mubdru7" path="res://ui/button/button_normal_style_box.tres" id="2_i47mx"]
+[ext_resource type="StyleBox" uid="uid://7kf0l6mv2ym7" path="res://ui/button/button_disabled_style_box.tres" id="2_nmid5"]
+[ext_resource type="Texture2D" uid="uid://u2rco43pee8q" path="res://ui/panel_container/panel.png" id="2_w0row"]
+[ext_resource type="StyleBox" uid="uid://5mrucxvx7c85" path="res://ui/button/button_hover_style_box.tres" id="3_vnaw2"]
+[ext_resource type="StyleBox" uid="uid://dc02ulgw4alpp" path="res://ui/button/button_pressed_style_box.tres" id="5_gct7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y36n6"]
+content_margin_left = 16.0
+content_margin_top = 24.0
+content_margin_right = 16.0
+content_margin_bottom = 24.0
+texture = ExtResource("2_w0row")
+texture_margin_left = 14.0
+texture_margin_top = 16.0
+texture_margin_right = 14.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+
 [resource]
+Button/colors/font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+Button/colors/font_disabled_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+Button/colors/font_focus_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+Button/colors/font_hover_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+Button/colors/font_hover_pressed_color = Color(0.1882353, 0.2705882, 0.3607843, 1)
+Button/colors/font_pressed_color = Color(0.1882353, 0.2705882, 0.3607843, 1)
+Button/font_sizes/font_size = 5
+Button/fonts/font = ExtResource("1_vnaw2")
+Button/styles/disabled = ExtResource("2_nmid5")
+Button/styles/focus = ExtResource("3_vnaw2")
+Button/styles/hover = ExtResource("3_vnaw2")
+Button/styles/normal = ExtResource("2_i47mx")
+Button/styles/pressed = ExtResource("5_gct7h")
+Label/font_sizes/font_size = 7
+Label/fonts/font = ExtResource("1_mcy2b")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_y36n6")

@@ -1,0 +1,16 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://7kf0l6mv2ym7"]
+
+[ext_resource type="Texture2D" uid="uid://cbs3hm7s6dbr5" path="res://ui/button/button.aseprite" id="1_4vmf4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vmf4"]
+atlas = ExtResource("1_4vmf4")
+region = Rect2(2, 37, 32, 32)
+
+[resource]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+texture = SubResource("AtlasTexture_4vmf4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0

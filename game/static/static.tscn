@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cphmglk4npj07"]
+
+[ext_resource type="Shader" uid="uid://4ux54nn5r58t" path="res://game/static/static.gdshader" id="1_0l1bl"]
+[ext_resource type="SpriteFrames" uid="uid://bnly4lo0frvp5" path="res://game/static/static_fullscreen.aseprite" id="2_58ln4"]
+[ext_resource type="Script" uid="uid://byuynocgf2n8t" path="res://game/static/static.gd" id="3_stat0"]
+
+[sub_resource type="Gradient" id="Gradient_58ln4"]
+offsets = PackedFloat32Array(0.2178899, 0.4472477)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_65nx8"]
+gradient = SubResource("Gradient_58ln4")
+width = 320
+height = 180
+fill = 1
+fill_from = Vector2(0.25, 0.25)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5e03w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mhvfb"]
+width = 320
+height = 180
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_5e03w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8s88"]
+shader = ExtResource("1_0l1bl")
+shader_parameter/seed_a = 6
+shader_parameter/seed_b = 54
+shader_parameter/coverage = 0.400000019
+shader_parameter/noise = SubResource("NoiseTexture2D_mhvfb")
+shader_parameter/noise_scale = 0.05
+shader_parameter/column_gradient = SubResource("GradientTexture2D_65nx8")
+shader_parameter/column_scale = 0.03
+shader_parameter/column_strength = 0.8930000424175
+shader_parameter/eaten_row_chance = 0.70000003325
+
+[node name="StaticFX" type="AnimatedSprite2D" unique_id=1825134169]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_u8s88")
+sprite_frames = ExtResource("2_58ln4")
+autoplay = "default"
+frame_progress = 0.80637056
+script = ExtResource("3_stat0")
+noise = SubResource("NoiseTexture2D_mhvfb")
+column_gradient = SubResource("GradientTexture2D_65nx8")

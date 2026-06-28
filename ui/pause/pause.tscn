@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://ddinij2xyjdfq"]
 
 [ext_resource type="Script" uid="uid://tt15gsoh0782" path="res://ui/pause/pause.gd" id="1_x1pg1"]
+[ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_b7yxa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5opy"]
+font = ExtResource("2_b7yxa")
+font_size = 7
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
 [node name="Pause" type="CanvasLayer" unique_id=1266539474]
 layer = 5
@@ -13,32 +19,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=2047838048]
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1914677586]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="PausedTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=740951354]
 layout_mode = 2
 text = "Paused"
+label_settings = SubResource("LabelSettings_u5opy")
 horizontal_alignment = 1
+uppercase = true
 
 [node name="Resume" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=968279987]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Resume Game"
+text = "RESUME GAME"
 
 [node name="Options" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=643664198]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Options"
+text = "OPTIONS"
 
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=259228197]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit To Title"
+text = "QUIT"

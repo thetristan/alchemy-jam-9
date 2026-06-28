@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dm6b2sseojiq1"]
+
+[ext_resource type="Shader" uid="uid://dcqpe22ikgktd" path="res://game/palette/palette_shader.gdshader" id="1_7c00p"]
+[ext_resource type="Texture2D" uid="uid://dyg375nyol2ed" path="res://game/palette/palette.aseprite" id="2_tvgku"]
+[ext_resource type="Script" uid="uid://b53bi8460l0h2" path="res://game/palette/palette_shader.gd" id="3_jrobo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s721g"]
+shader = ExtResource("1_7c00p")
+shader_parameter/brightness = 0.0
+shader_parameter/source_palette = ExtResource("2_tvgku")
+shader_parameter/target_palette = ExtResource("2_tvgku")
+shader_parameter/use_fixed_palette = false
+shader_parameter/screen_shader = true
+
+[sub_resource type="Resource" id="Resource_wiwsy"]
+metadata/__load_path__ = "res://game/fx/fixed_palette.webp"
+
+[node name="PaletteShader" type="ColorRect" unique_id=2007337692]
+material = SubResource("ShaderMaterial_s721g")
+offset_right = 320.0
+offset_bottom = 180.0
+script = ExtResource("3_jrobo")
+use_fixed_palette = true
+fixed_source_palette = SubResource("Resource_wiwsy")
