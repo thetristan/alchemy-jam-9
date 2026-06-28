@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://d0ou4m3fhwgm6"]
+
+[ext_resource type="Script" uid="uid://ch2jg00csl7ug" path="res://addons/triggers/area_trigger.gd" id="1_0xs0a"]
+[ext_resource type="Script" uid="uid://dc76vnlphbjpn" path="res://game/player/player_trigger.gd" id="2_0xs0a"]
+[ext_resource type="AudioStream" uid="uid://dccca4lpj52q6" path="res://audio/sfx/extra_health/SFX_GrabItemNoMusicv1.mp3" id="2_4rsvf"]
+[ext_resource type="Script" uid="uid://driu1jurbt2vg" path="res://addons/triggers/animation_trigger.gd" id="3_4rsvf"]
+[ext_resource type="Script" uid="uid://dd1cgnwtlg2vr" path="res://addons/triggers/audio_2d_trigger.gd" id="4_3o8tf"]
+[ext_resource type="Script" uid="uid://l0lm5u07b4tc" path="res://addons/triggers/despawn_trigger.gd" id="4_41pb0"]
+[ext_resource type="SpriteFrames" uid="uid://c6ojlj6udt4uw" path="res://game/pickup/extra_health.aseprite" id="5_p2rgb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_phmfx"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("2_4rsvf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(15, 10)
+
+[node name="ExtraHealth" type="Area2D" unique_id=2135120165 node_paths=PackedStringArray("trigger")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_0xs0a")
+trigger = NodePath("PlayerHealthTrigger")
+metadata/_custom_type_script = "uid://ch2jg00csl7ug"
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="." unique_id=818941595]
+stream = SubResource("AudioStreamRandomizer_phmfx")
+max_distance = 160.0
+bus = &"SFX"
+
+[node name="PlayerHealthTrigger" type="Node" parent="." unique_id=344110395]
+script = ExtResource("2_0xs0a")
+action = 1
+metadata/_custom_type_script = "uid://dc76vnlphbjpn"
+
+[node name="Audio2DTrigger" type="Node" parent="PlayerHealthTrigger" unique_id=1267853428 node_paths=PackedStringArray("target")]
+script = ExtResource("4_3o8tf")
+target = NodePath("../../PickupSFX")
+metadata/_custom_type_script = "uid://dd1cgnwtlg2vr"
+
+[node name="AnimationTrigger" type="Node" parent="PlayerHealthTrigger" unique_id=582787265 node_paths=PackedStringArray("target")]
+script = ExtResource("3_4rsvf")
+target = NodePath("../../Sprite")
+animation = &"pickup"
+
+[node name="DespawnTrigger" type="Node" parent="PlayerHealthTrigger/AnimationTrigger" unique_id=1848958592 node_paths=PackedStringArray("target")]
+script = ExtResource("4_41pb0")
+target = NodePath("../../..")
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=269925595]
+shape = SubResource("RectangleShape2D_phmfx")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=88630165]
+sprite_frames = ExtResource("5_p2rgb")
+animation = &"idle"
+autoplay = "idle"

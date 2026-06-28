@@ -15,6 +15,7 @@ func on_enter() -> void:
 	trapper.hit_box_collider.set_deferred("disabled", trapper.sprite.frame not in [0, 1])
 	trapper.sprite.frame_changed.connect(_on_frame_changed)
 	trapper.sprite.play("activate")
+	trapper.snap_sfx.play()
 	await trapper.sprite.animation_finished
 	await Util.timer(Trapper.RESET_TIME)
 	fsm.transition_to_idle_state()

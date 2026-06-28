@@ -2,12 +2,24 @@
 
 [ext_resource type="SpriteFrames" uid="uid://ckoghchof7dk0" path="res://game/switcher/switcher.aseprite" id="1_1x5jh"]
 [ext_resource type="Script" uid="uid://dqciubk4i77cy" path="res://game/switcher/switcher.gd" id="1_tj4xr"]
+[ext_resource type="AudioStream" uid="uid://cbv8kts6hw1qn" path="res://audio/sfx/switcher_on/SFX_SwitchHeavyAnalogMetal01.mp3" id="2_tywjp"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1hrgb"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("2_tywjp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj4xr"]
 size = Vector2(33, 18)
 
 [node name="Switcher" type="Node2D" unique_id=422995893]
 script = ExtResource("1_tj4xr")
+
+[node name="OnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1565079779]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_1hrgb")
+max_distance = 480.0
+bus = &"SFX"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1217296176]
 unique_name_in_owner = true

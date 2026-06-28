@@ -14,6 +14,9 @@ var fsm: SpinnerFSM
 @onready var hit_box_collider: CollisionShape2D = %HitBoxCollider
 @onready var player_detection: Area2D = %PlayerDetection
 @onready var detection_collider: CollisionShape2D = %DetectionCollider
+@onready var roll_whoosh_sfx: AudioStreamPlayer2D = %RollWhooshSFX
+@onready var player_sighted_sfx: AudioStreamPlayer2D = %PlayerSightedSFX
+@onready var explode_sfx: AudioStreamPlayer2D = %ExplodeSFX
 
 
 func _ready() -> void:

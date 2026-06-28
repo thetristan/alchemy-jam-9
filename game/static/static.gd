@@ -58,10 +58,33 @@ static func get_instance() -> StaticFX:
 		_update_shader_param(&"eaten_row_chance", value)
 
 
+var _initial_values: Dictionary = {}
+
+
 func _ready() -> void:
 	add_to_group(GROUP)
 	show()
+	_capture_initial_values()
 	_apply_all_params()
+
+
+func reset() -> void:
+	for property: StringName in _initial_values:
+		set(property, _initial_values[property])
+
+
+func _capture_initial_values() -> void:
+	_initial_values = {
+		&"seed_a": seed_a,
+		&"seed_b": seed_b,
+		&"coverage": coverage,
+		&"noise": noise,
+		&"noise_scale": noise_scale,
+		&"column_gradient": column_gradient,
+		&"column_scale": column_scale,
+		&"column_strength": column_strength,
+		&"eaten_row_chance": eaten_row_chance,
+	}
 
 
 func _apply_all_params() -> void:

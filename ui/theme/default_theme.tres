@@ -1,12 +1,72 @@
 [gd_resource type="Theme" format=3 uid="uid://cssori3di6xfl"]
 
-[ext_resource type="FontFile" uid="uid://coh3n4jf1iac" path="res://fonts/Everyday_Typical.ttf" id="1_mcy2b"]
 [ext_resource type="FontFile" uid="uid://c7qsd7sbptvsn" path="res://fonts/Everyday_Slight.ttf" id="1_vnaw2"]
 [ext_resource type="StyleBox" uid="uid://dhe7y1mubdru7" path="res://ui/button/button_normal_style_box.tres" id="2_i47mx"]
 [ext_resource type="StyleBox" uid="uid://7kf0l6mv2ym7" path="res://ui/button/button_disabled_style_box.tres" id="2_nmid5"]
 [ext_resource type="Texture2D" uid="uid://u2rco43pee8q" path="res://ui/panel_container/panel.png" id="2_w0row"]
 [ext_resource type="StyleBox" uid="uid://5mrucxvx7c85" path="res://ui/button/button_hover_style_box.tres" id="3_vnaw2"]
 [ext_resource type="StyleBox" uid="uid://dc02ulgw4alpp" path="res://ui/button/button_pressed_style_box.tres" id="5_gct7h"]
+[ext_resource type="StyleBox" uid="uid://bkx5benjwhbry" path="res://ui/check_button/check_button_hover_style_box.tres" id="6_aybu8"]
+[ext_resource type="StyleBox" uid="uid://c7fs8mrgvv2s6" path="res://ui/check_button/check_button_normal_style_box.tres" id="6_ewlfi"]
+[ext_resource type="Texture2D" uid="uid://csxqer8256m3r" path="res://ui/options/options_icons.aseprite" id="6_gct7h"]
+[ext_resource type="StyleBox" uid="uid://0thyd420bolk" path="res://ui/check_button/check_button_focus_style_box.tres" id="6_n3m0g"]
+[ext_resource type="StyleBox" uid="uid://dce2pjutd1ppj" path="res://ui/check_button/check_button_hover_pressed_style_box.tres" id="7_cbgw2"]
+[ext_resource type="StyleBox" uid="uid://8tjqp0efjyhs" path="res://ui/check_button/check_button_pressed_style_box.tres" id="9_cbgw2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_rtaiv"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_gct7h"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ewlfi"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_aybu8"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cbgw2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_n3m0g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vswm"]
+atlas = ExtResource("6_gct7h")
+region = Rect2(14, 26, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewlfi"]
+atlas = ExtResource("6_gct7h")
+region = Rect2(26, 26, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3x2w"]
+atlas = ExtResource("6_gct7h")
+region = Rect2(26, 15, 8, 6)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtaiv"]
+texture = SubResource("AtlasTexture_r3x2w")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aybu8"]
+atlas = ExtResource("6_gct7h")
+region = Rect2(14, 15, 8, 6)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbgw2"]
+texture = SubResource("AtlasTexture_aybu8")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+draw_center = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3m0g"]
+atlas = ExtResource("6_gct7h")
+region = Rect2(2, 15, 8, 6)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h266r"]
+content_margin_top = 2.0
+texture = SubResource("AtlasTexture_n3m0g")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y36n6"]
 content_margin_left = 16.0
@@ -34,6 +94,23 @@ Button/styles/focus = ExtResource("3_vnaw2")
 Button/styles/hover = ExtResource("3_vnaw2")
 Button/styles/normal = ExtResource("2_i47mx")
 Button/styles/pressed = ExtResource("5_gct7h")
-Label/font_sizes/font_size = 7
-Label/fonts/font = ExtResource("1_mcy2b")
+CheckButton/icons/checked = SubResource("ImageTexture_rtaiv")
+CheckButton/icons/checked_disabled = SubResource("ImageTexture_gct7h")
+CheckButton/icons/checked_disabled_mirrored = SubResource("ImageTexture_ewlfi")
+CheckButton/icons/checked_mirrored = SubResource("ImageTexture_aybu8")
+CheckButton/icons/unchecked = SubResource("ImageTexture_cbgw2")
+CheckButton/icons/unchecked_disabled = SubResource("ImageTexture_n3m0g")
+CheckButton/styles/focus = ExtResource("6_n3m0g")
+CheckButton/styles/hover = ExtResource("6_aybu8")
+CheckButton/styles/hover_pressed = ExtResource("7_cbgw2")
+CheckButton/styles/normal = ExtResource("6_ewlfi")
+CheckButton/styles/pressed = ExtResource("9_cbgw2")
+HSlider/icons/grabber = SubResource("AtlasTexture_1vswm")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_ewlfi")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_rtaiv")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_cbgw2")
+HSlider/styles/slider = SubResource("StyleBoxTexture_h266r")
+Label/colors/font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+Label/font_sizes/font_size = 5
+Label/fonts/font = ExtResource("1_vnaw2")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_y36n6")

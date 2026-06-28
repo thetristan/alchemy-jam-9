@@ -31,5 +31,6 @@ func on_physics_process(delta: float) -> void:
 		or roller.lower_player_ray_cast.is_colliding()
 
 	if detected_player:
+		roller.player_sighted_sfx.play()
 		fsm.transition_to_rolling_state()
 		return

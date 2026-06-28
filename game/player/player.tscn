@@ -1,9 +1,30 @@
 [gd_scene format=3 uid="uid://dpolnluglrj6t"]
 
 [ext_resource type="Script" uid="uid://btrq6xvjt74xj" path="res://game/player/player.gd" id="1_obar5"]
+[ext_resource type="AudioStream" uid="uid://bpogj3cyj7ay6" path="res://audio/sfx/player_jump/SFX_MediumJumpv4.mp3" id="2_5fytw"]
 [ext_resource type="SpriteFrames" uid="uid://brwopi85ewuvw" path="res://game/player/player_wheel.aseprite" id="2_8soms"]
 [ext_resource type="SpriteFrames" uid="uid://ctsthe8euodsb" path="res://game/player/player.aseprite" id="2_b2mth"]
+[ext_resource type="AudioStream" uid="uid://d3dawmqhsxsuy" path="res://audio/sfx/player_land/Hit_Door_Weak_v1_wav.mp3" id="3_4ste8"]
+[ext_resource type="AudioStream" uid="uid://dx81rjsde065t" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v1_wav.mp3" id="4_5ghna"]
 [ext_resource type="Script" uid="uid://vtntulp0gbq5" path="res://game/player/player_hit_box.gd" id="4_a4w0n"]
+[ext_resource type="AudioStream" uid="uid://bb8vwaum14r36" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v2_wav.mp3" id="5_j0mij"]
+[ext_resource type="AudioStream" uid="uid://c1o6mdndtxoru" path="res://audio/sfx/player_died/SFX_Dizzyv4.mp3" id="9_uv2nh"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_txo27"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("2_5fytw")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5fytw"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("3_4ste8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_anr75"]
+random_pitch = 1.122462
+streams_count = 2
+stream_0/stream = ExtResource("4_5ghna")
+stream_1/stream = ExtResource("5_j0mij")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obar5"]
 size = Vector2(10, 21)
@@ -19,6 +40,35 @@ collision_layer = 0
 floor_snap_length = 4.0
 script = ExtResource("1_obar5")
 metadata/_edit_horizontal_guides_ = [37.0]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="." unique_id=932889026]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_txo27")
+bus = &"SFX"
+
+[node name="WheelSFX" type="AudioStreamPlayer2D" parent="." unique_id=243828440]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AttachToRailSFX" type="AudioStreamPlayer2D" parent="." unique_id=585175386]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="LandSFX" type="AudioStreamPlayer2D" parent="." unique_id=674566735]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_5fytw")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=41888496]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_anr75")
+bus = &"SFX"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="." unique_id=1630171331]
+unique_name_in_owner = true
+stream = ExtResource("9_uv2nh")
+bus = &"SFX"
 
 [node name="AttachRayCast" type="RayCast2D" parent="." unique_id=947013060]
 unique_name_in_owner = true

@@ -27,6 +27,18 @@ func on_physics_process(delta: float) -> void: pass
 
 ### END GENERATED CONTENT ###
 
+func play_hit_flash() -> void:
+	var palette_shader: PaletteShader = PaletteShader.get_instance()
+	var static_fx: StaticFX = StaticFX.get_instance()
+	palette_shader.brightness = 0.6
+	static_fx.coverage = lerpf(0, 0.4, 1 - (player.health / float(Player.MAX_HEALTH)))
+	static_fx.seed_a += 1
+	player.sprite.play("hit")
+	await player.sprite.animation_finished
+	static_fx.coverage = 0
+	palette_shader.brightness = 0
+
+
 func play_grounded_anim(settle_anim: String) -> void:
 	# If we just landed from a fall, play the crouch first, then settle into the
 	# given animation; otherwise play it straight away. The transition guard keeps

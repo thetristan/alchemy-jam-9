@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tt15gsoh0782" path="res://ui/pause/pause.gd" id="1_x1pg1"]
 [ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_b7yxa"]
+[ext_resource type="PackedScene" uid="uid://dl2jcrkfvj6n0" path="res://ui/lives_counter/lives_counter.tscn" id="3_moj0k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5opy"]
 font = ExtResource("2_b7yxa")
@@ -37,6 +38,9 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_u5opy")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="LivesCounter" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1290384376 instance=ExtResource("3_moj0k")]
+layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=968279987]
 unique_name_in_owner = true

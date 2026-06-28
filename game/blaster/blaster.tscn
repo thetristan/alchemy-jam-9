@@ -2,9 +2,23 @@
 
 [ext_resource type="SpriteFrames" uid="uid://enc5d73df0ih" path="res://game/blaster/blaster_enemy.aseprite" id="1_ic4ry"]
 [ext_resource type="Script" uid="uid://ci5kykkbt8hh2" path="res://game/blaster/blaster.gd" id="1_wskt1"]
+[ext_resource type="AudioStream" uid="uid://dx588fd2akgwj" path="res://audio/sfx/blaster_fire/SFX_LaserShotv2.mp3" id="2_gide8"]
+[ext_resource type="AudioStream" uid="uid://c8wf55w42la4k" path="res://audio/sfx/blaster_fire/SFX_LaserShotv2variation01.mp3" id="3_76rmo"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7q1bf"]
+random_pitch = 1.122462
+streams_count = 2
+stream_0/stream = ExtResource("2_gide8")
+stream_1/stream = ExtResource("3_76rmo")
 
 [node name="Blaster" type="Node2D" unique_id=2103290764]
 script = ExtResource("1_wskt1")
+
+[node name="FireSFX" type="AudioStreamPlayer2D" parent="." unique_id=306476636]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_7q1bf")
+max_distance = 480.0
+bus = &"SFX"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1996828067]
 unique_name_in_owner = true

@@ -2,6 +2,38 @@
 
 [ext_resource type="Script" uid="uid://dwjfkpp7iktdn" path="res://game/spinner/spinner.gd" id="1_f4um7"]
 [ext_resource type="SpriteFrames" uid="uid://dl4lhlq7eelrm" path="res://game/spinner/spinner_enemy.aseprite" id="1_q113a"]
+[ext_resource type="AudioStream" uid="uid://ddxruyg3tci7w" path="res://audio/sfx/spinner_spin_whoosh/SFX_SwooshSpin4.mp3" id="2_jvagd"]
+[ext_resource type="AudioStream" uid="uid://bw1beyk667rov" path="res://audio/sfx/spinner_spin/SFX_LightSaberv2.mp3" id="3_64ngx"]
+[ext_resource type="AudioStream" uid="uid://cvoo470nissh5" path="res://audio/sfx/spinner_spin_whoosh/SFX_SwooshSpin1.mp3" id="3_is5o7"]
+[ext_resource type="AudioStream" uid="uid://bmve1rgclecu" path="res://audio/sfx/spinner_spin_whoosh/SFX_SwooshSpin2.mp3" id="4_0nflv"]
+[ext_resource type="AudioStream" uid="uid://di5504nq3wyce" path="res://audio/sfx/spinner_spin/SFX_LightSaberv2variation01.mp3" id="4_wrg4y"]
+[ext_resource type="AudioStream" uid="uid://cht7ev23w32xr" path="res://audio/sfx/spinner_spin/SFX_LightSaberv2variation02.mp3" id="5_jvagd"]
+[ext_resource type="AudioStream" uid="uid://dbyvkbvbjl1c1" path="res://audio/sfx/spinner_spin_whoosh/SFX_SwooshSpin3.mp3" id="5_nx3cj"]
+[ext_resource type="AudioStream" uid="uid://dnfiedl5wcjw0" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv4.mp3" id="6_is5o7"]
+[ext_resource type="AudioStream" uid="uid://yjfleuc3sqkx" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv5.mp3" id="7_0nflv"]
+[ext_resource type="AudioStream" uid="uid://c0uwtl6v6wvn" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv6.mp3" id="8_nx3cj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8xwdf"]
+random_pitch = 1.0594631
+streams_count = 4
+stream_0/stream = ExtResource("2_jvagd")
+stream_1/stream = ExtResource("3_is5o7")
+stream_2/stream = ExtResource("4_0nflv")
+stream_3/stream = ExtResource("5_nx3cj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s1o4i"]
+random_pitch = 1.0594631
+streams_count = 3
+stream_0/stream = ExtResource("3_64ngx")
+stream_1/stream = ExtResource("4_wrg4y")
+stream_2/stream = ExtResource("5_jvagd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fgjkw"]
+random_pitch = 1.0594631
+streams_count = 3
+stream_0/stream = ExtResource("6_is5o7")
+stream_1/stream = ExtResource("7_0nflv")
+stream_2/stream = ExtResource("8_nx3cj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_048ok"]
 
@@ -10,6 +42,25 @@ radius = 96.0
 
 [node name="Spinner" type="Node2D" unique_id=71843883]
 script = ExtResource("1_f4um7")
+
+[node name="RollWhooshSFX" type="AudioStreamPlayer2D" parent="." unique_id=1188455956]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_8xwdf")
+max_distance = 480.0
+bus = &"SFX"
+
+[node name="PlayerSightedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1427728466]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_s1o4i")
+max_distance = 480.0
+bus = &"SFX"
+
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="." unique_id=778018284]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_fgjkw")
+pitch_scale = 1.4
+max_distance = 480.0
+bus = &"SFX"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1691013605]
 unique_name_in_owner = true

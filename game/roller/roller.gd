@@ -17,6 +17,10 @@ var direction: float = 1
 @onready var lower_player_ray_cast: RayCast2D = %LowerPlayerRayCast
 @onready var hit_box: Area2D = %HitBox
 @onready var hit_box_collider: CollisionShape2D = %HitBoxCollider
+@onready var roll_sfx: AudioStreamPlayer2D = %RollSFX
+@onready var roll_whoosh_sfx: AudioStreamPlayer2D = %RollWhooshSFX
+@onready var player_sighted_sfx: AudioStreamPlayer2D = %PlayerSightedSFX
+@onready var explode_sfx: AudioStreamPlayer2D = %ExplodeSFX
 
 func _ready() -> void:
 	if face_left:

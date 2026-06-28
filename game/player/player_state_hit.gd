@@ -14,15 +14,8 @@ func on_enter() -> void:
 	if is_dead():
 		return
 
-	var palette_shader: PaletteShader = PaletteShader.get_instance()
-	var static_fx: StaticFX = StaticFX.get_instance()
-	palette_shader.brightness = 0.6
-	static_fx.coverage = lerpf(0, 0.4, 1 - (player.health / float(Player.MAX_HEALTH)))
-	static_fx.seed_a += 1
-	player.sprite.play("hit")
-	await player.sprite.animation_finished
-	static_fx.coverage = 0
-	palette_shader.brightness = 0
+	player.hit_sfx.play()
+	await play_hit_flash()
 
 
 func on_physics_process(delta: float) -> void:

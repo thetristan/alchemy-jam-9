@@ -11,10 +11,14 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 func on_enter() -> void:
+	player.hit_sfx.play()
 	player.hit_box_collider.set_deferred("disabled", true)
+	await play_hit_flash()
+	player.death_sfx.play()
 	player.sprite.play("dying")
 	await player.sprite.animation_finished
 	player.hide()
+
 
 	var static_fx: StaticFX = StaticFX.get_instance()
 	var palette_shader: PaletteShader = PaletteShader.get_instance()
@@ -24,3 +28,9 @@ func on_enter() -> void:
 	tween.tween_property(static_fx, "column_strength", 0, 1)
 	tween.tween_property(palette_shader, "brightness", 1, 1)
 	await tween.finished
+	static_fx.reset()
+	SignalBus.player_died.emit()
+	await Util.timer(1)
+	Game.get_instance().lives -= 1
+	await Util.timer(1)
+	SignalBus.player_restarted_level.emit()

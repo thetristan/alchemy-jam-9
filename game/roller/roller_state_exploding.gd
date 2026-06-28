@@ -12,4 +12,5 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	roller.sprite.play("explode")
+	roller.explode_sfx.play()
 	await roller.sprite.animation_finished

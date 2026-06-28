@@ -12,6 +12,7 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	spinner.sprite.play("explode")
+	spinner.explode_sfx.play()
 	if spinner.target_sprite.visible:
 		spinner.target_sprite.play_backwards("target")
 		await spinner.target_sprite.animation_finished

@@ -20,4 +20,5 @@ func on_enter() -> void:
 
 func _on_frame_changed() -> void:
 	if blaster.sprite.frame == 4:
-		Projectile.spawn(blaster.projectile_spawn.global_position, Vector2.LEFT)
+		Projectile.spawn(blaster.projectile_spawn.global_position, blaster._fire_direction)
+		blaster.fire_sfx.play()

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cr227smlfc4wd"]
+
+[ext_resource type="Script" uid="uid://ch2jg00csl7ug" path="res://addons/triggers/area_trigger.gd" id="1_6hebx"]
+[ext_resource type="Script" uid="uid://bgrh3xijvtji6" path="res://game/game_trigger.gd" id="2_amobr"]
+[ext_resource type="AudioStream" uid="uid://df702at2vdli8" path="res://audio/sfx/extra_life/SFX_GrabItemv3.mp3" id="2_os45q"]
+[ext_resource type="Script" uid="uid://driu1jurbt2vg" path="res://addons/triggers/animation_trigger.gd" id="3_1j7cg"]
+[ext_resource type="SpriteFrames" uid="uid://dbjb625banncc" path="res://game/extra_life/extra_life.aseprite" id="3_gi6w2"]
+[ext_resource type="Script" uid="uid://l0lm5u07b4tc" path="res://addons/triggers/despawn_trigger.gd" id="4_gi6w2"]
+[ext_resource type="Script" uid="uid://dd1cgnwtlg2vr" path="res://addons/triggers/audio_2d_trigger.gd" id="4_sib0n"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fwnq4"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("2_os45q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(15, 10)
+
+[node name="ExtraLife" type="Area2D" unique_id=2135120165 node_paths=PackedStringArray("trigger")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6hebx")
+trigger = NodePath("ExtraLifeTrigger")
+metadata/_custom_type_script = "uid://ch2jg00csl7ug"
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="." unique_id=1380665122]
+stream = SubResource("AudioStreamRandomizer_fwnq4")
+max_distance = 160.0
+bus = &"SFX"
+
+[node name="ExtraLifeTrigger" type="Node" parent="." unique_id=1377195054]
+script = ExtResource("2_amobr")
+one_shot = true
+
+[node name="Audio2DTrigger" type="Node" parent="ExtraLifeTrigger" unique_id=1634088936 node_paths=PackedStringArray("target")]
+script = ExtResource("4_sib0n")
+target = NodePath("../../PickupSFX")
+metadata/_custom_type_script = "uid://dd1cgnwtlg2vr"
+
+[node name="AnimationTrigger" type="Node" parent="ExtraLifeTrigger" unique_id=582787265 node_paths=PackedStringArray("target")]
+script = ExtResource("3_1j7cg")
+target = NodePath("../../Sprite")
+animation = &"pickup"
+
+[node name="DespawnTrigger" type="Node" parent="ExtraLifeTrigger/AnimationTrigger" unique_id=1848958592 node_paths=PackedStringArray("target")]
+script = ExtResource("4_gi6w2")
+target = NodePath("../../..")
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=269925595]
+shape = SubResource("RectangleShape2D_phmfx")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=88630165]
+sprite_frames = ExtResource("3_gi6w2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.49366918

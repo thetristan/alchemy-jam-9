@@ -323,7 +323,7 @@
   "size": { "w": 576, "h": 672 },
   "scale": "1",
   "frameTags": [
-   { "name": "jumping", "from": 1, "to": 5, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "jumping", "from": 3, "to": 5, "direction": "forward", "repeat": "1", "color": "#000000ff" },
    { "name": "falling", "from": 6, "to": 6, "direction": "forward", "repeat": "1", "color": "#000000ff" },
    { "name": "hanging", "from": 7, "to": 10, "direction": "forward", "color": "#000000ff" },
    { "name": "hanging_move", "from": 11, "to": 13, "direction": "forward", "repeat": "1", "color": "#000000ff" },

@@ -26,6 +26,8 @@ func on_enter() -> void:
 	roller.sprite.play("preroll")
 	await roller.sprite.animation_finished
 	roller.sprite.play("roll")
+	roller.roll_sfx.play()
+	roller.roll_whoosh_sfx.play()
 	is_rolling = true
 
 

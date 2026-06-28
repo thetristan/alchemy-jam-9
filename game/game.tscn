@@ -2,19 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dt217ajq6nb8y" path="res://game/game.gd" id="1_l1rk1"]
 [ext_resource type="Script" uid="uid://ybg2dgtan5ig" path="res://ui/healthbar/health_bar.gd" id="4_b686c"]
+[ext_resource type="PackedScene" uid="uid://dl2jcrkfvj6n0" path="res://ui/lives_counter/lives_counter.tscn" id="4_u5opy"]
 [ext_resource type="PackedScene" uid="uid://cphmglk4npj07" path="res://game/static/static.tscn" id="5_u8s88"]
 [ext_resource type="PackedScene" uid="uid://dm6b2sseojiq1" path="res://game/palette/palette_shader.tscn" id="6_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://brfb132umfh04" path="res://game/levels/level_1.tscn" id="7_u5opy"]
 [ext_resource type="Texture2D" uid="uid://b7xu8t4gjf1a7" path="res://ui/healthbar/healthbar.aseprite" id="12_b686c"]
 [ext_resource type="PackedScene" uid="uid://t1ksuvfa1j8y" path="res://ui/debug_container/debug_container.tscn" id="12_qf6n1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phmfx"]
-atlas = ExtResource("12_b686c")
-region = Rect2(0, 0, 10, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hb504"]
-atlas = ExtResource("12_b686c")
-region = Rect2(10, 0, 10, 48)
 
 [sub_resource type="Gradient" id="Gradient_mhvfb"]
 offsets = PackedFloat32Array(0, 0.80070424)
@@ -25,27 +17,20 @@ gradient = SubResource("Gradient_mhvfb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_phmfx"]
+atlas = ExtResource("12_b686c")
+region = Rect2(0, 0, 10, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb504"]
+atlas = ExtResource("12_b686c")
+region = Rect2(10, 0, 10, 48)
+
 [node name="Game" type="Node2D" unique_id=111090931]
 script = ExtResource("1_l1rk1")
 metadata/_edit_horizontal_guides_ = [448.0, 0.0, 432.0]
 metadata/_edit_vertical_guides_ = [3840.0, 0.0]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1437474444]
-
-[node name="DebugContainer" parent="HUD" unique_id=2076150927 instance=ExtResource("12_qf6n1")]
-
-[node name="HealthBar" type="TextureProgressBar" parent="HUD" unique_id=1351984239]
-unique_name_in_owner = true
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 59.0
-max_value = 12.0
-value = 12.0
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_phmfx")
-texture_progress = SubResource("AtlasTexture_hb504")
-script = ExtResource("4_b686c")
 
 [node name="StaticFX" parent="HUD" unique_id=1825134169 instance=ExtResource("5_u8s88")]
 unique_name_in_owner = true
@@ -56,4 +41,37 @@ column_scale = 0.5
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 
-[node name="Level" parent="." unique_id=898215444 instance=ExtResource("7_u5opy")]
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=2140445476]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/MarginContainer" unique_id=1351984239]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 12.0
+value = 12.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_phmfx")
+texture_progress = SubResource("AtlasTexture_hb504")
+script = ExtResource("4_b686c")
+
+[node name="LivesCounterContainer" type="PanelContainer" parent="HUD/MarginContainer" unique_id=295273533]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LivesCounter" parent="HUD/MarginContainer/LivesCounterContainer" unique_id=1290384376 instance=ExtResource("4_u5opy")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DebugContainer" parent="HUD" unique_id=2076150927 instance=ExtResource("12_qf6n1")]

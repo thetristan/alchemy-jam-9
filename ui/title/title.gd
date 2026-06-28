@@ -20,6 +20,7 @@ func on_options_show() -> void:
 
 func _ready() -> void:
 	get_tree().paused = false
+	Audio.play_music(Audio.MUSIC_MAIN_MENU)
 	play_btn.pressed.connect(on_start_game)
 	options_btn.pressed.connect(on_options_show)
 	_enable_buttons()

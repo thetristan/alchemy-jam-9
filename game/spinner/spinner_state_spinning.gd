@@ -28,6 +28,7 @@ func on_enter() -> void:
 	await Util.timer(Spinner.TARGETING_DELAY)
 	if trans_id != fsm.transition_id:
 		return
+	spinner.roll_whoosh_sfx.play()
 	target_position = target_node.global_position
 	spinner.target_sprite.global_position = target_position
 	spinner.target_sprite.show()

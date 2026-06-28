@@ -1,35 +1,16 @@
 [gd_scene format=3 uid="uid://c4gdvb5bxs7bx"]
 
 [ext_resource type="Script" uid="uid://bv3hr8rotk5gk" path="res://ui/options/options.gd" id="1_gsckh"]
-[ext_resource type="Texture2D" uid="uid://blfplu7md66eb" path="res://ui/hud/hud_panel_bg.webp" id="2_lpsnn"]
-[ext_resource type="Texture2D" uid="uid://daa63shhwrkc5" path="res://ui/options/options_icons.webp" id="3_2j2dl"]
-[ext_resource type="Texture2D" uid="uid://dvjaxbg44lswm" path="res://ui/hud/hud_rule.webp" id="3_f75v3"]
-[ext_resource type="PackedScene" uid="uid://dlmfmuoxw3jie" path="res://ui/button/keyboard_button.tscn" id="5_m4e3p"]
-[ext_resource type="Script" uid="uid://d1aq5yy7ekcna" path="res://ui/hslider/keyboard_hslider.gd" id="5_xoydh"]
-[ext_resource type="Script" uid="uid://bls8vj3kpfbqd" path="res://ui/check_button/keyboard_check_button.gd" id="6_7oucm"]
-[ext_resource type="StyleBox" uid="uid://b212p6xgj4o7i" path="res://ui/button/button_pressed_style_box.tres" id="8_7oucm"]
+[ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_lpsnn"]
+[ext_resource type="Texture2D" uid="uid://csxqer8256m3r" path="res://ui/options/options_icons.aseprite" id="3_2j2dl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_phmfx"]
-atlas = ExtResource("2_lpsnn")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrjyy"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-texture = SubResource("AtlasTexture_phmfx")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_7oucm"]
-font_size = 8
-font_color = Color(0.4862745, 0.4862745, 0.4862745, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_f75v3"]
+font = ExtResource("2_lpsnn")
+font_size = 7
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oucm"]
 content_margin_top = 1.0
-texture = ExtResource("3_f75v3")
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 axis_stretch_horizontal = 1
@@ -37,13 +18,17 @@ axis_stretch_vertical = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4e3p"]
 atlas = ExtResource("3_2j2dl")
-region = Rect2(2, 2, 8, 8)
+region = Rect2(14, 2, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xoydh"]
 atlas = ExtResource("3_2j2dl")
-region = Rect2(10, 2, 8, 8)
+region = Rect2(38, 2, 8, 8)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phmfx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3baf4"]
+font_size = 5
+font_color = Color(0.1882353, 0.2705882, 0.3607843, 1)
 
 [node name="Options" type="CanvasLayer" unique_id=643608221]
 process_mode = 3
@@ -52,20 +37,16 @@ script = ExtResource("1_gsckh")
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=308940330]
 process_mode = 3
-offset_right = 256.0
-offset_bottom = 240.0
+offset_right = 320.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="ColorRect" parent="MarginContainer2" unique_id=729786728]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer2" unique_id=1071539323]
+custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_hrjyy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer" unique_id=547665982]
 layout_mode = 2
@@ -73,19 +54,18 @@ theme_override_constants/separation = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer" unique_id=70618290]
 layout_mode = 2
-theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer" unique_id=1771953638]
 layout_mode = 2
 
-[node name="OptionsTitle" type="Label" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=380021014]
+[node name="PausedTitle" type="Label" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1973112444]
 layout_mode = 2
-text = "-OPTIONS-"
-label_settings = SubResource("LabelSettings_7oucm")
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_f75v3")
 horizontal_alignment = 1
+uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=754756276]
 layout_mode = 2
@@ -121,8 +101,6 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("5_xoydh")
-bottom_neighbor = NodePath("../../HBoxContainer3/SFXSlider")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1421433713]
 layout_mode = 2
@@ -144,11 +122,9 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("5_xoydh")
-top_neighbor = NodePath("../../HBoxContainer2/MusicSlider")
-bottom_neighbor = NodePath("../../HBoxContainer4/CRTToggle")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1824037955]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -159,41 +135,34 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_phmfx")
 
 [node name="CRTToggle" type="CheckButton" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1017311438]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(10, 10)
-custom_maximum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(11, 11)
+custom_maximum_size = Vector2(11, 11)
 layout_mode = 2
 size_flags_vertical = 4
 button_pressed = true
 alignment = 1
-script = ExtResource("6_7oucm")
-top_neighbor = NodePath("../../HBoxContainer3/SFXSlider")
-bottom_neighbor = NodePath("../../../../../../HBoxContainer/Save")
 
 [node name="CRTLabel" type="Label" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=63351724]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "CRT FILTER"
-label_settings = SubResource("LabelSettings_7oucm")
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 1)
+text = " CRT FILTER"
+label_settings = SubResource("LabelSettings_3baf4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer" unique_id=367472306]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 8
 
-[node name="Save" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=73595988 instance=ExtResource("5_m4e3p")]
+[node name="Save" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=711542223]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(72, 24)
 layout_mode = 2
-text = "Save"
-selected_stylebox = ExtResource("8_7oucm")
-top_neighbor = NodePath("../../MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/CRTToggle")
-right_neighbor = NodePath("../Cancel")
+size_flags_horizontal = 3
+text = "SAVE"
 
-[node name="Cancel" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1858653461 instance=ExtResource("5_m4e3p")]
+[node name="Cancel" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1009077422]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(72, 24)
 layout_mode = 2
-text = "Cancel"
-selected_stylebox = ExtResource("8_7oucm")
-top_neighbor = NodePath("../../MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/CRTToggle")
-left_neighbor = NodePath("../Save")
+size_flags_horizontal = 3
+text = "CANCEL"

@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cretwppnlaes3" path="res://main.gd" id="1_ig7tw"]
 
-[node name="Main" type="Node2D" unique_id=1576437931]
+[node name="Main" type="MarginContainer" unique_id=1579619170]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ig7tw")

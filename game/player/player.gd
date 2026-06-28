@@ -104,6 +104,11 @@ var input_queue: Array[PlayerInput] = []
 @onready var sprite_group: CanvasGroup = %SpriteGroup
 @onready var knockback_origin: Marker2D = %KnockbackOrigin
 
+@onready var jump_sfx: AudioStreamPlayer2D = %JumpSFX
+@onready var land_sfx: AudioStreamPlayer2D = %LandSFX
+@onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
+@onready var death_sfx: AudioStreamPlayer2D = %DeathSFX
+
 
 func _ready() -> void:
 	add_to_group(GROUP)
@@ -114,6 +119,8 @@ func _ready() -> void:
 	fsm = PlayerFSM.new(self)
 	fsm.transitioned.connect(func(from, to) -> void:
 		Log.debug(self, Callable(), "Player: %s -> %s" % [from, to]))
+
+	SignalBus.player_health_changed.emit(health, MAX_HEALTH)
  
 
 func _update_height() -> void:
@@ -159,6 +166,10 @@ func push_input(scripted_input: PlayerInput) -> void:
 
 func kill() -> void:
 	health = 0
+
+
+func add_health(amount: int) -> void:
+	health += amount
 
 
 func hit(amount: int, damage_origin: Vector2, force: float, duration: float = 0.2) -> void:

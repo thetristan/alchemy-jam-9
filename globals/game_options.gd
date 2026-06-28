@@ -5,6 +5,7 @@ const SFX_BUS: StringName = &"SFX"
 
 const MUSIC_VOLUME_KEY: StringName = &"music_volume"
 const SFX_VOLUME_KEY: StringName = &"sfx_volume"
+const CRT_ENABLED_KEY: StringName = &"crt_enabled"
 
 const OPTIONS_PATH: String = "user://options.dat"
 
@@ -12,6 +13,7 @@ const OPTIONS_PATH: String = "user://options.dat"
 
 var music_volume: ObservableFloat = ObservableFloat.new()
 var sfx_volume: ObservableFloat = ObservableFloat.new()
+var crt_enabled: ObservableBool = ObservableBool.new()
 var _store: ObservableStore
 
 
@@ -29,6 +31,7 @@ func _ready() -> void:
 	_store = ObservableStore.new(OPTIONS_PATH, {
 		MUSIC_VOLUME_KEY: music_volume,
 		SFX_VOLUME_KEY: sfx_volume,
+		CRT_ENABLED_KEY: crt_enabled,
 	}, false)
 
 

@@ -7,7 +7,7 @@ on:
 env:
   EXPORT_DIR: build/web
   ITCHIO_USERNAME: tbleazy
-  ITCHIO_GAME: alchemy-jam-9
+  ITCHIO_GAME: railed
 
 jobs:
   build:

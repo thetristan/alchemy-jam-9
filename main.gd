@@ -1,5 +1,5 @@
 class_name Main
-extends Node2D
+extends MarginContainer
 
 
 func _ready() -> void:
@@ -10,3 +10,5 @@ func _ready() -> void:
 
 	if GameOptions.debug_mode:
 		SceneManager.replace_with_game_scene()
+	else:
+		SceneManager.replace_with_title_scene()

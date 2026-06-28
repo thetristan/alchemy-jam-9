@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dl2jcrkfvj6n0"]
+
+[ext_resource type="Script" uid="uid://cehr0e6c0pied" path="res://ui/lives_counter/lives_counter.gd" id="1_vxdvp"]
+[ext_resource type="Texture2D" uid="uid://n0l5cwi53c8g" path="res://game/extra_life/extra_life_icon.aseprite" id="2_cy12f"]
+[ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_vxdvp"]
+[ext_resource type="AudioStream" uid="uid://bfht7h8pyt2v3" path="res://audio/sfx/lives_changed/SFX_BlackBoardSingleHit1.mp3" id="4_8xn3l"]
+[ext_resource type="AudioStream" uid="uid://dp0o61y3xxk5l" path="res://audio/sfx/lives_changed/SFX_BlackBoardSingleHit2.mp3" id="5_84ubl"]
+[ext_resource type="AudioStream" uid="uid://bvjiq8eqq8j3x" path="res://audio/sfx/lives_changed/SFX_BlackBoardSingleHit3.mp3" id="6_4i21s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
+font = ExtResource("2_vxdvp")
+font_size = 7
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_phmfx"]
+random_pitch = 1.0594631
+streams_count = 3
+stream_0/stream = ExtResource("4_8xn3l")
+stream_1/stream = ExtResource("5_84ubl")
+stream_2/stream = ExtResource("6_4i21s")
+
+[node name="LivesCounter" type="HBoxContainer" unique_id=1290384376]
+size_flags_horizontal = 4
+script = ExtResource("1_vxdvp")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=48981275]
+layout_mode = 2
+texture = ExtResource("2_cy12f")
+
+[node name="Label" type="Label" parent="." unique_id=160628549]
+layout_mode = 2
+text = "X"
+
+[node name="ExtraLives" type="Label" parent="." unique_id=1664646419]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 1)
+text = "5"
+label_settings = SubResource("LabelSettings_phmfx")
+
+[node name="LivesChangedSFX" type="AudioStreamPlayer" parent="." unique_id=1747888296]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_phmfx")
+bus = &"SFX"

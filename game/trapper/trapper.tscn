@@ -1,13 +1,29 @@
 [gd_scene format=3 uid="uid://dit8pp216brcs"]
 
 [ext_resource type="Script" uid="uid://xhccmv56n8rx" path="res://game/trapper/trapper.gd" id="1_0b7wn"]
+[ext_resource type="AudioStream" uid="uid://b3kpqlg86qnl4" path="res://audio/sfx/trap_snap/SFX_MetalObjectImpactv1.mp3" id="2_2hws8"]
 [ext_resource type="SpriteFrames" uid="uid://d18rmvgfy3d2e" path="res://game/trapper/trapper.aseprite" id="2_bsi05"]
+[ext_resource type="AudioStream" uid="uid://d10h4armwlvq8" path="res://audio/sfx/trap_snap/SFX_MetalObjectImpactv2.mp3" id="3_a8muf"]
+[ext_resource type="AudioStream" uid="uid://b0bc007q77c0i" path="res://audio/sfx/trap_snap/SFX_MetalObjectImpactv3.mp3" id="4_pi5lw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g3b4m"]
+random_pitch = 1.122462
+streams_count = 3
+stream_0/stream = ExtResource("2_2hws8")
+stream_1/stream = ExtResource("3_a8muf")
+stream_2/stream = ExtResource("4_pi5lw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
 size = Vector2(33, 18)
 
 [node name="Trapper" type="Node2D" unique_id=855137320]
 script = ExtResource("1_0b7wn")
+
+[node name="SnapSFX" type="AudioStreamPlayer2D" parent="." unique_id=21100513]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_g3b4m")
+max_distance = 320.0
+bus = &"SFX"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1979443698]
 unique_name_in_owner = true

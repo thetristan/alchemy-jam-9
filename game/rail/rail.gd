@@ -12,7 +12,11 @@ static func get_all_instances(tree: SceneTree) -> Array[Rail]:
 
 @export var open_on_left: bool = true
 @export var open_on_right: bool = true
-@export var enabled: bool = true
+@export var enabled: bool = true:
+	set(value):
+		enabled = value
+		if is_node_ready():
+			_apply_enabled()
 
 
 var path: Path2D
@@ -57,3 +61,20 @@ func _ready() -> void:
 			add_child(shape)
 
 		break
+
+	_apply_enabled()
+
+
+func enable() -> void:
+	enabled = true
+
+
+func disable() -> void:
+	enabled = false
+
+
+func _apply_enabled() -> void:
+	for child: Node in get_children():
+		var shape: CollisionShape2D = child as CollisionShape2D
+		if shape:
+			shape.set_deferred("disabled", not enabled)

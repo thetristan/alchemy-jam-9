@@ -6,6 +6,7 @@ extends Node2D
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var trigger_area: Area2D = %Trigger
 @onready var trigger_collider: CollisionShape2D = %Collider
+@onready var on_sfx: AudioStreamPlayer2D = %OnSFX
 
 func _ready() -> void:
 	trigger_area.area_entered.connect(_on_switched)
@@ -17,3 +18,4 @@ func _on_switched(_area: Area2D) -> void:
 		trigger.trigger()
 
 	sprite.play("on")
+	on_sfx.play()

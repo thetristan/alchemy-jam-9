@@ -26,4 +26,5 @@ func on_exit() -> void:
 
 
 func on_detected(area: Area2D) -> void:
+	spinner.player_sighted_sfx.play()
 	fsm.transition_to_spinning_state(area)

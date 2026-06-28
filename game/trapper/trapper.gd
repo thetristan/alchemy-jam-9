@@ -14,6 +14,7 @@ var fsm: TrapperFSM
 @onready var collider: CollisionShape2D = %Collider
 @onready var hit_box: Area2D = %HitBox
 @onready var hit_box_collider: CollisionPolygon2D = %HitBoxCollider
+@onready var snap_sfx: AudioStreamPlayer2D = %SnapSFX
 
 
 func _ready() -> void:
