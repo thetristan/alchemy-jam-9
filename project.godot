@@ -24,6 +24,7 @@ animation/layers/only_include_visible_layers_by_default=true
 import/cleanup/remove_json_file=false
 import/import_plugin/default_automatic_importer="SpriteFrames"
 import/cleanup/automatically_hide_sprites_not_in_animation=true
+import/import_plugin/generate_bake_files=true
 
 [audio]
 
