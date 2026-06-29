@@ -8,7 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://byox17e480skv" path="res://audio/sfx/rumble/SFX_LowRumbleDistant2.mp3" id="5_s45n2"]
 [ext_resource type="Script" uid="uid://cv3cuec68q6kx" path="res://addons/triggers/audio_trigger.gd" id="6_07b0i"]
 [ext_resource type="Script" uid="uid://da5dl8ujhxj8f" path="res://addons/triggers/camera_trauma_trigger.gd" id="7_0s8pm"]
+[ext_resource type="AudioStream" uid="uid://gm8lssxvyft" path="res://audio/sfx/rumble_rocks/0228_Single_Small_Rocks_Tumble_Cliff_004.mp3" id="7_s45n2"]
 [ext_resource type="Script" uid="uid://bmaki38xufyfu" path="res://addons/triggers/trigger.gd" id="8_6ivbi"]
+[ext_resource type="AudioStream" uid="uid://o8k5wtlnr6da" path="res://audio/sfx/rumble_rocks/0242_Single_Small_Rocks_Tumble_Cliff_018.mp3" id="8_07b0i"]
 [ext_resource type="Script" uid="uid://cbywj4aeuo1jk" path="res://addons/triggers/particle_trigger.gd" id="9_k8nag"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_71420"]
@@ -22,6 +24,12 @@ random_pitch = 1.0594631
 streams_count = 2
 stream_0/stream = ExtResource("4_0yw0x")
 stream_1/stream = ExtResource("5_s45n2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0s8pm"]
+random_pitch = 1.122462
+streams_count = 2
+stream_0/stream = ExtResource("7_s45n2")
+stream_1/stream = ExtResource("8_07b0i")
 
 [node name="QuakeParticles" type="GPUParticles2D" unique_id=1147043869]
 material = SubResource("CanvasItemMaterial_71420")
@@ -49,9 +57,23 @@ metadata/_custom_type_script = "uid://rbx2ww7trc3f"
 stream = SubResource("AudioStreamRandomizer_phmfx")
 volume_db = -8.0
 
-[node name="AudioTrigger" type="Node" parent="DelayTrigger" unique_id=373962699 node_paths=PackedStringArray("target")]
+[node name="RumbleRocksSFX" type="AudioStreamPlayer" parent="DelayTrigger" unique_id=1005021705]
+stream = SubResource("AudioStreamRandomizer_0s8pm")
+volume_db = -8.0
+
+[node name="RumbleAudioTrigger" type="Node" parent="DelayTrigger" unique_id=373962699 node_paths=PackedStringArray("target")]
 script = ExtResource("6_07b0i")
 target = NodePath("../RumbleSFX")
+metadata/_custom_type_script = "uid://cv3cuec68q6kx"
+
+[node name="DelayTrigger" type="Node" parent="DelayTrigger" unique_id=1058296054]
+process_mode = 1
+script = ExtResource("3_is4bn")
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="RocksAudioTrigger" type="Node" parent="DelayTrigger/DelayTrigger" unique_id=1717420116 node_paths=PackedStringArray("target")]
+script = ExtResource("6_07b0i")
+target = NodePath("../../RumbleRocksSFX")
 metadata/_custom_type_script = "uid://cv3cuec68q6kx"
 
 [node name="CameraTraumaTrigger" type="Node" parent="DelayTrigger" unique_id=1904659664]

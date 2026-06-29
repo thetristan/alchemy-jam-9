@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://vw860rtiv827" path="res://audio/sfx/player_detached/SFX_MetalObjectImpactv3.mp3" id="4_gb4gm"]
 [ext_resource type="AudioStream" uid="uid://bb8vwaum14r36" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v2_wav.mp3" id="5_j0mij"]
 [ext_resource type="AudioStream" uid="uid://c1o6mdndtxoru" path="res://audio/sfx/player_died/SFX_Dizzyv4.mp3" id="9_uv2nh"]
+[ext_resource type="Material" uid="uid://vf8ti8md73ed" path="res://game/player/spark_right_particle_process_material.tres" id="12_n270p"]
+[ext_resource type="Material" uid="uid://ds2b7xsh72ufh" path="res://game/player/spark_left_particle_process_material.tres" id="13_3ep63"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_txo27"]
 random_pitch = 1.0293022
@@ -160,3 +162,19 @@ shape = SubResource("RectangleShape2D_8soms")
 [node name="KnockbackOrigin" type="Marker2D" parent="." unique_id=1058010897]
 unique_name_in_owner = true
 position = Vector2(0, 27)
+
+[node name="SparkRight" type="GPUParticles2D" parent="." unique_id=1728615872]
+unique_name_in_owner = true
+position = Vector2(2, 0)
+emitting = false
+lifetime = 0.5
+explosiveness = 0.3
+process_material = ExtResource("12_n270p")
+
+[node name="SparkLeft" type="GPUParticles2D" parent="." unique_id=521770480]
+unique_name_in_owner = true
+position = Vector2(-1, 0)
+emitting = false
+lifetime = 0.5
+explosiveness = 0.3
+process_material = ExtResource("13_3ep63")

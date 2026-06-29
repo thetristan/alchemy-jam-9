@@ -21,6 +21,7 @@ font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
 line_spacing = 0.0
+paragraph_spacing = 4.0
 font_size = 5
 font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
@@ -49,6 +50,7 @@ autoplay = "default"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1671590211]
 layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="SenderName" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=570088863]
 unique_name_in_owner = true
@@ -57,7 +59,7 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "?UNKNOWN?"
+text = "?.UNKNOWN..#*-;"
 label_settings = SubResource("LabelSettings_vsp63")
 autowrap_mode = 3
 
@@ -68,13 +70,11 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "QUICK! GRAB ONTO THOSE RAILS
-AND GET THE HELL OUTTA THERE BEFORE IT COLLAPSES!"
+text = "EVERYTHING IS COLLAPSING...
+GRAB ONTO THOSE RAILS AND GET THE HELL OUTTA THERE!"
 label_settings = SubResource("LabelSettings_phmfx")
 autowrap_mode = 3
-visible_characters = 86
 visible_characters_behavior = 1
-visible_ratio = 1.1025641
 
 [node name="TimeCounter" parent="HBoxContainer/VBoxContainer" unique_id=1035572189 instance=ExtResource("4_2mbwl")]
 unique_name_in_owner = true

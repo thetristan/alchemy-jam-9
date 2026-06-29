@@ -16,6 +16,7 @@ var has_recoiled: bool
 var prev_direction: float
 var is_attached: bool
 var move_anim_reversed: bool
+var spark_burst_remaining: float
 
 func on_enter() -> void:
 	player.wheel_collider.disabled = false
@@ -25,6 +26,11 @@ func on_enter() -> void:
 
 	player.attach_to_rail_sfx.play()
 	player.sprite.play("hanging")
+
+	# Burst both sparks briefly on attach.
+	player.spark_left.emitting = true
+	player.spark_right.emitting = true
+	spark_burst_remaining = Player.RAIL_SPARK_BURST_TIME
 
 	var collision_point: Vector2 = player.attach_ray_cast.get_collision_point()
 	var local_point: Vector2 = player.attached_rail.path.to_local(collision_point)
@@ -47,6 +53,8 @@ func on_enter() -> void:
 
 func on_exit() -> void:
 	is_attached = false
+	player.spark_left.emitting = false
+	player.spark_right.emitting = false
 	player.detach_from_rail_sfx.play()
 	player.wheel_collider.set_deferred("disabled", true)
 	player.attach_ray_cast.add_exception(player.attached_rail)
@@ -71,10 +79,30 @@ func on_exit() -> void:
 func on_physics_process(delta: float) -> void:
 	apply_stretch(delta)
 	apply_rail_movement(delta)
+	# apply_rail_movement may drop off the rail (transitioning out and turning sparks
+	# off in on_exit); guard on is_attached so we don't re-light them this same frame.
 	if is_attached:
+		update_sparks(delta)
 		var speed_scale: float = 2 * player.current_speed / Player.RAIL_SPEED
 		if player.wheel_sprite.animation == "forward":
 			player.wheel_sprite.speed_scale = speed_scale
+
+
+func update_sparks(delta: float) -> void:
+	# Keep both sparks lit during the attach burst window.
+	if spark_burst_remaining > 0.0:
+		spark_burst_remaining -= delta
+		return
+
+	if absf(player.current_speed) < Player.RAIL_SPARK_MIN_SPEED:
+		player.spark_left.emitting = false
+		player.spark_right.emitting = false
+		return
+
+	# Spark on the side opposite the travel direction (trailing the wheel).
+	var moving_right: bool = player.current_speed > 0.0
+	player.spark_left.emitting = moving_right
+	player.spark_right.emitting = not moving_right
 
 
 func apply_rail_movement(delta: float) -> void:

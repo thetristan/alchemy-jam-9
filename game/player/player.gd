@@ -29,6 +29,8 @@ const RAIL_DECEL_SPEED: float = 500
 const RAIL_EXCLUSION_TIME: float = 0.2
 const RAIL_TILT_ACCEL_SPEED: float = 15
 const RAIL_TILT_DECEL_SPEED: float = 60
+const RAIL_SPARK_BURST_TIME: float = 0.1
+const RAIL_SPARK_MIN_SPEED: float = 5.0
 
 const GROUND_SPEED: float = 200
 const AIR_SPEED: float = 150
@@ -109,6 +111,8 @@ var disable_signal: bool
 @onready var sprite_group: CanvasGroup = %SpriteGroup
 @onready var knockback_origin: Marker2D = %KnockbackOrigin
 @onready var arrow_sprite: AnimatedSprite2D = %ArrowSprite
+@onready var spark_left: GPUParticles2D = %SparkLeft
+@onready var spark_right: GPUParticles2D = %SparkRight
 
 @onready var jump_sfx: AudioStreamPlayer2D = %JumpSFX
 @onready var land_sfx: AudioStreamPlayer2D = %LandSFX

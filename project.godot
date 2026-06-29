@@ -32,12 +32,13 @@ buses/default_bus_layout="uid://fwlmqdadewg8"
 
 [autoload]
 
-GameOptions="*uid://ctuvyf5wi8yvk"
-SignalBus="*uid://bb1vvd4p6stu2"
-Util="*uid://q2l1ouwgvfu2"
+ParticlePreloader="*uid://dqwj4eehf6s8c"
 SceneManager="*uid://bsm3qbl5jgoll"
-LimboConsole="*uid://dyxornv8vwibg"
+SignalBus="*uid://bb1vvd4p6stu2"
 Audio="*uid://l03v58ywigen"
+Util="*uid://q2l1ouwgvfu2"
+GameOptions="*uid://ctuvyf5wi8yvk"
+LimboConsole="*uid://dyxornv8vwibg"
 
 [display]
 

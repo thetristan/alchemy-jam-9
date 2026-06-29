@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dqwj4eehf6s8c"]
+
+[ext_resource type="Script" uid="uid://12t8nfedr5mc" path="res://globals/particle_preloader.gd" id="1_4wjtp"]
+[ext_resource type="Material" uid="uid://ds2b7xsh72ufh" path="res://game/player/spark_left_particle_process_material.tres" id="2_yn21i"]
+[ext_resource type="Material" uid="uid://vf8ti8md73ed" path="res://game/player/spark_right_particle_process_material.tres" id="3_g7piu"]
+[ext_resource type="Material" uid="uid://8pf0ybrxwtn1" path="res://game/earthquake/quake_debris_particle_process_material.tres" id="4_ue3lr"]
+
+[node name="ParticlePreloader" type="Node2D" unique_id=432510904]
+script = ExtResource("1_4wjtp")
+particle_process_materials = Array[ParticleProcessMaterial]([ExtResource("2_yn21i"), ExtResource("3_g7piu"), ExtResource("4_ue3lr")])
+
+[node name="ParticleLoader" type="GPUParticles2D" parent="." unique_id=6076028]
+unique_name_in_owner = true
+
+[node name="Cover" type="ColorRect" parent="." unique_id=1161539900]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 384.0
+offset_bottom = 244.0
+color = Color(0.02745098, 0.09019608, 0.1294118, 1)

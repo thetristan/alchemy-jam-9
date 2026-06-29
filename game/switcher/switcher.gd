@@ -19,3 +19,17 @@ func _on_switched(_area: Area2D) -> void:
 
 	sprite.play("on")
 	on_sfx.play()
+
+
+# Silently toggle whether the switch can be pressed, without playing the
+# "on" animation or sound effect.
+func set_switch_enabled(value: bool) -> void:
+	trigger_collider.set_deferred("disabled", not value)
+
+
+# Silently set the switch display to its on (last frame) or off (first frame)
+# state without playing the animation or sound effect.
+func set_display_on(value: bool) -> void:
+	sprite.stop()
+	sprite.animation = "on"
+	sprite.frame = sprite.sprite_frames.get_frame_count("on") - 1 if value else 0

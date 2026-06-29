@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://0e8p1qgkx41v"]
+
+[ext_resource type="SpriteFrames" uid="uid://cnslrpmv3pjgx" path="res://game/checkpoint/checkpoint.aseprite" id="1_1mk51"]
+[ext_resource type="Script" uid="uid://1a7wdme3hi5w" path="res://game/checkpoint/checkpoint.gd" id="1_4srjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
+size = Vector2(24, 24)
+
+[node name="Checkpoint" type="Node2D" unique_id=310130959]
+script = ExtResource("1_4srjh")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1132396785]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+sprite_frames = ExtResource("1_1mk51")
+animation = &"off_idle"
+autoplay = "off_idle"
+frame_progress = 0.758192
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="." unique_id=1961239176]
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 8.0
+border_color = Color(0, 0.6289418, 0.47809923, 1)
+
+[node name="SpawnMarker" type="Marker2D" parent="." unique_id=1252394402]
+unique_name_in_owner = true
+position = Vector2(0, -38)
+
+[node name="TriggerArea" type="Area2D" parent="." unique_id=568948790]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=1536658776]
+shape = SubResource("RectangleShape2D_phmfx")
