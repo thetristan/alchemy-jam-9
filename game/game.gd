@@ -3,7 +3,7 @@ extends Node2D
 
 const GROUP: String = "game"
 
-const STARTING_LIVES: int = 1
+const STARTING_LIVES: int = 5
 const MAX_LIVES: int = 99
 
 const MAX_TIME: float = 20 * 60.0
