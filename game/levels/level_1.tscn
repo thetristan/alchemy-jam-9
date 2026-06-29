@@ -112,6 +112,7 @@ point_count = 6
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2gpk1"]
 noise_type = 3
+frequency = 0.0231
 
 [node name="Level" type="Node2D" unique_id=898215444]
 metadata/_edit_horizontal_guides_ = [432.0, 448.0, 0.0, -128.0]
