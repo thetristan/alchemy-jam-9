@@ -5,11 +5,14 @@ extends Trigger
 
 @export var start_on_ready: bool
 @export var delay: float = 0.5
+@export var min_delay: float = 0.0
+@export var max_delay: float = 0.0
 @export var allow_parallel: bool
 @export var emit_delay_progress: bool
 
 var delay_started: bool
 var _active_delays: Dictionary[int, float]
+var _delay_durations: Dictionary[int, float]
 var _next_delay_id: int
 
 
@@ -46,6 +49,7 @@ func _process(delta: float) -> void:
 
 	for id in to_erase:
 		_active_delays.erase(id)
+		_delay_durations.erase(id)
 
 	if _active_delays.is_empty():
 		if delay_started and emit_delay_progress:
@@ -56,7 +60,7 @@ func _process(delta: float) -> void:
 	elif emit_delay_progress:
 		var progress: Dictionary[int, float] = _active_delays.duplicate()
 		for p in progress:
-			progress[p] = progress[p] / delay
+			progress[p] = progress[p] / _delay_durations[p]
 		SignalBus.delay_progressed.emit(self , progress)
 
 
@@ -66,11 +70,17 @@ func trigger() -> void:
 
 	delay_started = true
 
-	Log.info(self , trigger, "starting trigger delay of %0.2fs" % delay)
-	_active_delays[_next_delay_id] = delay
+	var active_delay: float = delay
+	if not is_zero_approx(min_delay) or not is_zero_approx(max_delay):
+		active_delay = randf_range(min_delay, max_delay)
+
+	Log.info(self , trigger, "starting trigger delay of %0.2fs" % active_delay)
+	_active_delays[_next_delay_id] = active_delay
+	_delay_durations[_next_delay_id] = active_delay
 	_next_delay_id += 1
 
 
 func cancel() -> void:
 	Log.debug(self , trigger, "active delays cancelled")
 	_active_delays.clear()
+	_delay_durations.clear()

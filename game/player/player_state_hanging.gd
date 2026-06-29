@@ -23,6 +23,7 @@ func on_enter() -> void:
 	player.attached_rail = intersecting_rail()
 	Log.info(self, on_enter, "Attaching to rail %s" % player.attached_rail)
 
+	player.attach_to_rail_sfx.play()
 	player.sprite.play("hanging")
 
 	var collision_point: Vector2 = player.attach_ray_cast.get_collision_point()
@@ -46,6 +47,7 @@ func on_enter() -> void:
 
 func on_exit() -> void:
 	is_attached = false
+	player.detach_from_rail_sfx.play()
 	player.wheel_collider.set_deferred("disabled", true)
 	player.attach_ray_cast.add_exception(player.attached_rail)
 	player.attached_rail = null

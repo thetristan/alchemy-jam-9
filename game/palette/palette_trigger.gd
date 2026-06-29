@@ -19,16 +19,16 @@ func trigger() -> void:
 	if not can_trigger():
 		return
 
-	var palette: PaletteShader = PaletteShader.get_instance(get_tree())
+	var palette: PaletteShader = PaletteShader.get_instance()
 	if not palette:
-		Log.error(self , trigger, "no palette found")
+		Log.error(self, trigger, "no palette found")
 
 	match action:
 		Action.ENABLE_LIGHTS:
-			Log.info(self , trigger, "lighting zone")
+			Log.info(self, trigger, "lighting zone")
 			palette.zone_lit()
 		Action.DISABLE_LIGHTS:
-			Log.info(self , trigger, "disabling zone")
+			Log.info(self, trigger, "disabling zone")
 			palette.zone_unlit()
 
 	super.trigger()

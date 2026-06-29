@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://vrsf1ojtk6lv"]
+
+[ext_resource type="Script" uid="uid://rx4af3wg08ht" path="res://ui/game_over/game_over.gd" id="1_8e1se"]
+[ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_4cp6t"]
+[ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="3_6lpyu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
+font = ExtResource("2_4cp6t")
+font_size = 14
+font_color = Color(0.7529412, 0.4941176, 0.3254902, 1)
+
+[node name="Title" type="CanvasLayer" unique_id=1251188337]
+script = ExtResource("1_8e1se")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1266789758]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=475253245]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1673101866]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_phmfx")
+horizontal_alignment = 1
+
+[node name="TimeCounter" parent="MarginContainer/VBoxContainer" unique_id=1035572189 instance=ExtResource("3_6lpyu")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 12)
+custom_maximum_size = Vector2(-1, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1254488400]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=927713455]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer" unique_id=969542587]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY AGAIN"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1295215565]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MAIN MENU"

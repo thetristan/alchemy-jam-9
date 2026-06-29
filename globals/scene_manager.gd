@@ -62,6 +62,8 @@ var current_scene: Scene:
 
 var title_scene: Scene
 var game_scene: Scene
+var game_over_scene: Scene
+var game_won_scene: Scene
 var paused_scene: Scene
 var options_scene: Scene
 
@@ -71,6 +73,8 @@ func init(container: Node) -> void:
 	_container = container
 	title_scene = Scene.new(&"title", default_instance_factory("res://ui/title/title.tscn"))
 	game_scene = Scene.new(&"game", default_instance_factory("res://game/game.tscn"))
+	game_over_scene = Scene.new(&"game_over", default_instance_factory("res://ui/game_over/game_over.tscn"))
+	game_won_scene = Scene.new(&"game_won", default_instance_factory("res://ui/game_won/game_won.tscn"))
 	paused_scene = Scene.new(&"paused", default_instance_factory("res://ui/pause/pause.tscn"))
 	options_scene = Scene.new(&"options", default_instance_factory("res://ui/options/options.tscn"))
 	_initialized = true
@@ -131,6 +135,26 @@ func push_game_scene() -> void:
 
 func replace_with_game_scene() -> void:
 	replace_scene(game_scene)
+
+
+func push_game_over_scene(time_left: int) -> void:
+	var scene_instance: Node = game_over_scene.instance()
+	scene_instance.time_left = time_left
+	push_scene(game_over_scene)
+
+
+func replace_with_game_over_scene(time_left: int) -> void:
+	var scene_instance: Node = game_over_scene.instance()
+	scene_instance.time_left = time_left
+	replace_scene(game_over_scene)
+
+
+func push_game_won_scene() -> void:
+	push_scene(game_won_scene)
+
+
+func replace_with_game_won_scene() -> void:
+	replace_scene(game_won_scene)
 
 
 func push_paused_scene() -> void:

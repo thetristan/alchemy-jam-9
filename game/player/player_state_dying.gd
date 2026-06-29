@@ -29,8 +29,14 @@ func on_enter() -> void:
 	tween.tween_property(palette_shader, "brightness", 1, 1)
 	await tween.finished
 	static_fx.reset()
+
+	var game: Game = Game.get_instance()
+	if game.lives == 0:
+		SceneManager.replace_with_game_over_scene(floor(game.time_left))
+		return
+
 	SignalBus.player_died.emit()
 	await Util.timer(1)
-	Game.get_instance().lives -= 1
+	game.lives -= 1
 	await Util.timer(1)
 	SignalBus.player_restarted_level.emit()

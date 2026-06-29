@@ -43,6 +43,10 @@ const MAX_HEALTH: int = 12
 
 @export var disable_real_input: bool
 
+var dead: bool:
+	get:
+		return fsm.current_state in [fsm.dying_state, fsm.dead_state]
+
 var was_on_floor: bool
 var was_dropped: bool
 var landed: bool
@@ -92,6 +96,7 @@ var base_input: PlayerInput:
 
 var input_queue: Array[PlayerInput] = []
 
+var disable_signal: bool
 
 @onready var wheel_collider: CollisionShape2D = %WheelCollider
 @onready var world_collider: CollisionShape2D = %WorldCollider
@@ -108,6 +113,8 @@ var input_queue: Array[PlayerInput] = []
 @onready var land_sfx: AudioStreamPlayer2D = %LandSFX
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
 @onready var death_sfx: AudioStreamPlayer2D = %DeathSFX
+@onready var attach_to_rail_sfx: AudioStreamPlayer2D = %AttachToRailSFX
+@onready var detach_from_rail_sfx: AudioStreamPlayer2D = %DetachFromRailSFX
 
 
 func _ready() -> void:
@@ -144,7 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
 		if fsm.current_state == fsm.debug_state:
 			fsm.transition_to_idle_state()
-		else:
+		elif fsm.current_state not in [fsm.dying_state, fsm.dead_state, fsm.disabled_state]:
 			fsm.transition_to_debug_state()
 		return
 
@@ -162,6 +169,14 @@ func _update_input(delta: float) -> void:
 
 func push_input(scripted_input: PlayerInput) -> void:
 	input_queue.push_back(scripted_input)
+
+
+func enable() -> void:
+	fsm.transition_to_idle_state()
+
+
+func disable() -> void:
+	fsm.transition_to_disabled_state()
 
 
 func kill() -> void:

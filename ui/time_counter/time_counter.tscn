@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://db3vraffoxtba"]
+
+[ext_resource type="Script" uid="uid://1eko2snnkqua" path="res://ui/time_counter/time_counter.gd" id="1_4t802"]
+[ext_resource type="Texture2D" uid="uid://djrcoerkle7en" path="res://ui/time_counter/.time_icon.aseprite.ase_bake.res" id="2_4t802"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yot74"]
+atlas = ExtResource("2_4t802")
+region = Rect2(-1, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t802"]
+atlas = ExtResource("2_4t802")
+region = Rect2(11, 0, 12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qf6n1"]
+resource_local_to_scene = true
+line_spacing = 0.0
+font_size = 5
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
+[node name="TimeCounter" type="HBoxContainer" unique_id=1035572189]
+custom_minimum_size = Vector2(36, 0)
+custom_maximum_size = Vector2(36, -1)
+offset_right = 36.0
+offset_bottom = 12.0
+theme_override_constants/separation = 2
+script = ExtResource("1_4t802")
+
+[node name="CreamIcon" type="TextureRect" parent="." unique_id=1866738077]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+texture = SubResource("AtlasTexture_yot74")
+stretch_mode = 2
+
+[node name="OrangeIcon" type="TextureRect" parent="." unique_id=1151834043]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+texture = SubResource("AtlasTexture_4t802")
+stretch_mode = 2
+
+[node name="TimeLeft" type="Label" parent="." unique_id=1290973141]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "00:00"
+label_settings = SubResource("LabelSettings_qf6n1")
+vertical_alignment = 1
+text_overrun_behavior = 1

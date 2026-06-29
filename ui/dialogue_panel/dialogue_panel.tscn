@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://su8ton35yd05"]
+
+[ext_resource type="Texture2D" uid="uid://c84autmxko223" path="res://ui/panel_container/inset_panel.aseprite" id="1_5wrfp"]
+[ext_resource type="Script" uid="uid://dtfbdmlbhwfx6" path="res://ui/dialogue_panel/dialogue_panel.gd" id="1_a5jdu"]
+[ext_resource type="SpriteFrames" uid="uid://dsgpp4qstb82l" path="res://game/static/static.aseprite" id="2_a5jdu"]
+[ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="3_1q2b3"]
+[ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="4_2mbwl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phmfx"]
+texture = ExtResource("1_5wrfp")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsp63"]
+line_spacing = 0.0
+font = ExtResource("3_1q2b3")
+font_size = 7
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
+line_spacing = 0.0
+font_size = 5
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
+[node name="DialoguePanel" type="PanelContainer" unique_id=1228850900]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_a5jdu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=256900344]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="ProfilePanel" type="PanelContainer" parent="HBoxContainer" unique_id=1801885761]
+custom_minimum_size = Vector2(64, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_phmfx")
+
+[node name="ProfileSprite" type="AnimatedSprite2D" parent="HBoxContainer/ProfilePanel" unique_id=1262568430]
+unique_name_in_owner = true
+position = Vector2(32, 33)
+sprite_frames = ExtResource("2_a5jdu")
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1671590211]
+layout_mode = 2
+
+[node name="SenderName" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=570088863]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "?UNKNOWN?"
+label_settings = SubResource("LabelSettings_vsp63")
+autowrap_mode = 3
+
+[node name="Message" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2049833291]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUICK! GRAB ONTO THOSE RAILS
+AND GET THE HELL OUTTA THERE BEFORE IT COLLAPSES!"
+label_settings = SubResource("LabelSettings_phmfx")
+autowrap_mode = 3
+visible_characters = 86
+visible_characters_behavior = 1
+visible_ratio = 1.1025641
+
+[node name="TimeCounter" parent="HBoxContainer/VBoxContainer" unique_id=1035572189 instance=ExtResource("4_2mbwl")]
+unique_name_in_owner = true
+layout_mode = 2

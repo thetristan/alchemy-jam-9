@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dl2jcrkfvj6n0" path="res://ui/lives_counter/lives_counter.tscn" id="4_u5opy"]
 [ext_resource type="PackedScene" uid="uid://cphmglk4npj07" path="res://game/static/static.tscn" id="5_u8s88"]
 [ext_resource type="PackedScene" uid="uid://dm6b2sseojiq1" path="res://game/palette/palette_shader.tscn" id="6_dxwpq"]
+[ext_resource type="PackedScene" uid="uid://su8ton35yd05" path="res://ui/dialogue_panel/dialogue_panel.tscn" id="8_l8g03"]
+[ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="10_3vho3"]
 [ext_resource type="Texture2D" uid="uid://b7xu8t4gjf1a7" path="res://ui/healthbar/healthbar.aseprite" id="12_b686c"]
 [ext_resource type="PackedScene" uid="uid://t1ksuvfa1j8y" path="res://ui/debug_container/debug_container.tscn" id="12_qf6n1"]
 
@@ -52,7 +54,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD/MarginContainer" unique_id=1351984239]
+[node name="GameplayHUD" type="MarginContainer" parent="HUD/MarginContainer" unique_id=1994498018]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/MarginContainer/GameplayHUD" unique_id=1351984239]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 12.0
@@ -62,8 +68,18 @@ texture_under = SubResource("AtlasTexture_phmfx")
 texture_progress = SubResource("AtlasTexture_hb504")
 script = ExtResource("4_b686c")
 
+[node name="TimeCounter" parent="HUD/MarginContainer/GameplayHUD" unique_id=1839612665 instance=ExtResource("10_3vho3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+custom_maximum_size = Vector2(32, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+orange = true
+
 [node name="LivesCounterContainer" type="PanelContainer" parent="HUD/MarginContainer" unique_id=295273533]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(92, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -73,5 +89,10 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+
+[node name="DialoguePanel" parent="HUD/MarginContainer" unique_id=1228850900 instance=ExtResource("8_l8g03")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="DebugContainer" parent="HUD" unique_id=2076150927 instance=ExtResource("12_qf6n1")]
