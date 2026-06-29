@@ -49,6 +49,7 @@ jobs:
 
       - name: Web build
         run: |
+          export PATH=${PROJECT_PATH}/build/aseprite:$PATH
           mkdir -v -p ${EXPORT_DIR}
           cd $PROJECT_PATH
           ./godot --headless --verbose --export-debug "Web" "${EXPORT_DIR}/index.html"
