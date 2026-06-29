@@ -9,7 +9,7 @@ const CRT_ENABLED_KEY: StringName = &"crt_enabled"
 
 const OPTIONS_PATH: String = "user://options.dat"
 
-@export var debug_mode: bool = true
+@export var debug_mode: bool = false
 
 var music_volume: ObservableFloat = ObservableFloat.new()
 var sfx_volume: ObservableFloat = ObservableFloat.new()

@@ -21,7 +21,7 @@ func play_sfx(stream: AudioStream) -> void:
 
 
 func play_music(stream: AudioStream, next_stream: AudioStream = null, from: float = 0.0) -> void:
-	if music_player and (music_player.stream != stream or music_player.stopped):
+	if music_player and (music_player.stream != stream or not music_player.playing):
 		music_player.stream = stream
 		music_player.play(from)
 		if next_stream:
