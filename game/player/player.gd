@@ -108,6 +108,7 @@ var disable_signal: bool
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var sprite_group: CanvasGroup = %SpriteGroup
 @onready var knockback_origin: Marker2D = %KnockbackOrigin
+@onready var arrow_sprite: AnimatedSprite2D = %ArrowSprite
 
 @onready var jump_sfx: AudioStreamPlayer2D = %JumpSFX
 @onready var land_sfx: AudioStreamPlayer2D = %LandSFX
@@ -145,6 +146,18 @@ func _physics_process(delta: float) -> void:
 	# Snap to floor
 	if is_on_floor():
 		global_position.y = roundf(global_position.y)
+
+	# Show arrow if out of frame
+	arrow_sprite.global_position.x = global_position.x
+
+	if global_position.y <= -38:
+		if not arrow_sprite.visible:
+			arrow_sprite.show()
+			arrow_sprite.play()
+	elif arrow_sprite.visible:
+		arrow_sprite.play_backwards()
+		await arrow_sprite.animation_finished
+		arrow_sprite.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:

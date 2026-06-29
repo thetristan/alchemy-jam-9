@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cl6brln1ls303"]
+
+[ext_resource type="Texture2D" uid="uid://dgdrxksr476v5" path="res://game/earthquake/quake_debris.png" id="1_0pf3e"]
+[ext_resource type="Material" uid="uid://8pf0ybrxwtn1" path="res://game/earthquake/quake_debris_particle_process_material.tres" id="2_is4bn"]
+[ext_resource type="Script" uid="uid://c4wbm2tlvhrg7" path="res://game/earthquake/quake_particles.gd" id="2_k8nag"]
+[ext_resource type="Script" uid="uid://rbx2ww7trc3f" path="res://addons/triggers/delay_trigger.gd" id="3_is4bn"]
+[ext_resource type="AudioStream" uid="uid://bnda6adsngon6" path="res://audio/sfx/rumble/SFX_LowRumbleDistant1.mp3" id="4_0yw0x"]
+[ext_resource type="AudioStream" uid="uid://byox17e480skv" path="res://audio/sfx/rumble/SFX_LowRumbleDistant2.mp3" id="5_s45n2"]
+[ext_resource type="Script" uid="uid://cv3cuec68q6kx" path="res://addons/triggers/audio_trigger.gd" id="6_07b0i"]
+[ext_resource type="Script" uid="uid://da5dl8ujhxj8f" path="res://addons/triggers/camera_trauma_trigger.gd" id="7_0s8pm"]
+[ext_resource type="Script" uid="uid://bmaki38xufyfu" path="res://addons/triggers/trigger.gd" id="8_6ivbi"]
+[ext_resource type="Script" uid="uid://cbywj4aeuo1jk" path="res://addons/triggers/particle_trigger.gd" id="9_k8nag"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_71420"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_phmfx"]
+random_pitch = 1.0594631
+streams_count = 2
+stream_0/stream = ExtResource("4_0yw0x")
+stream_1/stream = ExtResource("5_s45n2")
+
+[node name="QuakeParticles" type="GPUParticles2D" unique_id=1147043869]
+material = SubResource("CanvasItemMaterial_71420")
+emitting = false
+amount = 150
+texture = ExtResource("1_0pf3e")
+lifetime = 4.0
+one_shot = true
+preprocess = 0.25
+explosiveness = 0.3
+fixed_fps = 24
+visibility_rect = Rect2(0, 96, 640, 1160)
+process_material = ExtResource("2_is4bn")
+script = ExtResource("2_k8nag")
+
+[node name="DelayTrigger" type="Node" parent="." unique_id=106347921]
+process_mode = 1
+script = ExtResource("3_is4bn")
+start_on_ready = true
+min_delay = 15.0
+max_delay = 30.0
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="RumbleSFX" type="AudioStreamPlayer" parent="DelayTrigger" unique_id=619049337]
+stream = SubResource("AudioStreamRandomizer_phmfx")
+volume_db = -8.0
+
+[node name="AudioTrigger" type="Node" parent="DelayTrigger" unique_id=373962699 node_paths=PackedStringArray("target")]
+script = ExtResource("6_07b0i")
+target = NodePath("../RumbleSFX")
+metadata/_custom_type_script = "uid://cv3cuec68q6kx"
+
+[node name="CameraTraumaTrigger" type="Node" parent="DelayTrigger" unique_id=1904659664]
+script = ExtResource("7_0s8pm")
+trauma = 1.5
+
+[node name="RestartDelayTrigger" type="Node" parent="DelayTrigger" unique_id=1066250200 node_paths=PackedStringArray("next_triggers")]
+script = ExtResource("8_6ivbi")
+next_triggers = [NodePath("..")]
+metadata/_custom_type_script = "uid://bmaki38xufyfu"
+
+[node name="ParticleTrigger" type="Node" parent="DelayTrigger" unique_id=1379867330 node_paths=PackedStringArray("target")]
+script = ExtResource("9_k8nag")
+target = NodePath("../..")
+min_count = 25
+max_count = 75
+emitter = true

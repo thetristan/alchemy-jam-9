@@ -1,30 +1,12 @@
 { "frames": [
    {
-    "filename": "time_icon 0.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 12, "h": 12 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 12 },
-    "sourceSize": { "w": 12, "h": 12 },
-    "duration": 100
-   },
-   {
-    "filename": "time_icon 1.aseprite",
-    "frame": { "x": 12, "y": 0, "w": 12, "h": 12 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 12 },
-    "sourceSize": { "w": 12, "h": 12 },
-    "duration": 100
-   },
-   {
-    "filename": "time_icon 2.aseprite",
-    "frame": { "x": 0, "y": 12, "w": 12, "h": 12 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 12 },
-    "sourceSize": { "w": 12, "h": 12 },
-    "duration": 100
+	"filename": "time_icon.aseprite",
+	"frame": { "x": 0, "y": 0, "w": 24, "h": 24 },
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
+	"sourceSize": { "w": 24, "h": 24 },
+	"duration": 100
    }
  ],
  "meta": {

@@ -122,6 +122,13 @@ sprite_frames = ExtResource("2_b2mth")
 animation = &"dying"
 flip_h = true
 
+[node name="ArrowSprite" type="AnimatedSprite2D" parent="." unique_id=340162232]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(0, 8)
+sprite_frames = ExtResource("2_b2mth")
+animation = &"out_of_frame"
+
 [node name="WheelSprite" type="AnimatedSprite2D" parent="." unique_id=1788040248]
 unique_name_in_owner = true
 position = Vector2(1, 1)

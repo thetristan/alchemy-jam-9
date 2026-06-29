@@ -11,6 +11,7 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 func on_enter() -> void:
+	BleazyCam.get_and_add_trauma(.7)
 	roller.sprite.play("explode")
 	roller.explode_sfx.play()
 	await roller.sprite.animation_finished
