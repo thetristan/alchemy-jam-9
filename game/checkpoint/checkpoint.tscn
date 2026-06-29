@@ -2,6 +2,12 @@
 
 [ext_resource type="SpriteFrames" uid="uid://cnslrpmv3pjgx" path="res://game/checkpoint/checkpoint.aseprite" id="1_1mk51"]
 [ext_resource type="Script" uid="uid://1a7wdme3hi5w" path="res://game/checkpoint/checkpoint.gd" id="1_4srjh"]
+[ext_resource type="AudioStream" uid="uid://cos4587qli84h" path="res://audio/sfx/checkpoint_reached/SFX_Rechargev3.mp3" id="2_ucx8n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
+line_spacing = 0.0
+font_size = 5
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
 size = Vector2(24, 24)
@@ -9,15 +15,32 @@ size = Vector2(24, 24)
 [node name="Checkpoint" type="Node2D" unique_id=310130959]
 script = ExtResource("1_4srjh")
 
+[node name="Message" type="Label" parent="." unique_id=1759294080]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = -52.0
+offset_right = 20.0
+offset_bottom = -36.0
+text = "CHECKPOINT
+REACHED"
+label_settings = SubResource("LabelSettings_phmfx")
+horizontal_alignment = 1
+
+[node name="ReachedSFX" type="AudioStreamPlayer2D" parent="." unique_id=683006522]
+unique_name_in_owner = true
+stream = ExtResource("2_ucx8n")
+max_distance = 160.0
+bus = &"SFX"
+
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1132396785]
 unique_name_in_owner = true
-position = Vector2(0, -16)
+position = Vector2(0, -13)
 sprite_frames = ExtResource("1_1mk51")
 animation = &"off_idle"
 autoplay = "off_idle"
 frame_progress = 0.758192
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="." unique_id=1961239176]
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1961239176]
 offset_left = -8.0
 offset_top = -32.0
 offset_right = 8.0
@@ -30,6 +53,9 @@ position = Vector2(0, -38)
 [node name="TriggerArea" type="Area2D" parent="." unique_id=568948790]
 unique_name_in_owner = true
 position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=1536658776]
+[node name="TriggerCollider" type="CollisionShape2D" parent="TriggerArea" unique_id=1536658776]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_phmfx")

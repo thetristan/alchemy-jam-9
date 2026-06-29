@@ -59,7 +59,7 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "?.UNKNOWN..#*-;"
+text = "TRANSMISSION"
 label_settings = SubResource("LabelSettings_vsp63")
 autowrap_mode = 3
 

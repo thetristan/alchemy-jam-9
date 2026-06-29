@@ -17,7 +17,7 @@ static func get_instance() -> Game:
 
 
 static var LEVEL_SCENE: PackedScene = preload("res://game/levels/level_1.tscn")
-var level: Node
+var level: Level
 
 var lives: int = STARTING_LIVES:
 	set(new_val):
@@ -43,6 +43,7 @@ var time_left: float:
 	
 	
 var first_play: bool = true
+var checkpoint_reached: StringName
 var clock_started: bool
 
 
@@ -64,6 +65,7 @@ func _ready() -> void:
 	SignalBus.player_dying.connect(gameplay_hud.hide)
 	SignalBus.player_died.connect(lives_counter_container.show)
 	SignalBus.player_restarted_level.connect(load_level)
+	SignalBus.player_checkpoint_reached.connect(func(id: StringName) -> void: checkpoint_reached = id)
 
 	set_clock()
 	await load_level()
@@ -111,9 +113,12 @@ func load_level() -> void:
 	gameplay_hud.hide()
 	lives_counter_container.hide()
 
-	level = LEVEL_SCENE.instantiate()
+	level = LEVEL_SCENE.instantiate() as Level
 	add_child(level)
-	Player.get_instance().disable()
+	level.player.disable()
+
+	if checkpoint_reached:
+		level.move_player_to_checkpoint(checkpoint_reached)
 
 	var palette_shader: PaletteShader = PaletteShader.get_instance()
 	palette_shader.brightness = 1
@@ -130,5 +135,5 @@ func load_level() -> void:
 		first_play = false
 
 	gameplay_hud.show()
-	Player.get_instance().enable()
+	level.player.enable()
 	clock_started = true

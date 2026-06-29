@@ -10,7 +10,7 @@
    },
    {
     "filename": "checkpoint 1.aseprite",
-    "frame": { "x": 26, "y": 0, "w": 24, "h": 24 },
+    "frame": { "x": 0, "y": 0, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -19,7 +19,7 @@
    },
    {
     "filename": "checkpoint 2.aseprite",
-    "frame": { "x": 52, "y": 0, "w": 24, "h": 24 },
+    "frame": { "x": 26, "y": 0, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -28,7 +28,7 @@
    },
    {
     "filename": "checkpoint 3.aseprite",
-    "frame": { "x": 78, "y": 0, "w": 24, "h": 24 },
+    "frame": { "x": 52, "y": 0, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -37,7 +37,7 @@
    },
    {
     "filename": "checkpoint 4.aseprite",
-    "frame": { "x": 0, "y": 26, "w": 24, "h": 24 },
+    "frame": { "x": 78, "y": 0, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -46,7 +46,7 @@
    },
    {
     "filename": "checkpoint 5.aseprite",
-    "frame": { "x": 26, "y": 26, "w": 24, "h": 24 },
+    "frame": { "x": 0, "y": 26, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -55,7 +55,7 @@
    },
    {
     "filename": "checkpoint 6.aseprite",
-    "frame": { "x": 52, "y": 26, "w": 24, "h": 24 },
+    "frame": { "x": 26, "y": 26, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -64,7 +64,7 @@
    },
    {
     "filename": "checkpoint 7.aseprite",
-    "frame": { "x": 78, "y": 26, "w": 24, "h": 24 },
+    "frame": { "x": 52, "y": 26, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -73,7 +73,7 @@
    },
    {
     "filename": "checkpoint 8.aseprite",
-    "frame": { "x": 0, "y": 52, "w": 24, "h": 24 },
+    "frame": { "x": 78, "y": 26, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -82,7 +82,7 @@
    },
    {
     "filename": "checkpoint 9.aseprite",
-    "frame": { "x": 26, "y": 52, "w": 24, "h": 24 },
+    "frame": { "x": 0, "y": 52, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -91,7 +91,7 @@
    },
    {
     "filename": "checkpoint 10.aseprite",
-    "frame": { "x": 52, "y": 52, "w": 24, "h": 24 },
+    "frame": { "x": 26, "y": 52, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -100,7 +100,7 @@
    },
    {
     "filename": "checkpoint 11.aseprite",
-    "frame": { "x": 78, "y": 52, "w": 24, "h": 24 },
+    "frame": { "x": 52, "y": 52, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -109,7 +109,7 @@
    },
    {
     "filename": "checkpoint 12.aseprite",
-    "frame": { "x": 0, "y": 78, "w": 24, "h": 24 },
+    "frame": { "x": 78, "y": 52, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -118,7 +118,25 @@
    },
    {
     "filename": "checkpoint 13.aseprite",
+    "frame": { "x": 0, "y": 78, "w": 24, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 83
+   },
+   {
+    "filename": "checkpoint 14.aseprite",
     "frame": { "x": 26, "y": 78, "w": 24, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 83
+   },
+   {
+    "filename": "checkpoint 15.aseprite",
+    "frame": { "x": 52, "y": 78, "w": 24, "h": 24 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 24 },
@@ -136,7 +154,7 @@
   "frameTags": [
    { "name": "off_idle", "from": 0, "to": 5, "direction": "forward", "color": "#000000ff" },
    { "name": "on", "from": 6, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
-   { "name": "on_idle", "from": 8, "to": 13, "direction": "forward", "color": "#000000ff" }
+   { "name": "on_idle", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" }
   ],
   "slices": [
   ]

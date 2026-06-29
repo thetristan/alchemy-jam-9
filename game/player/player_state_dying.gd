@@ -11,6 +11,7 @@ func _to_string() -> String:
 ### END GENERATED CONTENT ###
 
 func on_enter() -> void:
+	SignalBus.player_dying.emit()
 	player.hit_sfx.play()
 	player.hit_box_collider.set_deferred("disabled", true)
 	await play_hit_flash()

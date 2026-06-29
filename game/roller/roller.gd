@@ -7,6 +7,7 @@ const DAMAGE_AMOUNT: int = 4
 const KNOCKBACK_AMOUNT: float = 800
 
 @export var face_left: bool
+@export var volume_scale: float = 1.0
 
 var fsm: RollerFSM
 var direction: float = 1
@@ -29,7 +30,9 @@ func _ready() -> void:
 		upper_player_ray_cast.target_position.x *= -1
 		lower_player_ray_cast.target_position.x *= -1
 		direction = -1
-		
+
+	for sfx: AudioStreamPlayer2D in [roll_sfx, roll_whoosh_sfx, player_sighted_sfx, explode_sfx]:
+		sfx.volume_linear *= volume_scale
 
 	fsm = RollerFSM.new(self)
 
