@@ -4,7 +4,4 @@
 
 [resource]
 script = ExtResource("1_qxllf")
-log_level = 4
-log_process_frame = true
-log_physics_frame = true
 metadata/_custom_type_script = "uid://bbwyc40eh5md1"
