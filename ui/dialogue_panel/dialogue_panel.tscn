@@ -59,7 +59,7 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "INCOMING!"
+text = "INCOMING MSG"
 label_settings = SubResource("LabelSettings_vsp63")
 autowrap_mode = 3
 
@@ -70,8 +70,8 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "EVERYTHING IS COLLAPSING...
-GRAB ONTO THOSE RAILS AND GET THE HELL OUTTA THERE!"
+text = "THE MINE IS COLL*PSING!
+QUICK! GRAB ON#O THOSE RAILS AND ?ET THE HELL OUTTA TH@RE!"
 label_settings = SubResource("LabelSettings_phmfx")
 autowrap_mode = 3
 visible_characters_behavior = 1

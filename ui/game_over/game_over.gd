@@ -29,7 +29,7 @@ func on_quit_game() -> void:
 func _ready() -> void:
 	get_tree().paused = false
 	time_counter.time_left = time_left
-	Audio.stop_music()
+	Audio.play_music(Audio.MUSIC_GAME_OVER)
 	play_btn.pressed.connect(on_start_game)
 	quit_btn.pressed.connect(on_quit_game)
 	_enable_buttons()

@@ -26,12 +26,6 @@ func on_physics_process(delta: float) -> void:
 	apply_movement(delta)
 
 	player.coyote_time_remaining = max(0, player.coyote_time_remaining - delta)
-	player.jump_buffer_time_remaining = max(0, player.jump_buffer_time_remaining - delta)
-
-	# Buffer a jump press so it can fire on landing, and consume coyote time
-	# while still airborne. Must run in physics where input is freshly updated.
-	if player.input.jump_just_pressed:
-		player.jump_buffer_time_remaining = Player.JUMP_BUFFER_TIME
 
 	if player.velocity.y > Player.TERMINAL_VELOCITY:
 		player.velocity.y = Player.TERMINAL_VELOCITY

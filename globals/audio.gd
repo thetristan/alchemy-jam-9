@@ -3,6 +3,7 @@ extends Node
 const MUSIC_MAIN_MENU: AudioStream = preload("res://audio/music/Alc9_MainMenu.mp3")
 const MUSIC_GAME: AudioStream = preload("res://audio/music/Alc9_GamePlayBackground.mp3")
 const MUSIC_GAME_WON: AudioStream = preload("res://audio/music/Alc9_Win_Outro.mp3")
+const MUSIC_GAME_OVER: AudioStream = preload("res://audio/music/Alc9_GameOver.mp3")
 
 
 @onready var sfx_player: AudioStreamPlayer = %SFX

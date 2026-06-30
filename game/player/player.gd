@@ -145,6 +145,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_update_input(delta)
+	_update_jump_buffer(delta)
 	fsm.physics_process(delta)
 
 	# Snap to floor
@@ -182,6 +183,14 @@ func _update_input(delta: float) -> void:
 			direction = signf(input.move.x)
 		input_queue.pop_front()
 		input.update(delta)
+
+
+func _update_jump_buffer(delta: float) -> void:
+	# Service the jump buffer centrally so a press is captured no matter which state
+	# is active when it happens. is_jumping() then honors it as soon as we're grounded.
+	jump_buffer_time_remaining = max(0, jump_buffer_time_remaining - delta)
+	if input.jump_just_pressed:
+		jump_buffer_time_remaining = JUMP_BUFFER_TIME
 
 
 func push_input(scripted_input: PlayerInput) -> void:

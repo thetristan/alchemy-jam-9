@@ -34,6 +34,10 @@ func start() -> void:
 		_message_tween.kill()
 		message.visible_characters = length
 
+	if _blink_tween:
+		_blink_tween.kill()
+	sender_name.modulate.a = 1.0
+
 	time_counter.show()
 	_cancel_dialogue = null
 	await finished
