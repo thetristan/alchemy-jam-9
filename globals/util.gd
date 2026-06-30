@@ -11,13 +11,13 @@ func timer(delay: float, process_always: bool = false) -> Signal:
 
 
 func _process(delta: float) -> void:
-	# if not auto_screenshot_enabled:
-		# return
-	# _auto_screenshot_elapsed += delta
-	# if _auto_screenshot_elapsed >= auto_screenshot_interval:
-	# _auto_screenshot_elapsed = 0.0
-	take_screenshot()
+	if not auto_screenshot_enabled:
+		return
 
+	_auto_screenshot_elapsed += delta
+	if _auto_screenshot_elapsed >= auto_screenshot_interval:
+		_auto_screenshot_elapsed = 0.0
+		take_screenshot()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("take_screenshot"):
