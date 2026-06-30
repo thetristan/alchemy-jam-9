@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://db3vraffoxtba"]
 
 [ext_resource type="Script" uid="uid://1eko2snnkqua" path="res://ui/time_counter/time_counter.gd" id="1_4t802"]
-[ext_resource type="Texture2D" uid="uid://djrcoerkle7en" path="res://ui/time_counter/.time_icon.aseprite.ase_bake.res" id="2_4t802"]
 [ext_resource type="Texture2D" uid="uid://dkjo4dtkgmjsx" path="res://ui/time_counter/time_icon.aseprite" id="3_5nqnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yot74"]
-atlas = ExtResource("2_4t802")
+atlas = ExtResource("3_5nqnj")
 region = Rect2(-1, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t802"]
