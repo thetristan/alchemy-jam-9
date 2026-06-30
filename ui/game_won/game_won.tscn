@@ -39,69 +39,70 @@ text = "YOU ESCAPED!"
 label_settings = SubResource("LabelSettings_phmfx")
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=120932911]
+[node name="MetricsContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=120932911]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 0)
 custom_maximum_size = Vector2(140, -1)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=51556877]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MetricsContainer" unique_id=51556877]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1806587043]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1806587043]
 layout_mode = 2
 text = "TIME TAKEN"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="TimeTaken" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1060127726]
+[node name="TimeTaken" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1060127726]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1552987010]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1552987010]
 layout_mode = 2
 text = "HITS TAKEN"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="DamageTaken" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1562289179]
+[node name="DamageTaken" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1562289179]
 unique_name_in_owner = true
 layout_mode = 2
 text = "86"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=2003827176]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=2003827176]
 layout_mode = 2
 text = "NUMBER DEATHS"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="NumberDeaths" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=809967005]
+[node name="NumberDeaths" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=809967005]
 unique_name_in_owner = true
 layout_mode = 2
 text = "12"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1703055758]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1703055758]
 layout_mode = 2
 text = "RAILS RODE"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="RailsRode" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1830835737]
+[node name="RailsRode" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1830835737]
 unique_name_in_owner = true
 layout_mode = 2
 text = "43"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=489758298]
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=489758298]
 layout_mode = 2
 text = "TRAPS SNAPPED"
 label_settings = SubResource("LabelSettings_71420")
 
-[node name="TrapsSnapped" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1131903456]
+[node name="TrapsSnapped" type="Label" parent="MarginContainer/VBoxContainer/MetricsContainer/GridContainer" unique_id=1131903456]
 unique_name_in_owner = true
 layout_mode = 2
 text = "43"

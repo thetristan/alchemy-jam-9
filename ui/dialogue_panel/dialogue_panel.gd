@@ -11,7 +11,6 @@ const SENDER_NAME_BLINK_INTERVAL: float = 1.0 / 3.0
 @onready var time_counter: TimeCounter = %TimeCounter
 
 @onready var dialogue_loop_sfx: AudioStreamPlayer = %DialogueLoopSFX
-@onready var dialogue_intro_sfx: AudioStreamPlayer = %DialogueIntroSFX
 
 var _message_tween: Tween
 var _blink_tween: Tween
@@ -28,7 +27,15 @@ func _ready() -> void:
 
 
 func start() -> void:
-	dialogue_intro_sfx.play()
+	offset_transform_enabled = true
+	offset_transform_position.y -= 180
+	await Util.timer(0.5)
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "offset_transform_position", Vector2.ZERO, 0.5)
+	await tween.finished
+	
 	var length: int = message.text.length()
 	var duration: float = 0.05 * length
 	_message_tween = create_tween()

@@ -43,6 +43,7 @@ const MIN_HEIGHT: float = 48
 
 const MAX_HEALTH: int = 12
 
+@export var silent: bool
 @export var disable_real_input: bool
 
 var dead: bool:
@@ -120,6 +121,7 @@ var disable_signal: bool
 @onready var death_sfx: AudioStreamPlayer2D = %DeathSFX
 @onready var attach_to_rail_sfx: AudioStreamPlayer2D = %AttachToRailSFX
 @onready var detach_from_rail_sfx: AudioStreamPlayer2D = %DetachFromRailSFX
+@onready var spawn_sfx: AudioStreamPlayer2D = %SpawnSFX
 
 
 func _ready() -> void:
@@ -213,9 +215,15 @@ func add_health(amount: int) -> void:
 	health += amount
 
 
+func play_sfx(sfx: AudioStreamPlayer2D) -> void:
+	if silent:
+		return
+	sfx.play()
+
+
 func spawn_in() -> void:
 	fsm.transition_to_spawning_state()
-	
+
 
 func hit(amount: int, damage_origin: Vector2, force: float, duration: float = 0.2) -> void:
 	if fsm.current_state in [fsm.hit_state, fsm.dying_state]:

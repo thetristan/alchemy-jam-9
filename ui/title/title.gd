@@ -3,6 +3,9 @@ extends CanvasLayer
 
 @onready var play_btn: Button = %Play
 @onready var options_btn: Button = %Options
+@onready var title_container: Control = %TitleContainer
+
+@onready var game_start_sfx: AudioStreamPlayer = %GameStartSFX
 
 @onready var buttons: Array[Button] = [
 	play_btn,
@@ -11,7 +14,8 @@ extends CanvasLayer
 
 func on_start_game() -> void:
 	_disable_buttons()
-	var palette_shader: PaletteShader = PaletteShader.get_instance()
+	game_start_sfx.play()
+	var palette_shader: PaletteShader = %PaletteShader
 	await palette_shader.fade_out(4 / 12.0)
 	SceneManager.replace_with_game_scene()
 
@@ -25,6 +29,14 @@ func _ready() -> void:
 	Audio.play_music(Audio.MUSIC_MAIN_MENU)
 	play_btn.pressed.connect(on_start_game)
 	options_btn.pressed.connect(on_options_show)
+	title_container.offset_transform_position.y -= 180
+
+	await Util.timer(0.5)
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.tween_property(title_container, "offset_transform_position", Vector2.ZERO, 0.5)
+	await tween.finished
 
 	for b in buttons:
 		b.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))

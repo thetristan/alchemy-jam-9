@@ -10,7 +10,7 @@ var metrics: Metrics
 @onready var number_deaths_label: Label = %NumberDeaths
 @onready var rails_rode_label: Label = %RailsRode
 @onready var traps_snapped_label: Label = %TrapsSnapped
-
+@onready var metrics_container: Control = %MetricsContainer
 
 func on_start_game() -> void:
 	_disable_button()
@@ -28,6 +28,17 @@ func _ready() -> void:
 	quit_btn.pressed.connect(on_quit_game)
 	quit_btn.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
 	_update_metrics()
+
+	metrics_container.offset_transform_enabled = true
+	metrics_container.offset_transform_position.y -= 180
+	await Util.timer(0.5)
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.tween_property(metrics_container, "offset_transform_position", Vector2.ZERO, 0.5)
+	await tween.finished
+	
+
 	_enable_button()
 
 

@@ -14,7 +14,7 @@ func on_enter() -> void:
 	if is_dead():
 		return
 
-	player.hit_sfx.play()
+	player.play_sfx(player.hit_sfx)
 	await play_hit_flash()
 
 

@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://uow3n40wodem" path="res://audio/sfx/dialogue_loop/SFX_TypeMultipleRetro11.mp3" id="2_1q2b3"]
 [ext_resource type="SpriteFrames" uid="uid://dsgpp4qstb82l" path="res://game/static/static.aseprite" id="2_a5jdu"]
 [ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="3_1q2b3"]
-[ext_resource type="AudioStream" uid="uid://dbjbvu624bgif" path="res://audio/sfx/dialogue_intro/SFX_Suspiciousv4.mp3" id="3_2mbwl"]
 [ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="4_2mbwl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phmfx"]
@@ -36,11 +35,6 @@ script = ExtResource("1_a5jdu")
 unique_name_in_owner = true
 stream = ExtResource("2_1q2b3")
 volume_db = -12.0
-bus = &"SFX"
-
-[node name="DialogueIntroSFX" type="AudioStreamPlayer" parent="." unique_id=2014640139]
-unique_name_in_owner = true
-stream = ExtResource("3_2mbwl")
 bus = &"SFX"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=256900344]

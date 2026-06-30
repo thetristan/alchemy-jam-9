@@ -40,12 +40,12 @@ func on_physics_process(delta: float) -> void:
 
 	if is_idle():
 		player.landed = true
-		player.land_sfx.play()
+		player.play_sfx(player.land_sfx)
 		fsm.transition_to(fsm.idle_state)
 		return
 
 	if is_moving():
 		player.landed = true
-		player.land_sfx.play()
+		player.play_sfx(player.land_sfx)
 		fsm.transition_to(fsm.moving_state)
 		return

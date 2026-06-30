@@ -16,7 +16,7 @@ static func get_instance() -> Game:
 	return tree.get_first_node_in_group(GROUP) as Game
 
 
-static var LEVEL_SCENE: PackedScene = preload("res://game/levels/level_1.tscn")
+const LEVEL_SCENE_PATH: String = "res://game/levels/level_1.tscn"
 var level: Level
 
 var lives: int = STARTING_LIVES:
@@ -132,7 +132,7 @@ func load_level() -> void:
 	gameplay_hud.hide()
 	lives_counter_container.hide()
 
-	level = LEVEL_SCENE.instantiate() as Level
+	level = (load(LEVEL_SCENE_PATH) as PackedScene).instantiate() as Level
 	add_child(level)
 	level.player.hide()
 	level.player.disable()

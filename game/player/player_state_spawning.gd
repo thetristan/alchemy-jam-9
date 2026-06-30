@@ -12,6 +12,7 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	player.show()
+	player.play_sfx(player.spawn_sfx)
 	player.sprite.play("spawning")
 	await player.sprite.animation_finished
 	fsm.transition_to_idle_state()

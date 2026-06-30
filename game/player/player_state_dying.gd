@@ -12,10 +12,10 @@ func _to_string() -> String:
 
 func on_enter() -> void:
 	SignalBus.player_dying.emit()
-	player.hit_sfx.play()
+	player.play_sfx(player.hit_sfx)
 	player.hit_box_collider.set_deferred("disabled", true)
 	await play_hit_flash()
-	player.death_sfx.play()
+	player.play_sfx(player.death_sfx)
 	player.sprite.play("dying")
 	await player.sprite.animation_finished
 	player.hide()

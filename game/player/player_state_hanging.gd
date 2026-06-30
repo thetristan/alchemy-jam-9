@@ -24,7 +24,7 @@ func on_enter() -> void:
 	player.attached_rail = intersecting_rail()
 	Log.info(self, on_enter, "Attaching to rail %s" % player.attached_rail)
 
-	player.attach_to_rail_sfx.play()
+	player.play_sfx(player.attach_to_rail_sfx)
 	SignalBus.player_rail_attached.emit()
 	player.sprite.play("hanging")
 
@@ -56,7 +56,7 @@ func on_exit() -> void:
 	is_attached = false
 	player.spark_left.emitting = false
 	player.spark_right.emitting = false
-	player.detach_from_rail_sfx.play()
+	player.play_sfx(player.detach_from_rail_sfx)
 	player.wheel_collider.set_deferred("disabled", true)
 	player.attach_ray_cast.add_exception(player.attached_rail)
 	player.attached_rail = null

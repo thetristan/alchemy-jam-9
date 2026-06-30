@@ -23,7 +23,7 @@ func on_enter() -> void:
 	jump_active = true
 	player.velocity.y = Player.JUMP_HEIGHT
 	player.sprite.play("jumping")
-	player.jump_sfx.play()
+	player.play_sfx(player.jump_sfx)
 
 
 func on_exit() -> void:

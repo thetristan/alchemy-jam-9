@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bpogj3cyj7ay6" path="res://audio/sfx/player_jump/SFX_MediumJumpv4.mp3" id="2_5fytw"]
 [ext_resource type="SpriteFrames" uid="uid://brwopi85ewuvw" path="res://game/player/player_wheel.aseprite" id="2_8soms"]
 [ext_resource type="SpriteFrames" uid="uid://ctsthe8euodsb" path="res://game/player/player.aseprite" id="2_b2mth"]
+[ext_resource type="AudioStream" uid="uid://cp0g1ykqdfn1i" path="res://audio/sfx/player_spawn/SFX_Magicv1.mp3" id="3_3ep63"]
 [ext_resource type="AudioStream" uid="uid://d3dawmqhsxsuy" path="res://audio/sfx/player_land/Hit_Door_Weak_v1_wav.mp3" id="3_4ste8"]
 [ext_resource type="AudioStream" uid="uid://b5fujum8fa51h" path="res://audio/sfx/player_attached/SFX_MetalObjectImpactv1.mp3" id="3_j0mij"]
 [ext_resource type="AudioStream" uid="uid://dx81rjsde065t" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v1_wav.mp3" id="4_5ghna"]
@@ -18,6 +19,11 @@
 random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("2_5fytw")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rqcxa"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("3_3ep63")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gb4gm"]
 random_pitch = 1.0293022
@@ -58,6 +64,13 @@ metadata/_edit_horizontal_guides_ = [37.0]
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="." unique_id=932889026]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_txo27")
+bus = &"SFX"
+
+[node name="SpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=407659904]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_rqcxa")
+volume_db = -6.0
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="WheelSFX" type="AudioStreamPlayer2D" parent="." unique_id=243828440]
