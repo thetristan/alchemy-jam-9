@@ -145,17 +145,15 @@ func replace_with_game_over_scene() -> void:
 	replace_scene(game_over_scene)
 
 
-func push_game_won_scene(num_deaths: int, time_taken: int) -> void:
+func push_game_won_scene(metrics: Metrics) -> void:
 	var scene_instance: Node = game_won_scene.instance()
-	scene_instance.num_deaths = num_deaths
-	scene_instance.time_taken = time_taken
+	scene_instance.metrics = metrics
 	push_scene(game_won_scene)
 
 
-func replace_with_game_won_scene(num_deaths: int, time_taken: int) -> void:
+func replace_with_game_won_scene(metrics: Metrics) -> void:
 	var scene_instance: Node = game_won_scene.instance()
-	scene_instance.num_deaths = num_deaths
-	scene_instance.time_taken = time_taken
+	scene_instance.metrics = metrics
 	replace_scene(game_won_scene)
 
 

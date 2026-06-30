@@ -4,10 +4,9 @@ scenes:
   title: res://ui/title/title.tscn
   game: res://game/game.tscn
   game_over: res://ui/game_over/game_over.tscn  
-  game_won: 
+  game_won:
     path: res://ui/game_won/game_won.tscn
     data:
-    - num_deaths: int
-    - time_taken: int
+    - metrics: Metrics
   paused: res://ui/pause/pause.tscn
   options: res://ui/options/options.tscn

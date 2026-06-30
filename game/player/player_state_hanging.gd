@@ -25,6 +25,7 @@ func on_enter() -> void:
 	Log.info(self, on_enter, "Attaching to rail %s" % player.attached_rail)
 
 	player.attach_to_rail_sfx.play()
+	SignalBus.player_rail_attached.emit()
 	player.sprite.play("hanging")
 
 	# Burst both sparks briefly on attach.

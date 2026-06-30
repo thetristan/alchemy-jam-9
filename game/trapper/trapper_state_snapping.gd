@@ -16,6 +16,7 @@ func on_enter() -> void:
 	trapper.sprite.frame_changed.connect(_on_frame_changed)
 	trapper.sprite.play("activate")
 	trapper.snap_sfx.play()
+	SignalBus.trap_snapped.emit()
 	await trapper.sprite.animation_finished
 	await Util.timer(Trapper.RESET_TIME)
 	fsm.transition_to_idle_state()

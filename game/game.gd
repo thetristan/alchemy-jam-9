@@ -46,10 +46,7 @@ var first_play: bool = true
 var checkpoint_reached: StringName
 var clock_started: bool
 
-var num_deaths: int
-var num_traps: int
-var hits_taken: int
-var rails_rode: int
+static var metrics: Metrics
 
 
 @onready var lives_counter_container: PanelContainer = %LivesCounterContainer
@@ -63,6 +60,7 @@ var rails_rode: int
 
 func _ready() -> void:
 	add_to_group(GROUP)
+	metrics = Metrics.new()
 	Audio.play_music(Audio.MUSIC_GAME)
 	StaticFX.get_instance().coverage = 0
 	SignalBus.player_health_changed.connect(func(health: int, _max_health: int) -> void:
@@ -72,6 +70,11 @@ func _ready() -> void:
 	SignalBus.player_died.connect(lives_counter_container.show)
 	SignalBus.player_restarted_level.connect(load_level)
 	SignalBus.player_checkpoint_reached.connect(func(id: StringName) -> void: checkpoint_reached = id)
+
+	SignalBus.player_dying.connect(func() -> void: metrics.num_deaths += 1)
+	SignalBus.player_hit.connect(func() -> void: metrics.hits_taken += 1)
+	SignalBus.player_rail_attached.connect(func() -> void: metrics.rails_rode += 1)
+	SignalBus.trap_snapped.connect(func() -> void: metrics.num_traps += 1)
 
 	set_clock()
 	await load_level()
@@ -101,7 +104,8 @@ func game_won() -> void:
 
 	await palette_shader.fade_in(4 / 12.0, 1)
 
-	SceneManager.replace_with_game_won_scene(num_deaths, MAX_TIME - time_left)
+	metrics.time_taken = roundi(MAX_TIME - time_left)
+	SceneManager.replace_with_game_won_scene(metrics)
 
 
 func set_clock() -> void:

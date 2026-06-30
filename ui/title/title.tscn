@@ -1,17 +1,56 @@
-[gd_scene format=3 uid="uid://d3lcdirvnfbgl"]
+[gd_scene format=4 uid="uid://d3lcdirvnfbgl"]
 
 [ext_resource type="Script" uid="uid://b8kog17u63umv" path="res://ui/title/title.gd" id="1_7vilc"]
 [ext_resource type="FontFile" uid="uid://c7qsd7sbptvsn" path="res://fonts/Everyday_Slight.ttf" id="2_3dq5w"]
+[ext_resource type="PackedScene" uid="uid://ty2w3cwxyhag" path="res://game/rail/rail.tscn" id="2_6qjd8"]
 [ext_resource type="Texture2D" uid="uid://bp1cq8lhbak2" path="res://ui/title/logo.aseprite" id="2_kh5fk"]
+[ext_resource type="TileSet" uid="uid://b1q5qdte2ly4a" path="res://game/environment/rails_tile_set.tres" id="3_0x4rn"]
 [ext_resource type="PackedScene" uid="uid://dm6b2sseojiq1" path="res://game/palette/palette_shader.tscn" id="4_6wqi4"]
+[ext_resource type="PackedScene" uid="uid://dpolnluglrj6t" path="res://game/player/player.tscn" id="7_ld3vp"]
+[ext_resource type="Script" uid="uid://d1tpuoyppxewn" path="res://game/camera/camera.gd" id="8_4awe6"]
+[ext_resource type="Script" uid="uid://rbx2ww7trc3f" path="res://addons/triggers/delay_trigger.gd" id="9_0x4rn"]
+[ext_resource type="Script" uid="uid://cfh0v2mhuhlrh" path="res://game/player/player_input_trigger.gd" id="9_38ban"]
+[ext_resource type="Script" uid="uid://dlxfj7g0y2k8e" path="res://addons/triggers/teleport_trigger.gd" id="11_ld3vp"]
+
+[sub_resource type="Curve2D" id="Curve2D_sgkd7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 496, 164, 0, 0, 0, 0, 80, 164)
+}
+point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
 font = ExtResource("2_3dq5w")
 font_size = 5
 font_color = Color(0.1882353, 0.27058825, 0.36078432, 1)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vvvrr"]
+noise_type = 3
+frequency = 0.0231
+
 [node name="Title" type="CanvasLayer" unique_id=1251188337]
 script = ExtResource("1_7vilc")
+
+[node name="Rail" parent="." unique_id=739483624 instance=ExtResource("2_6qjd8")]
+position = Vector2(-128, -60)
+
+[node name="Path2D" type="Path2D" parent="Rail" unique_id=1710473753]
+curve = SubResource("Curve2D_sgkd7")
+
+[node name="Railing" type="TileMapLayer" parent="Rail" unique_id=1755937549]
+tile_map_data = PackedByteArray("AAAoABQAAAABAAAAAAApABQAAAABAAAAAAAqABQAAAABAAAAAAArABQAAAABAAAAAAAsABQAAAABAAAAAAAtABQAAAABAAAAAAAuABQAAAABAAAAAAAvABQAAAABAAAAAAAwABQAAAABAAAAAAAxABQAAAABAAAAAAAyABQAAAABAAAAAAAzABQAAAABAAAAAAA0ABQAAAABAAAAAAA1ABQAAAABAAAAAAA2ABQAAAABAAAAAAA3ABQAAAABAAAAAAAnABQAAAABAAAAAAAmABQAAAABAAAAAAAlABQAAAABAAAAAAAkABQAAAABAAAAAAAjABQAAAABAAAAAAAiABQAAAABAAAAAAAhABQAAAABAAAAAAAgABQAAAABAAAAAAAfABQAAAABAAAAAAAeABQAAAABAAAAAAAdABQAAAABAAAAAAAcABQAAAABAAAAAAAbABQAAAABAAAAAAAaABQAAAABAAAAAAAZABQAAAABAAAAAAAYABQAAAABAAAAAAAXABQAAAABAAAAAAAWABQAAAABAAAAAAAVABQAAAABAAAAAAAUABQAAAABAAAAAAATABQAAAABAAAAAAASABQAAAABAAAAAAARABQAAAABAAAAAAAQABQAAAABAAAAAAAPABQAAAABAAAAAAAOABQAAAABAAAAAAANABQAAAABAAAAAAAMABQAAAABAAAAAAALABQAAAABAAAAAAAKABQAAAABAAAAAAA=")
+tile_set = ExtResource("3_0x4rn")
+
+[node name="RailsDecor" type="TileMapLayer" parent="Rail" unique_id=944996231]
+tile_map_data = PackedByteArray("AAA+ABQAAAACAAAAAAA=")
+tile_set = ExtResource("3_0x4rn")
+
+[node name="PlayerX" parent="." unique_id=1546266692 instance=ExtResource("7_ld3vp")]
+unique_name_in_owner = true
+position = Vector2(-32, 90)
+disable_real_input = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=141803861]
+position = Vector2(-32, 90)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1266789758]
 anchors_preset = 15
@@ -25,7 +64,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=475253245]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 20
+theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1673101866]
 layout_mode = 2
@@ -35,14 +74,15 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1254488400]
 layout_mode = 2
-theme_override_constants/separation = 8
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -10)
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=187677303]
 layout_mode = 2
 texture = ExtResource("2_kh5fk")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=927713455]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=107658748]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -63,5 +103,45 @@ text = "GAME BY TBLEAZY * OST BY JACKSON CORDES"
 label_settings = SubResource("LabelSettings_phmfx")
 horizontal_alignment = 1
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1122421137]
+unique_name_in_owner = true
+process_physics_priority = 9999
+position = Vector2(-64, 128)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 4480
+limit_bottom = 432
+script = ExtResource("8_4awe6")
+decay = 0.3
+noise = SubResource("FastNoiseLite_vvvrr")
+
+[node name="DelayTrigger" type="Node" parent="." unique_id=620509746]
+process_mode = 1
+script = ExtResource("9_0x4rn")
+start_on_ready = true
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="PlayerInputTrigger" type="Node" parent="DelayTrigger" unique_id=56179846 node_paths=PackedStringArray("player")]
+script = ExtResource("9_38ban")
+player = NodePath("../../PlayerX")
+move = Vector2(1, 0)
+duration = 10.0
+metadata/_custom_type_script = "uid://cfh0v2mhuhlrh"
+
+[node name="DelayTrigger" type="Node" parent="DelayTrigger/PlayerInputTrigger" unique_id=1727383202]
+process_mode = 1
+script = ExtResource("9_0x4rn")
+delay = 5.0
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="TeleportTrigger" type="Node" parent="DelayTrigger/PlayerInputTrigger/DelayTrigger" unique_id=1846971275 node_paths=PackedStringArray("target", "target_position", "next_triggers")]
+script = ExtResource("11_ld3vp")
+target = NodePath("../../../../PlayerX")
+target_position = NodePath("../../../../Marker2D")
+next_triggers = [NodePath("../../..")]
+metadata/_custom_type_script = "uid://dlxfj7g0y2k8e"
+
 [node name="PaletteShader" parent="." unique_id=2007337692 instance=ExtResource("4_6wqi4")]
+visible = false
 mouse_filter = 2

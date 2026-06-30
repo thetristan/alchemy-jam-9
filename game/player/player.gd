@@ -221,6 +221,7 @@ func hit(amount: int, damage_origin: Vector2, force: float, duration: float = 0.
 	if fsm.current_state in [fsm.hit_state, fsm.dying_state]:
 		return
 
+	SignalBus.player_hit.emit()
 	health -= amount
 
 	var knockback_direction: Vector2 = knockback_origin.global_position.direction_to(damage_origin)

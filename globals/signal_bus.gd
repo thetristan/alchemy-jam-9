@@ -8,4 +8,7 @@ signal player_died
 signal player_health_changed(health: int, max_health: int)
 signal player_restarted_level
 signal player_checkpoint_reached(checkpoint_id: StringName)
+signal player_hit
+signal player_rail_attached
+signal trap_snapped
 @warning_ignore_restore("unused_signal")

@@ -1,7 +1,15 @@
 class_name GameWon
 extends CanvasLayer
 
+var metrics: Metrics
+
 @onready var quit_btn: Button = %MainMenu
+
+@onready var time_taken_label: Label = %TimeTaken
+@onready var damage_taken_label: Label = %DamageTaken
+@onready var number_deaths_label: Label = %NumberDeaths
+@onready var rails_rode_label: Label = %RailsRode
+@onready var traps_snapped_label: Label = %TrapsSnapped
 
 
 func on_start_game() -> void:
@@ -19,7 +27,22 @@ func _ready() -> void:
 	Audio.play_music(Audio.MUSIC_GAME_WON)
 	quit_btn.pressed.connect(on_quit_game)
 	quit_btn.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
+	_update_metrics()
 	_enable_button()
+
+
+func _update_metrics() -> void:
+	if not metrics:
+		return
+
+	@warning_ignore("integer_division")
+	var minutes: int = metrics.time_taken / 60
+	var seconds: int = metrics.time_taken % 60
+	time_taken_label.text = "%02d:%02d" % [minutes, seconds]
+	damage_taken_label.text = str(metrics.hits_taken)
+	number_deaths_label.text = str(metrics.num_deaths)
+	rails_rode_label.text = str(metrics.rails_rode)
+	traps_snapped_label.text = str(metrics.num_traps)
 
 
 func on_blur() -> void:
