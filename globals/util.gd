@@ -1,8 +1,22 @@
 extends Node
 
+@export var auto_screenshot_interval: float = 1.0
+@export var auto_screenshot_enabled: bool = false
+
+var _auto_screenshot_elapsed: float = 0.0
+
 
 func timer(delay: float, process_always: bool = false) -> Signal:
 	return get_tree().create_timer(delay, process_always).timeout
+
+
+func _process(delta: float) -> void:
+	# if not auto_screenshot_enabled:
+		# return
+	# _auto_screenshot_elapsed += delta
+	# if _auto_screenshot_elapsed >= auto_screenshot_interval:
+	# _auto_screenshot_elapsed = 0.0
+	take_screenshot()
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -21,8 +35,8 @@ func take_screenshot() -> void:
 
 		var err: int = image.save_png(full_path)
 		if err != OK:
-			Log.error(self , take_screenshot, "Error saving screenshot: %s" % err)
+			Log.error(self, take_screenshot, "Error saving screenshot: %s" % err)
 		else:
-			Log.info(self , take_screenshot, "Screenshot saved to: %s" % full_path)
+			Log.info(self, take_screenshot, "Screenshot saved to: %s" % full_path)
 	else:
-		Log.info(self , take_screenshot, "Screenshots not supported on web")
+		Log.info(self, take_screenshot, "Screenshots not supported on web")

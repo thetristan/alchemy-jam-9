@@ -96,4 +96,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
+[node name="LivesCounterPickup" parent="HUD/MarginContainer" unique_id=135675650 instance=ExtResource("4_u5opy")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+
 [node name="DebugContainer" parent="HUD" unique_id=2076150927 instance=ExtResource("12_qf6n1")]

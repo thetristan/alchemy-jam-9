@@ -27,6 +27,10 @@ func on_physics_process(delta: float) -> void: pass
 
 ### END GENERATED CONTENT ###
 
+const DROP_NUDGE: float = 2.0 # vertical nudge to clear the one-way platform
+const DROP_GROUND_PROBE: float = 8.0 # min clear space below (≈1 tile) to allow a drop
+
+
 func play_hit_flash() -> void:
 	var palette_shader: PaletteShader = PaletteShader.get_instance()
 	var static_fx: StaticFX = StaticFX.get_instance()
@@ -74,7 +78,15 @@ func is_moving() -> bool:
 func is_dropping() -> bool:
 	var on_floor: bool = player.is_on_floor()
 	var input_pressed: bool = player.input.down_strength > 0.7 and player.input.jump_pressed
-	return on_floor and input_pressed
+	return on_floor and input_pressed and not _ground_below_after_drop()
+
+
+func _ground_below_after_drop() -> bool:
+	var from: Transform2D = player.global_transform
+	from.origin.y += DROP_NUDGE
+	# recovery_as_collision defaults false, so a pre-existing overlap with the
+	# platform underfoot is NOT reported — only ground hit during the downward probe is.
+	return player.test_move(from, Vector2(0, DROP_GROUND_PROBE))
 
 
 func is_dropping_from_hang() -> bool:
@@ -108,7 +120,7 @@ func apply_gravity(delta: float) -> void:
 func drop() -> void:
 	player.velocity = Vector2.ZERO
 	player.floor_snap_length = 0
-	player.global_position.y += 2
+	player.global_position.y += DROP_NUDGE
 	player.was_dropped = true
 	fsm.transition_to(fsm.falling_state)
 

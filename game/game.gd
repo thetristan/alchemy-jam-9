@@ -45,12 +45,14 @@ var time_left: float:
 var first_play: bool = true
 var checkpoint_reached: StringName
 var clock_started: bool
+var _pickup_count: int = 0
 
 static var metrics: Metrics
 
 
 @onready var lives_counter_container: PanelContainer = %LivesCounterContainer
 @onready var lives_counter: LivesCounter = %LivesCounter
+@onready var lives_counter_pickup: LivesCounter = %LivesCounterPickup
 @onready var gameplay_hud: MarginContainer = %GameplayHUD
 @onready var health_bar: HealthBar = %HealthBar
 @onready var time_counter: TimeCounter = %TimeCounter
@@ -86,7 +88,16 @@ func _process(delta: float) -> void:
 
 
 func add_lives(amount: int) -> void:
+	_pickup_count += 1
+	lives_counter_pickup.show()
+
+	await Util.timer(1.0)
 	lives += amount
+
+	await Util.timer(2.0)
+	_pickup_count -= 1
+	if _pickup_count == 0:
+		lives_counter_pickup.hide()
 
 
 func game_over() -> void:

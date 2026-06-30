@@ -89,6 +89,9 @@ var height: float = MIN_HEIGHT:
 
 var fsm: PlayerFSM
 
+var hitbox_disabled: bool = false
+var _hit_box_default_collision_layer: int
+
 var input: PlayerInput:
 	get: return input_queue.front() if not input_queue.is_empty() else base_input
 	set(new_val): pass
@@ -130,6 +133,8 @@ func _ready() -> void:
 	wheel_collider.disabled = true
 	wheel_sprite.hide()
 
+	_hit_box_default_collision_layer = hit_box.collision_layer
+
 	fsm = PlayerFSM.new(self)
 	fsm.transitioned.connect(func(from, to) -> void:
 		Log.debug(self, Callable(), "Player: %s -> %s" % [from, to]))
@@ -168,14 +173,29 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug"):
+	if event.is_action_pressed("debug_move"):
 		if fsm.current_state == fsm.debug_state:
 			fsm.transition_to_idle_state()
 		elif fsm.current_state not in [fsm.dying_state, fsm.dead_state, fsm.disabled_state]:
 			fsm.transition_to_debug_state()
 		return
 
+	if event.is_action_pressed("debug_hitbox"):
+		toggle_hitbox_disabled()
+		return
+
 	fsm.input(event)
+
+
+func toggle_hitbox_disabled() -> void:
+	hitbox_disabled = not hitbox_disabled
+	apply_hitbox_disabled()
+
+
+func apply_hitbox_disabled() -> void:
+	hit_box.set_deferred("monitoring", not hitbox_disabled)
+	hit_box.set_deferred("monitorable", not hitbox_disabled)
+	hit_box.set_deferred("collision_layer", 0 if hitbox_disabled else _hit_box_default_collision_layer)
 
 
 func _update_input(delta: float) -> void:

@@ -14,8 +14,6 @@ const DEBUG_SPEED: float = 300.0
 
 var _saved_collision_layer: int
 var _saved_collision_mask: int
-var _saved_hit_box_monitoring: bool
-var _saved_hit_box_monitorable: bool
 
 
 func on_enter() -> void:
@@ -24,21 +22,23 @@ func on_enter() -> void:
 
 	_saved_collision_layer = player.collision_layer
 	_saved_collision_mask = player.collision_mask
-	_saved_hit_box_monitoring = player.hit_box.monitoring
-	_saved_hit_box_monitorable = player.hit_box.monitorable
 
 	player.collision_layer = 0
 	player.collision_mask = 0
 	player.hit_box.monitoring = false
 	player.hit_box.monitorable = false
+	# RayCast2D queries match on collision_layer and ignore monitoring/monitorable,
+	# so the hit box must be taken off its layer to hide it from raycasts (e.g. the roller).
+	player.hit_box.collision_layer = 0
 
 
 func on_exit() -> void:
 	player.velocity = Vector2.ZERO
 	player.collision_layer = _saved_collision_layer
 	player.collision_mask = _saved_collision_mask
-	player.hit_box.set_deferred("monitoring", _saved_hit_box_monitoring)
-	player.hit_box.set_deferred("monitorable", _saved_hit_box_monitorable)
+	# Defer hit box restoration to the player's standalone toggle so the two debug modes
+	# stay consistent (e.g. if invincibility was toggled on while in debug move).
+	player.apply_hitbox_disabled()
 
 
 func on_physics_process(delta: float) -> void:
