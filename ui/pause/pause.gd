@@ -19,6 +19,9 @@ func _ready() -> void:
 	quit_btn.pressed.connect(SceneManager.replace_with_title_scene)
 	options_btn.pressed.connect(SceneManager.push_options_scene)
 
+	for b in buttons:
+		b.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
+
 
 func on_pause_hide() -> void:
 	_disable_buttons()

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b8kog17u63umv" path="res://ui/title/title.gd" id="1_7vilc"]
 [ext_resource type="FontFile" uid="uid://c7qsd7sbptvsn" path="res://fonts/Everyday_Slight.ttf" id="2_3dq5w"]
 [ext_resource type="Texture2D" uid="uid://bp1cq8lhbak2" path="res://ui/title/logo.aseprite" id="2_kh5fk"]
+[ext_resource type="PackedScene" uid="uid://dm6b2sseojiq1" path="res://game/palette/palette_shader.tscn" id="4_6wqi4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
 font = ExtResource("2_3dq5w")
@@ -61,3 +62,6 @@ layout_mode = 2
 text = "GAME BY TBLEAZY * OST BY JACKSON CORDES"
 label_settings = SubResource("LabelSettings_phmfx")
 horizontal_alignment = 1
+
+[node name="PaletteShader" parent="." unique_id=2007337692 instance=ExtResource("4_6wqi4")]
+mouse_filter = 2

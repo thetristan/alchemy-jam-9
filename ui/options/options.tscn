@@ -9,13 +9,6 @@ font = ExtResource("2_lpsnn")
 font_size = 7
 font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oucm"]
-content_margin_top = 1.0
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4e3p"]
 atlas = ExtResource("3_2j2dl")
 region = Rect2(14, 2, 8, 8)
@@ -29,6 +22,13 @@ region = Rect2(38, 2, 8, 8)
 [sub_resource type="LabelSettings" id="LabelSettings_3baf4"]
 font_size = 5
 font_color = Color(0.1882353, 0.2705882, 0.3607843, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oucm"]
+content_margin_top = 1.0
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Options" type="CanvasLayer" unique_id=643608221]
 process_mode = 3
@@ -66,11 +66,6 @@ text = "OPTIONS"
 label_settings = SubResource("LabelSettings_f75v3")
 horizontal_alignment = 1
 uppercase = true
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=754756276]
-layout_mode = 2
-theme_override_constants/separation = 3
-theme_override_styles/separator = SubResource("StyleBoxTexture_7oucm")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1989389973]
 layout_mode = 2
@@ -150,6 +145,11 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(0, 1)
 text = " CRT FILTER"
 label_settings = SubResource("LabelSettings_3baf4")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=754756276]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxTexture_7oucm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelContainer/VBoxContainer" unique_id=367472306]
 layout_mode = 2

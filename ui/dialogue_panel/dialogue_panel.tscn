@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://c84autmxko223" path="res://ui/panel_container/inset_panel.aseprite" id="1_5wrfp"]
 [ext_resource type="Script" uid="uid://dtfbdmlbhwfx6" path="res://ui/dialogue_panel/dialogue_panel.gd" id="1_a5jdu"]
+[ext_resource type="AudioStream" uid="uid://uow3n40wodem" path="res://audio/sfx/dialogue_loop/SFX_TypeMultipleRetro11.mp3" id="2_1q2b3"]
 [ext_resource type="SpriteFrames" uid="uid://dsgpp4qstb82l" path="res://game/static/static.aseprite" id="2_a5jdu"]
 [ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="3_1q2b3"]
+[ext_resource type="AudioStream" uid="uid://dbjbvu624bgif" path="res://audio/sfx/dialogue_intro/SFX_Suspiciousv4.mp3" id="3_2mbwl"]
 [ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="4_2mbwl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phmfx"]
@@ -29,6 +31,17 @@ font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_a5jdu")
+
+[node name="DialogueLoopSFX" type="AudioStreamPlayer" parent="." unique_id=618140552]
+unique_name_in_owner = true
+stream = ExtResource("2_1q2b3")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="DialogueIntroSFX" type="AudioStreamPlayer" parent="." unique_id=2014640139]
+unique_name_in_owner = true
+stream = ExtResource("3_2mbwl")
+bus = &"SFX"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=256900344]
 layout_mode = 2
@@ -59,7 +72,7 @@ custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "INCOMING MSG"
+text = "-- INCOMING MSG --"
 label_settings = SubResource("LabelSettings_vsp63")
 autowrap_mode = 3
 

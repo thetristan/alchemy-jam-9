@@ -46,6 +46,11 @@ var first_play: bool = true
 var checkpoint_reached: StringName
 var clock_started: bool
 
+var num_deaths: int
+var num_traps: int
+var hits_taken: int
+var rails_rode: int
+
 
 @onready var lives_counter_container: PanelContainer = %LivesCounterContainer
 @onready var lives_counter: LivesCounter = %LivesCounter
@@ -53,6 +58,7 @@ var clock_started: bool
 @onready var health_bar: HealthBar = %HealthBar
 @onready var time_counter: TimeCounter = %TimeCounter
 @onready var dialogue_panel: PanelContainer = %DialoguePanel
+@onready var palette_shader: PaletteShader = %PaletteShader
 
 
 func _ready() -> void:
@@ -86,7 +92,16 @@ func game_over() -> void:
 	if not player.dead:
 		Player.get_instance().kill()
 		await SignalBus.player_died
-	SceneManager.replace_with_game_over_scene(floor(time_left))
+	SceneManager.replace_with_game_over_scene()
+
+
+func game_won() -> void:
+	var player: Player = Player.get_instance()
+	player.disable()
+
+	await palette_shader.fade_in(4 / 12.0, 1)
+
+	SceneManager.replace_with_game_won_scene(num_deaths, MAX_TIME - time_left)
 
 
 func set_clock() -> void:
@@ -115,12 +130,12 @@ func load_level() -> void:
 
 	level = LEVEL_SCENE.instantiate() as Level
 	add_child(level)
+	level.player.hide()
 	level.player.disable()
 
 	if checkpoint_reached:
 		level.move_player_to_checkpoint(checkpoint_reached)
 
-	var palette_shader: PaletteShader = PaletteShader.get_instance()
 	palette_shader.brightness = 1
 	await Util.timer(0.3)
 	var tween: Tween = create_tween()
@@ -135,5 +150,5 @@ func load_level() -> void:
 		first_play = false
 
 	gameplay_hud.show()
-	level.player.enable()
+	level.player.spawn_in()
 	clock_started = true

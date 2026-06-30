@@ -10,3 +10,4 @@ states:
   - dying
   - dead
   - debug
+  - spawning

@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://vrsf1ojtk6lv"]
 
-[ext_resource type="Script" uid="uid://rx4af3wg08ht" path="res://ui/game_over/game_over.gd" id="1_8e1se"]
+[ext_resource type="Script" uid="uid://dkavjy8u51ehe" path="res://ui/game_won/game_won.gd" id="1_evjrj"]
 [ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="2_4cp6t"]
-[ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="3_6lpyu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_phmfx"]
 font = ExtResource("2_4cp6t")
-font_size = 14
-font_color = Color(0.7529412, 0.4941176, 0.3254902, 1)
+font_size = 7
+font_color = Color(0.1882353, 0.2705882, 0.3607843, 1)
 
-[node name="Title" type="CanvasLayer" unique_id=1251188337]
-script = ExtResource("1_8e1se")
+[sub_resource type="LabelSettings" id="LabelSettings_71420"]
+font_size = 5
+font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
+[node name="GameWon" type="CanvasLayer" unique_id=1251188337]
+script = ExtResource("1_evjrj")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1266789758]
 anchors_preset = 15
@@ -21,39 +24,101 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BG" type="ColorRect" parent="MarginContainer" unique_id=761103272]
+layout_mode = 2
+color = Color(0.972549, 0.9176471, 0.8117647, 1)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=475253245]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 12
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1673101866]
 layout_mode = 2
-text = "GAME OVER"
+text = "YOU ESCAPED!"
 label_settings = SubResource("LabelSettings_phmfx")
 horizontal_alignment = 1
 
-[node name="TimeCounter" parent="MarginContainer/VBoxContainer" unique_id=1035572189 instance=ExtResource("3_6lpyu")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 12)
-custom_maximum_size = Vector2(-1, -1)
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=120932911]
+custom_minimum_size = Vector2(140, 0)
+custom_maximum_size = Vector2(140, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=51556877]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1806587043]
+layout_mode = 2
+text = "TIME TAKEN"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="TimeTaken" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1060127726]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1552987010]
+layout_mode = 2
+text = "HITS TAKEN"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="DamageTaken" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1562289179]
+unique_name_in_owner = true
+layout_mode = 2
+text = "86"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=2003827176]
+layout_mode = 2
+text = "NUMBER DEATHS"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="NumberDeaths" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=809967005]
+unique_name_in_owner = true
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1703055758]
+layout_mode = 2
+text = "RAILS RODE"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="RailsRode" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1830835737]
+unique_name_in_owner = true
+layout_mode = 2
+text = "43"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=489758298]
+layout_mode = 2
+text = "TRAPS SNAPPED"
+label_settings = SubResource("LabelSettings_71420")
+
+[node name="TrapsSnapped" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/GridContainer" unique_id=1131903456]
+unique_name_in_owner = true
+layout_mode = 2
+text = "43"
+label_settings = SubResource("LabelSettings_71420")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1254488400]
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=927713455]
-custom_minimum_size = Vector2(72, 0)
+custom_minimum_size = Vector2(72, 28)
 layout_mode = 2
 size_flags_horizontal = 4
-
-[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer" unique_id=969542587]
-unique_name_in_owner = true
-layout_mode = 2
-text = "PLAY AGAIN"
+size_flags_vertical = 8
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1295215565]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 10
 text = "MAIN MENU"

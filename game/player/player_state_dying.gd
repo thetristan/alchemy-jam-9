@@ -33,7 +33,7 @@ func on_enter() -> void:
 
 	var game: Game = Game.get_instance()
 	if game.lives == 0:
-		SceneManager.replace_with_game_over_scene(floor(game.time_left))
+		SceneManager.replace_with_game_over_scene()
 		return
 
 	SignalBus.player_died.emit()

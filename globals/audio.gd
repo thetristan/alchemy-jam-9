@@ -5,6 +5,9 @@ const MUSIC_GAME: AudioStream = preload("res://audio/music/Alc9_GamePlayBackgrou
 const MUSIC_GAME_WON: AudioStream = preload("res://audio/music/Alc9_Win_Outro.mp3")
 const MUSIC_GAME_OVER: AudioStream = preload("res://audio/music/Alc9_GameOver.mp3")
 
+const SFX_UI_ACCEPT: AudioStream = preload("res://audio/sfx/ui_accept/SFX_ClickConfirmationOnev1.mp3")
+const SFX_UI_CANCEL: AudioStream = preload("res://audio/sfx/ui_cancel/SFX_BackOptionOnev1.mp3")
+
 
 @onready var sfx_player: AudioStreamPlayer = %SFX
 @onready var music_player: AudioStreamPlayer = %Music

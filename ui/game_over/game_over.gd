@@ -1,13 +1,6 @@
 class_name GameOver
 extends CanvasLayer
 
-var time_left: int:
-	set(new_val):
-		time_left = new_val
-		if not is_node_ready():
-			return
-		time_counter.time_left = time_left
-
 @onready var play_btn: Button = %PlayAgain
 @onready var quit_btn: Button = %MainMenu
 @onready var time_counter: TimeCounter = %TimeCounter
@@ -28,10 +21,13 @@ func on_quit_game() -> void:
 
 func _ready() -> void:
 	get_tree().paused = false
-	time_counter.time_left = time_left
-	Audio.play_music(Audio.MUSIC_GAME_OVER)
+	Audio.play_music(Audio.MUSIC_GAME_WON)
 	play_btn.pressed.connect(on_start_game)
 	quit_btn.pressed.connect(on_quit_game)
+
+	for b in buttons:
+		b.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
+
 	_enable_buttons()
 
 

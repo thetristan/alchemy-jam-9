@@ -10,6 +10,9 @@ const SENDER_NAME_BLINK_INTERVAL: float = 1.0 / 3.0
 @onready var message: Label = %Message
 @onready var time_counter: TimeCounter = %TimeCounter
 
+@onready var dialogue_loop_sfx: AudioStreamPlayer = %DialogueLoopSFX
+@onready var dialogue_intro_sfx: AudioStreamPlayer = %DialogueIntroSFX
+
 var _message_tween: Tween
 var _blink_tween: Tween
 var _cancel_dialogue: CancellableAwait
@@ -25,15 +28,18 @@ func _ready() -> void:
 
 
 func start() -> void:
+	dialogue_intro_sfx.play()
 	var length: int = message.text.length()
 	var duration: float = 0.05 * length
 	_message_tween = create_tween()
 	_message_tween.tween_property(message, "visible_characters", length, duration)
 	_cancel_dialogue = CancellableAwait.new(_message_tween.finished)
+	dialogue_loop_sfx.play()
 	if await _cancel_dialogue.finished:
 		_message_tween.kill()
 		message.visible_characters = length
 
+	dialogue_loop_sfx.stop()
 	if _blink_tween:
 		_blink_tween.kill()
 	sender_name.modulate.a = 1.0

@@ -3,10 +3,11 @@ autoload: true
 scenes:
   title: res://ui/title/title.tscn
   game: res://game/game.tscn
-  game_over: 
-    path: res://ui/game_over/game_over.tscn
+  game_over: res://ui/game_over/game_over.tscn  
+  game_won: 
+    path: res://ui/game_won/game_won.tscn
     data:
-    - time_left: int
-  game_won: res://ui/game_won/game_won.tscn
+    - num_deaths: int
+    - time_taken: int
   paused: res://ui/pause/pause.tscn
   options: res://ui/options/options.tscn

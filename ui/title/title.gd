@@ -11,6 +11,8 @@ extends CanvasLayer
 
 func on_start_game() -> void:
 	_disable_buttons()
+	var palette_shader: PaletteShader = PaletteShader.get_instance()
+	await palette_shader.fade_out(4 / 12.0)
 	SceneManager.replace_with_game_scene()
 
 
@@ -23,6 +25,10 @@ func _ready() -> void:
 	Audio.play_music(Audio.MUSIC_MAIN_MENU)
 	play_btn.pressed.connect(on_start_game)
 	options_btn.pressed.connect(on_options_show)
+
+	for b in buttons:
+		b.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
+
 	_enable_buttons()
 
 

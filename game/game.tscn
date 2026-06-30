@@ -42,6 +42,7 @@ column_gradient = SubResource("GradientTexture2D_dxwpq")
 column_scale = 0.5
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
+unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=2140445476]
 anchors_preset = 15

@@ -17,6 +17,7 @@ var disabled_state: PlayerStateDisabled
 var dying_state: PlayerStateDying
 var dead_state: PlayerStateDead
 var debug_state: PlayerStateDebug
+var spawning_state: PlayerStateSpawning
 
 var current_state: PlayerState
 var transition_id: int = 0
@@ -33,6 +34,7 @@ func _init(player_: Player) -> void:
 	dying_state = PlayerStateDying.new(player_, self)
 	dead_state = PlayerStateDead.new(player_, self)
 	debug_state = PlayerStateDebug.new(player_, self)
+	spawning_state = PlayerStateSpawning.new(player_, self)
 	_enter_state(idle_state)
 
 
@@ -100,6 +102,10 @@ func transition_to_dead_state() -> void:
 
 func transition_to_debug_state() -> void:
 	transition_to(debug_state)
+
+
+func transition_to_spawning_state() -> void:
+	transition_to(spawning_state)
 
 
 func _enter_state(state: PlayerState) -> void:

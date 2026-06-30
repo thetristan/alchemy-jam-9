@@ -213,6 +213,10 @@ func add_health(amount: int) -> void:
 	health += amount
 
 
+func spawn_in() -> void:
+	fsm.transition_to_spawning_state()
+	
+
 func hit(amount: int, damage_origin: Vector2, force: float, duration: float = 0.2) -> void:
 	if fsm.current_state in [fsm.hit_state, fsm.dying_state]:
 		return

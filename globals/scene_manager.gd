@@ -137,23 +137,25 @@ func replace_with_game_scene() -> void:
 	replace_scene(game_scene)
 
 
-func push_game_over_scene(time_left: int) -> void:
-	var scene_instance: Node = game_over_scene.instance()
-	scene_instance.time_left = time_left
+func push_game_over_scene() -> void:
 	push_scene(game_over_scene)
 
 
-func replace_with_game_over_scene(time_left: int) -> void:
-	var scene_instance: Node = game_over_scene.instance()
-	scene_instance.time_left = time_left
+func replace_with_game_over_scene() -> void:
 	replace_scene(game_over_scene)
 
 
-func push_game_won_scene() -> void:
+func push_game_won_scene(num_deaths: int, time_taken: int) -> void:
+	var scene_instance: Node = game_won_scene.instance()
+	scene_instance.num_deaths = num_deaths
+	scene_instance.time_taken = time_taken
 	push_scene(game_won_scene)
 
 
-func replace_with_game_won_scene() -> void:
+func replace_with_game_won_scene(num_deaths: int, time_taken: int) -> void:
+	var scene_instance: Node = game_won_scene.instance()
+	scene_instance.num_deaths = num_deaths
+	scene_instance.time_taken = time_taken
 	replace_scene(game_won_scene)
 
 

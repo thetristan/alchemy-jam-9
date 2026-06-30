@@ -5,6 +5,7 @@ extends Trigger
 
 enum Action {
 	INCREASE_LIVES,
+	WIN_GAME,
 }
 
 @export var action: Action = Action.INCREASE_LIVES
@@ -20,5 +21,7 @@ func _do_trigger() -> void:
 	match action:
 		Action.INCREASE_LIVES:
 			game.add_lives(amount)
+		Action.WIN_GAME:
+			game.game_won()
 
 	super._do_trigger()

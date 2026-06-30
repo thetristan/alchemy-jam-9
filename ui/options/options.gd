@@ -51,6 +51,9 @@ func _ready() -> void:
 	save_btn.pressed.connect(on_save_options)
 	cancel_btn.pressed.connect(on_cancel_options)
 
+	save_btn.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_ACCEPT))
+	cancel_btn.pressed.connect(func() -> void: Audio.play_sfx(Audio.SFX_UI_CANCEL))
+
 
 func _set_music_focused(value: bool) -> void:
 	_music_focused = value
