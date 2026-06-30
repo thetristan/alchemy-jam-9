@@ -5,21 +5,32 @@ signal finished
 
 const SENDER_NAME_BLINK_INTERVAL: float = 1.0 / 3.0
 
+const STATIC_COVERAGE_MIN: float = 0.4
+const STATIC_COVERAGE_MAX: float = 0.8
+const STATIC_COVERAGE_RAMP_DURATION: float = 1.0
+
 @onready var profile_sprite: AnimatedSprite2D = %ProfileSprite
 @onready var sender_name: Label = %SenderName
 @onready var message: Label = %Message
 @onready var time_counter: TimeCounter = %TimeCounter
+@onready var static_sprite: StaticFX = %StaticSprite
 
 @onready var dialogue_loop_sfx: AudioStreamPlayer = %DialogueLoopSFX
 
 var _message_tween: Tween
 var _blink_tween: Tween
+var _static_tween: Tween
 var _cancel_dialogue: CancellableAwait
 
 func _ready() -> void:
 	message.visible_characters = 0
 	time_counter.hide()
 	profile_sprite.play()
+
+	static_sprite.coverage = STATIC_COVERAGE_MIN
+	_static_tween = create_tween().set_loops()
+	_static_tween.tween_property(static_sprite, "coverage", STATIC_COVERAGE_MAX, STATIC_COVERAGE_RAMP_DURATION)
+	_static_tween.tween_property(static_sprite, "coverage", STATIC_COVERAGE_MIN, STATIC_COVERAGE_RAMP_DURATION)
 
 	_blink_tween = create_tween().set_loops()
 	_blink_tween.tween_callback(func() -> void: sender_name.modulate.a = 1.0 - sender_name.modulate.a)

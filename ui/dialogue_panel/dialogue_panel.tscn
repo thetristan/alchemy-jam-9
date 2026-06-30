@@ -6,6 +6,9 @@
 [ext_resource type="SpriteFrames" uid="uid://dsgpp4qstb82l" path="res://game/static/static.aseprite" id="2_a5jdu"]
 [ext_resource type="FontFile" uid="uid://bbg8gud07gopg" path="res://fonts/Robotic_Rancor_Black.ttf" id="3_1q2b3"]
 [ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="4_2mbwl"]
+[ext_resource type="SpriteFrames" uid="uid://bcii81j6fvvgp" path="res://game/portrait/portrait.aseprite" id="4_lq3n6"]
+[ext_resource type="Shader" uid="uid://4ux54nn5r58t" path="res://game/static/static.gdshader" id="5_0wfwm"]
+[ext_resource type="Script" uid="uid://byuynocgf2n8t" path="res://game/static/static.gd" id="7_kol6f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phmfx"]
 texture = ExtResource("1_5wrfp")
@@ -13,6 +16,31 @@ texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wfwm"]
+shader = ExtResource("5_0wfwm")
+shader_parameter/seed_a = 0
+shader_parameter/seed_b = 0
+shader_parameter/coverage = 1.0
+shader_parameter/noise_scale = 0.05
+shader_parameter/column_scale = 0.03
+shader_parameter/column_strength = 1.0
+shader_parameter/eaten_row_chance = 0.5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kol6f"]
+width = 56
+height = 56
+
+[sub_resource type="Gradient" id="Gradient_4qo51"]
+offsets = PackedFloat32Array(0.28145087, 0.6983471)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qo51"]
+gradient = SubResource("Gradient_4qo51")
+width = 56
+height = 56
+fill = 1
+fill_from = Vector2(0.1402439, 0.46219513)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsp63"]
 line_spacing = 0.0
@@ -52,8 +80,22 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_phmfx")
 [node name="ProfileSprite" type="AnimatedSprite2D" parent="HBoxContainer/ProfilePanel" unique_id=1262568430]
 unique_name_in_owner = true
 position = Vector2(32, 33)
+sprite_frames = ExtResource("4_lq3n6")
+autoplay = "default"
+frame_progress = 0.7243521
+
+[node name="StaticSprite" type="AnimatedSprite2D" parent="HBoxContainer/ProfilePanel" unique_id=305332323]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_0wfwm")
+position = Vector2(32, 33)
 sprite_frames = ExtResource("2_a5jdu")
 autoplay = "default"
+script = ExtResource("7_kol6f")
+coverage = 0.6
+noise = SubResource("NoiseTexture2D_kol6f")
+column_gradient = SubResource("GradientTexture2D_4qo51")
+column_strength = 0.87
+eaten_row_chance = 0.647
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1671590211]
 layout_mode = 2
