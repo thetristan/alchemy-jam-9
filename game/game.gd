@@ -58,6 +58,7 @@ static var metrics: Metrics
 @onready var time_counter: TimeCounter = %TimeCounter
 @onready var dialogue_panel: PanelContainer = %DialoguePanel
 @onready var palette_shader: PaletteShader = %PaletteShader
+@onready var virtual_joystick: VirtualJoystick = %VirtualJoystick
 
 
 func _ready() -> void:
@@ -140,6 +141,7 @@ func load_level() -> void:
 	if level:
 		level.queue_free()
 
+	virtual_joystick.hide()
 	gameplay_hud.hide()
 	lives_counter_container.hide()
 
@@ -165,5 +167,6 @@ func load_level() -> void:
 		first_play = false
 
 	gameplay_hud.show()
+	virtual_joystick.show()
 	level.player.spawn_in()
 	clock_started = true

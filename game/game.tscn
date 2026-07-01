@@ -19,6 +19,10 @@ gradient = SubResource("Gradient_mhvfb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l8g03"]
+noise_type = 0
+frequency = 0.48
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_phmfx"]
 atlas = ExtResource("12_b686c")
 region = Rect2(0, 0, 10, 48)
@@ -41,8 +45,32 @@ position = Vector2(160, 90)
 column_gradient = SubResource("GradientTexture2D_dxwpq")
 column_scale = 0.5
 
+[node name="MarginContainer" type="MarginContainer" parent="HUD/StaticFX" unique_id=1201014688]
+offset_left = -152.0
+offset_top = -82.0
+offset_right = 152.0
+offset_bottom = 82.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/StaticFX/MarginContainer" unique_id=1321230745]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+joystick_size = 48.0
+tip_size = 24.0
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
+flicker_noise = SubResource("FastNoiseLite_l8g03")
+flicker_scale = 32.0
+min_flicker = -0.6
+max_flicker = 0.6
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=2140445476]
 anchors_preset = 15

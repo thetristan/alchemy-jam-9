@@ -9,6 +9,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bcii81j6fvvgp" path="res://game/portrait/portrait.aseprite" id="4_lq3n6"]
 [ext_resource type="Shader" uid="uid://4ux54nn5r58t" path="res://game/static/static.gdshader" id="5_0wfwm"]
 [ext_resource type="Script" uid="uid://byuynocgf2n8t" path="res://game/static/static.gd" id="7_kol6f"]
+[ext_resource type="Shader" uid="uid://dcqpe22ikgktd" path="res://game/palette/palette_shader.gdshader" id="8_os567"]
+[ext_resource type="Texture2D" uid="uid://427rx0fdvcb4" path="res://game/palette/palette.png" id="9_x6ea0"]
+[ext_resource type="Script" uid="uid://b53bi8460l0h2" path="res://game/palette/palette_shader.gd" id="10_ov7bx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phmfx"]
 texture = ExtResource("1_5wrfp")
@@ -41,6 +44,14 @@ width = 56
 height = 56
 fill = 1
 fill_from = Vector2(0.1402439, 0.46219513)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phmfx"]
+shader = ExtResource("8_os567")
+shader_parameter/brightness = 0.07000005082500005
+shader_parameter/source_palette = ExtResource("9_x6ea0")
+shader_parameter/target_palette = ExtResource("9_x6ea0")
+shader_parameter/use_fixed_palette = false
+shader_parameter/screen_shader = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsp63"]
 line_spacing = 0.0
@@ -96,6 +107,19 @@ noise = SubResource("NoiseTexture2D_kol6f")
 column_gradient = SubResource("GradientTexture2D_4qo51")
 column_strength = 0.87
 eaten_row_chance = 0.647
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="HBoxContainer/ProfilePanel" unique_id=162614988]
+position = Vector2(192, 113)
+copy_mode = 2
+rect = Rect2(0, 0, 320, 180)
+
+[node name="MiniPaletteShader" type="ColorRect" parent="HBoxContainer/ProfilePanel" unique_id=1572387316]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_phmfx")
+layout_mode = 2
+script = ExtResource("10_ov7bx")
+global = false
+brightness = 0.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1671590211]
 layout_mode = 2

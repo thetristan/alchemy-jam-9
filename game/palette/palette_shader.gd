@@ -10,6 +10,26 @@ var flashed: bool = false
 var flash_tween: Tween
 var fade_tween: Tween
 
+const FLICKER_FPS: float = 12.0
+const FLICKER_INTERVAL: float = 1.0 / FLICKER_FPS
+
+var flicker_time: float = 0.0
+var flicker_accumulator: float = 0.0
+var flicker_brightness: float = 0.0
+
+@export var enable_flicker: bool = false:
+	set(new_val):
+		# Remove the current flicker contribution when turning flicker off
+		if enable_flicker and not new_val:
+			brightness -= flicker_brightness
+			flicker_brightness = 0.0
+		enable_flicker = new_val
+@export var flicker_noise: Noise
+@export var flicker_scale: float = 4.0
+@export var min_flicker: float = -0.25
+@export var max_flicker: float = 0.25
+@export var global: bool = true
+
 
 var shader_material: ShaderMaterial:
 	get: return material as ShaderMaterial
@@ -76,5 +96,26 @@ func flash(duration: float = 0.08333 * 2, override_brightness: float = 0.5, fade
 		brightness = original_brightness
 
 
+func _process(delta: float) -> void:
+	if not enable_flicker or flicker_noise == null:
+		return
+
+	flicker_accumulator += delta
+	if flicker_accumulator < FLICKER_INTERVAL:
+		return
+	flicker_accumulator -= FLICKER_INTERVAL
+
+	flicker_time += FLICKER_INTERVAL * flicker_scale
+	var weight: float = flicker_noise.get_noise_1d(flicker_time) * 0.5 + 0.5
+
+	# Track the flicker offset separately and add it on top of the current
+	# brightness, removing the previous frame's contribution first so it
+	# doesn't accumulate.
+	brightness -= flicker_brightness
+	flicker_brightness = lerpf(min_flicker, max_flicker, weight)
+	brightness += flicker_brightness
+
+
 func _ready() -> void:
-	add_to_group(GROUP)
+	if global:
+		add_to_group(GROUP)

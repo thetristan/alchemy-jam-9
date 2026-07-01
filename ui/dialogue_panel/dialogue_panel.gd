@@ -9,11 +9,15 @@ const STATIC_COVERAGE_MIN: float = 0.4
 const STATIC_COVERAGE_MAX: float = 0.8
 const STATIC_COVERAGE_RAMP_DURATION: float = 1.0
 
+const PALETTE_BRIGHTNESS_MIN: float = -0.3
+const PALETTE_BRIGHTNESS_MAX: float = 0.7
+
 @onready var profile_sprite: AnimatedSprite2D = %ProfileSprite
 @onready var sender_name: Label = %SenderName
 @onready var message: Label = %Message
 @onready var time_counter: TimeCounter = %TimeCounter
 @onready var static_sprite: StaticFX = %StaticSprite
+@onready var palette_shader: PaletteShader = %MiniPaletteShader
 
 @onready var dialogue_loop_sfx: AudioStreamPlayer = %DialogueLoopSFX
 
@@ -28,9 +32,12 @@ func _ready() -> void:
 	profile_sprite.play()
 
 	static_sprite.coverage = STATIC_COVERAGE_MIN
+	palette_shader.brightness = PALETTE_BRIGHTNESS_MIN
 	_static_tween = create_tween().set_loops()
 	_static_tween.tween_property(static_sprite, "coverage", STATIC_COVERAGE_MAX, STATIC_COVERAGE_RAMP_DURATION)
+	_static_tween.parallel().tween_property(palette_shader, "brightness", PALETTE_BRIGHTNESS_MAX, STATIC_COVERAGE_RAMP_DURATION)
 	_static_tween.tween_property(static_sprite, "coverage", STATIC_COVERAGE_MIN, STATIC_COVERAGE_RAMP_DURATION)
+	_static_tween.parallel().tween_property(palette_shader, "brightness", PALETTE_BRIGHTNESS_MIN, STATIC_COVERAGE_RAMP_DURATION)
 
 	_blink_tween = create_tween().set_loops()
 	_blink_tween.tween_callback(func() -> void: sender_name.modulate.a = 1.0 - sender_name.modulate.a)

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c4wbm2tlvhrg7" path="res://game/earthquake/quake_particles.gd" id="2_k8nag"]
 [ext_resource type="Script" uid="uid://rbx2ww7trc3f" path="res://addons/triggers/delay_trigger.gd" id="3_is4bn"]
 [ext_resource type="AudioStream" uid="uid://bnda6adsngon6" path="res://audio/sfx/rumble/SFX_LowRumbleDistant1.mp3" id="4_0yw0x"]
+[ext_resource type="Script" uid="uid://bcncb8pd5jwni" path="res://game/palette/palette_trigger.gd" id="5_07b0i"]
 [ext_resource type="AudioStream" uid="uid://byox17e480skv" path="res://audio/sfx/rumble/SFX_LowRumbleDistant2.mp3" id="5_s45n2"]
 [ext_resource type="Script" uid="uid://cv3cuec68q6kx" path="res://addons/triggers/audio_trigger.gd" id="6_07b0i"]
 [ext_resource type="Script" uid="uid://da5dl8ujhxj8f" path="res://addons/triggers/camera_trauma_trigger.gd" id="7_0s8pm"]
@@ -53,41 +54,61 @@ min_delay = 15.0
 max_delay = 30.0
 metadata/_custom_type_script = "uid://rbx2ww7trc3f"
 
-[node name="RumbleSFX" type="AudioStreamPlayer" parent="DelayTrigger" unique_id=619049337]
+[node name="QuakeTrigger" type="Node" parent="DelayTrigger" unique_id=419001558]
+unique_name_in_owner = true
+script = ExtResource("8_6ivbi")
+metadata/_custom_type_script = "uid://bmaki38xufyfu"
+
+[node name="PaletteTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1859428592]
+script = ExtResource("5_07b0i")
+metadata/_custom_type_script = "uid://bcncb8pd5jwni"
+
+[node name="RumbleSFX" type="AudioStreamPlayer" parent="DelayTrigger/QuakeTrigger" unique_id=619049337]
 stream = SubResource("AudioStreamRandomizer_phmfx")
 volume_db = -8.0
 
-[node name="RumbleRocksSFX" type="AudioStreamPlayer" parent="DelayTrigger" unique_id=1005021705]
+[node name="RumbleRocksSFX" type="AudioStreamPlayer" parent="DelayTrigger/QuakeTrigger" unique_id=1005021705]
 stream = SubResource("AudioStreamRandomizer_0s8pm")
 volume_db = -8.0
 
-[node name="RumbleAudioTrigger" type="Node" parent="DelayTrigger" unique_id=373962699 node_paths=PackedStringArray("target")]
+[node name="RumbleAudioTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=373962699 node_paths=PackedStringArray("target")]
 script = ExtResource("6_07b0i")
 target = NodePath("../RumbleSFX")
 metadata/_custom_type_script = "uid://cv3cuec68q6kx"
 
-[node name="DelayTrigger" type="Node" parent="DelayTrigger" unique_id=1058296054]
+[node name="DelayTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1058296054]
 process_mode = 1
 script = ExtResource("3_is4bn")
 metadata/_custom_type_script = "uid://rbx2ww7trc3f"
 
-[node name="RocksAudioTrigger" type="Node" parent="DelayTrigger/DelayTrigger" unique_id=1717420116 node_paths=PackedStringArray("target")]
+[node name="DelayTrigger" type="Node" parent="DelayTrigger/QuakeTrigger/DelayTrigger" unique_id=1422562316]
+process_mode = 1
+script = ExtResource("3_is4bn")
+delay = 1.0
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="PaletteTrigger2" type="Node" parent="DelayTrigger/QuakeTrigger/DelayTrigger/DelayTrigger" unique_id=713237481]
+script = ExtResource("5_07b0i")
+action = 1
+metadata/_custom_type_script = "uid://bcncb8pd5jwni"
+
+[node name="RocksAudioTrigger" type="Node" parent="DelayTrigger/QuakeTrigger/DelayTrigger" unique_id=1717420116 node_paths=PackedStringArray("target")]
 script = ExtResource("6_07b0i")
 target = NodePath("../../RumbleRocksSFX")
 metadata/_custom_type_script = "uid://cv3cuec68q6kx"
 
-[node name="CameraTraumaTrigger" type="Node" parent="DelayTrigger" unique_id=1904659664]
+[node name="CameraTraumaTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1904659664]
 script = ExtResource("7_0s8pm")
 trauma = 1.5
 
-[node name="RestartDelayTrigger" type="Node" parent="DelayTrigger" unique_id=1066250200 node_paths=PackedStringArray("next_triggers")]
+[node name="RestartDelayTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1066250200 node_paths=PackedStringArray("next_triggers")]
 script = ExtResource("8_6ivbi")
-next_triggers = [NodePath("..")]
+next_triggers = [NodePath("../..")]
 metadata/_custom_type_script = "uid://bmaki38xufyfu"
 
-[node name="ParticleTrigger" type="Node" parent="DelayTrigger" unique_id=1379867330 node_paths=PackedStringArray("target")]
+[node name="ParticleTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1379867330 node_paths=PackedStringArray("target")]
 script = ExtResource("9_k8nag")
-target = NodePath("../..")
+target = NodePath("../../..")
 min_count = 25
 max_count = 75
 emitter = true
