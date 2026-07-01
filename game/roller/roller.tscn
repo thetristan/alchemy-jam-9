@@ -60,7 +60,8 @@ bus = &"SFX"
 [node name="IdleSFX" type="AudioStreamPlayer2D" parent="." unique_id=1264389107]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_1hrgb")
-max_distance = 480.0
+volume_db = -12.0
+max_distance = 240.0
 bus = &"SFX"
 
 [node name="RollWhooshSFX" type="AudioStreamPlayer2D" parent="." unique_id=600993892]
