@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dx81rjsde065t" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v1_wav.mp3" id="4_5ghna"]
 [ext_resource type="Script" uid="uid://vtntulp0gbq5" path="res://game/player/player_hit_box.gd" id="4_a4w0n"]
 [ext_resource type="AudioStream" uid="uid://vw860rtiv827" path="res://audio/sfx/player_detached/SFX_MetalObjectImpactv3.mp3" id="4_gb4gm"]
+[ext_resource type="AudioStream" uid="uid://bws7nb8f7tnjb" path="res://audio/sfx/player_hanging_move/Rotation,Metal,Crank,Gears,Squeak,Rattle,Loop,Short.mp3" id="4_rqcxa"]
 [ext_resource type="AudioStream" uid="uid://bb8vwaum14r36" path="res://audio/sfx/player_hit/Big_Metal_Weapon_Impact_v2_wav.mp3" id="5_j0mij"]
 [ext_resource type="AudioStream" uid="uid://c1o6mdndtxoru" path="res://audio/sfx/player_died/SFX_Dizzyv4.mp3" id="9_uv2nh"]
 [ext_resource type="Material" uid="uid://vf8ti8md73ed" path="res://game/player/spark_right_particle_process_material.tres" id="12_n270p"]
@@ -75,6 +76,11 @@ bus = &"SFX"
 
 [node name="WheelSFX" type="AudioStreamPlayer2D" parent="." unique_id=243828440]
 unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="WheelMoveSFX" type="AudioStreamPlayer2D" parent="." unique_id=1800284695]
+unique_name_in_owner = true
+stream = ExtResource("4_rqcxa")
 bus = &"SFX"
 
 [node name="AttachToRailSFX" type="AudioStreamPlayer2D" parent="." unique_id=585175386]

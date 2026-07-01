@@ -54,6 +54,7 @@ func on_enter() -> void:
 
 func on_exit() -> void:
 	is_attached = false
+	player.wheel_move_sfx.stop()
 	player.spark_left.emitting = false
 	player.spark_right.emitting = false
 	player.play_sfx(player.detach_from_rail_sfx)
@@ -84,6 +85,7 @@ func on_physics_process(delta: float) -> void:
 	# off in on_exit); guard on is_attached so we don't re-light them this same frame.
 	if is_attached:
 		update_sparks(delta)
+		update_wheel_sfx()
 		var speed_scale: float = 2 * player.current_speed / Player.RAIL_SPEED
 		if player.wheel_sprite.animation == "forward":
 			player.wheel_sprite.speed_scale = speed_scale
@@ -104,6 +106,16 @@ func update_sparks(delta: float) -> void:
 	var moving_right: bool = player.current_speed > 0.0
 	player.spark_left.emitting = moving_right
 	player.spark_right.emitting = not moving_right
+
+
+func update_wheel_sfx() -> void:
+	# Loop the wheel sound while actually rolling; stop it the moment we settle.
+	var moving: bool = not is_zero_approx(player.current_speed)
+	if moving:
+		if not player.wheel_move_sfx.playing:
+			player.play_sfx(player.wheel_move_sfx)
+	elif player.wheel_move_sfx.playing:
+		player.wheel_move_sfx.stop()
 
 
 func apply_rail_movement(delta: float) -> void:

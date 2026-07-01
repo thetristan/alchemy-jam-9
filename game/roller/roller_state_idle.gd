@@ -10,17 +10,36 @@ func _to_string() -> String:
 
 ### END GENERATED CONTENT ###
 
+const IDLE_SFX_MIN_DELAY: float = 3.0
+const IDLE_SFX_MAX_DELAY: float = 10.0
+
+var idle_sfx_looping: bool
+
+
 func on_enter() -> void:
 	roller.sprite.play("idle")
 	roller.upper_player_ray_cast.enabled = true
 	roller.lower_player_ray_cast.enabled = true
 	roller.hit_box.area_entered.connect(on_hit)
 
+	idle_sfx_looping = true
+	_idle_sfx_loop()
+
 
 func on_exit() -> void:
+	idle_sfx_looping = false
 	roller.upper_player_ray_cast.enabled = false
 	roller.lower_player_ray_cast.enabled = false
 	roller.hit_box.area_entered.disconnect(on_hit)
+
+
+func _idle_sfx_loop() -> void:
+	while idle_sfx_looping:
+		await Util.timer(randf_range(IDLE_SFX_MIN_DELAY, IDLE_SFX_MAX_DELAY))
+		# Bail if we left the state while waiting.
+		if not idle_sfx_looping:
+			return
+		roller.idle_sfx.play()
 
 
 func on_physics_process(delta: float) -> void:

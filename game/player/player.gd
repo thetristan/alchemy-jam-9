@@ -124,6 +124,7 @@ var disable_signal: bool
 @onready var death_sfx: AudioStreamPlayer2D = %DeathSFX
 @onready var attach_to_rail_sfx: AudioStreamPlayer2D = %AttachToRailSFX
 @onready var detach_from_rail_sfx: AudioStreamPlayer2D = %DetachFromRailSFX
+@onready var wheel_move_sfx: AudioStreamPlayer2D = %WheelMoveSFX
 @onready var spawn_sfx: AudioStreamPlayer2D = %SpawnSFX
 
 

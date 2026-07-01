@@ -22,6 +22,7 @@ var direction: float = 1
 @onready var roll_whoosh_sfx: AudioStreamPlayer2D = %RollWhooshSFX
 @onready var player_sighted_sfx: AudioStreamPlayer2D = %PlayerSightedSFX
 @onready var explode_sfx: AudioStreamPlayer2D = %ExplodeSFX
+@onready var idle_sfx: AudioStreamPlayer2D = %IdleSFX
 
 func _ready() -> void:
 	if face_left:

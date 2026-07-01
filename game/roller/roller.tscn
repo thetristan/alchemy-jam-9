@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c4h12xfxxkqlj" path="res://game/roller/roller.gd" id="1_5ftwp"]
 [ext_resource type="SpriteFrames" uid="uid://dm333yge7pxev" path="res://game/roller/roller_enemy.aseprite" id="1_v2roq"]
+[ext_resource type="AudioStream" uid="uid://dat1hcqa23fr4" path="res://audio/sfx/robot_ambient/SFX_RandomNoisesLoop01.mp3" id="2_8754o"]
 [ext_resource type="AudioStream" uid="uid://rb1pnqvpmvmt" path="res://audio/sfx/roller_roll/SFX_EngineMovingSinglePitch01.mp3" id="2_e1yry"]
 [ext_resource type="AudioStream" uid="uid://dnfiedl5wcjw0" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv4.mp3" id="2_ritfx"]
+[ext_resource type="AudioStream" uid="uid://opextbti2y66" path="res://audio/sfx/robot_ambient/SFX_RandomNoisesLoop02.mp3" id="3_1hrgb"]
 [ext_resource type="AudioStream" uid="uid://yjfleuc3sqkx" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv5.mp3" id="3_jc1xj"]
 [ext_resource type="AudioStream" uid="uid://wmph161fng30" path="res://audio/sfx/roller_roll_whoosh/Whoosh_Attack_v1_wav.mp3" id="3_v6qv0"]
+[ext_resource type="AudioStream" uid="uid://bnda0ywstjaes" path="res://audio/sfx/robot_ambient/SFX_RandomNoisesLoop03.mp3" id="4_5ttf0"]
 [ext_resource type="AudioStream" uid="uid://c0uwtl6v6wvn" path="res://audio/sfx/enemy_explode/SFX_GenericExplosionv6.mp3" id="4_e1yry"]
 [ext_resource type="AudioStream" uid="uid://c348cdpxkl3no" path="res://audio/sfx/player_identified/SFX_RobotAttackv1.mp3" id="5_e1yry"]
 
@@ -13,6 +16,13 @@
 random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("2_e1yry")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1hrgb"]
+random_pitch = 1.0594631
+streams_count = 3
+stream_0/stream = ExtResource("2_8754o")
+stream_1/stream = ExtResource("3_1hrgb")
+stream_2/stream = ExtResource("4_5ttf0")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8754o"]
 random_pitch = 1.0594631
@@ -47,6 +57,12 @@ stream = SubResource("AudioStreamRandomizer_v6qv0")
 max_distance = 480.0
 bus = &"SFX"
 
+[node name="IdleSFX" type="AudioStreamPlayer2D" parent="." unique_id=1264389107]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_1hrgb")
+max_distance = 480.0
+bus = &"SFX"
+
 [node name="RollWhooshSFX" type="AudioStreamPlayer2D" parent="." unique_id=600993892]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_8754o")
@@ -62,7 +78,7 @@ bus = &"SFX"
 [node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="." unique_id=1967753009]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_exjbn")
-max_distance = 480.0
+max_distance = 640.0
 bus = &"SFX"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1031694152]

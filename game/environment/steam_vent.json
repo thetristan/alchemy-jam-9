@@ -6,7 +6,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 1500
+    "duration": 83
    },
    {
     "filename": "steam_vent 1.aseprite",
@@ -106,6 +106,15 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 83
+   },
+   {
+    "filename": "steam_vent 12.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 83
    }
  ],
  "meta": {
@@ -116,6 +125,7 @@
   "size": { "w": 134, "h": 100 },
   "scale": "1",
   "frameTags": [
+   { "name": "vent", "from": 0, "to": 12, "direction": "forward", "repeat": "1", "color": "#000000ff" }
   ],
   "slices": [
   ]
