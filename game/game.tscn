@@ -18,6 +18,9 @@ gradient = SubResource("Gradient_mhvfb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y36n6"]
+size = Vector2(160, 180)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8g03"]
 noise_type = 0
 frequency = 0.48
@@ -30,12 +33,9 @@ region = Rect2(0, 0, 10, 48)
 atlas = ExtResource("12_b686c")
 region = Rect2(10, 0, 10, 48)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmpbt"]
-radius = 24.0
-
 [node name="Game" type="Node2D" unique_id=111090931]
 script = ExtResource("1_l1rk1")
-metadata/_edit_horizontal_guides_ = [448.0, 0.0, 432.0]
+metadata/_edit_horizontal_guides_ = [448.0, 0.0, 432.0, 171.0]
 metadata/_edit_vertical_guides_ = [3840.0, 0.0, 9.0, 311.0]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1437474444]
@@ -47,32 +47,65 @@ position = Vector2(160, 90)
 column_gradient = SubResource("GradientTexture2D_dxwpq")
 column_scale = 0.5
 
+[node name="TouchControls" type="Control" parent="HUD" unique_id=2049527368]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 172.0
+mouse_filter = 2
+
+[node name="JumpButton" type="TouchScreenButton" parent="HUD/TouchControls" unique_id=1500000001]
+unique_name_in_owner = true
+position = Vector2(232, 82)
+shape = SubResource("RectangleShape2D_y36n6")
+action = "jump"
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/TouchControls" unique_id=1321230745]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -116.0
+offset_top = 70.0
+offset_right = 164.0
+offset_bottom = 210.0
+mouse_filter = 1
+joystick_size = 48.0
+tip_size = 24.0
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
-visible = false
+mouse_filter = 2
 flicker_noise = SubResource("FastNoiseLite_l8g03")
 flicker_scale = 32.0
 min_flicker = -0.6
 max_flicker = 0.6
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=2140445476]
+[node name="HUDElements" type="MarginContainer" parent="HUD" unique_id=2140445476]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="GameplayHUD" type="MarginContainer" parent="HUD/MarginContainer" unique_id=1994498018]
+[node name="GameplayHUD" type="MarginContainer" parent="HUD/HUDElements" unique_id=1994498018]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD/MarginContainer/GameplayHUD" unique_id=1351984239]
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/HUDElements/GameplayHUD" unique_id=1351984239]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 max_value = 12.0
 value = 12.0
 fill_mode = 3
@@ -80,62 +113,40 @@ texture_under = SubResource("AtlasTexture_phmfx")
 texture_progress = SubResource("AtlasTexture_hb504")
 script = ExtResource("4_b686c")
 
-[node name="TimeCounter" parent="HUD/MarginContainer/GameplayHUD" unique_id=1839612665 instance=ExtResource("10_3vho3")]
+[node name="TimeCounter" parent="HUD/HUDElements/GameplayHUD" unique_id=1839612665 instance=ExtResource("10_3vho3")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 custom_maximum_size = Vector2(32, -1)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 orange = true
 
-[node name="LivesCounterContainer" type="PanelContainer" parent="HUD/MarginContainer" unique_id=295273533]
+[node name="LivesCounterContainer" type="PanelContainer" parent="HUD/HUDElements" unique_id=295273533]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(92, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="LivesCounter" parent="HUD/MarginContainer/LivesCounterContainer" unique_id=1290384376 instance=ExtResource("4_u5opy")]
+[node name="LivesCounter" parent="HUD/HUDElements/LivesCounterContainer" unique_id=1290384376 instance=ExtResource("4_u5opy")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="DialoguePanel" parent="HUD/MarginContainer" unique_id=1228850900 instance=ExtResource("8_l8g03")]
+[node name="DialoguePanel" parent="HUD/HUDElements" unique_id=1228850900 instance=ExtResource("8_l8g03")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="LivesCounterPickup" parent="HUD/MarginContainer" unique_id=135675650 instance=ExtResource("4_u5opy")]
+[node name="LivesCounterPickup" parent="HUD/HUDElements" unique_id=135675650 instance=ExtResource("4_u5opy")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 offset_transform_enabled = true
-
-[node name="MarginContainer2" type="MarginContainer" parent="HUD" unique_id=1201014688]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 312.0
-offset_bottom = 172.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="JumpButton" type="TouchScreenButton" parent="HUD/MarginContainer2" unique_id=1500000001]
-unique_name_in_owner = true
-position = Vector2(280, 140)
-shape = SubResource("CircleShape2D_jmpbt")
-action = "jump"
-
-[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/MarginContainer2" unique_id=1321230745]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-joystick_size = 48.0
-tip_size = 24.0
-action_left = &"move_left"
-action_right = &"move_right"
-action_up = &"move_up"
-action_down = &"move_down"
+mouse_filter = 2
