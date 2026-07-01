@@ -19,7 +19,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y36n6"]
-size = Vector2(160, 180)
+size = Vector2(160, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8g03"]
+size = Vector2(320, 24)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8g03"]
 noise_type = 0
@@ -58,9 +61,15 @@ mouse_filter = 2
 
 [node name="JumpButton" type="TouchScreenButton" parent="HUD/TouchControls" unique_id=1500000001]
 unique_name_in_owner = true
-position = Vector2(232, 82)
+position = Vector2(232, 94)
 shape = SubResource("RectangleShape2D_y36n6")
 action = "jump"
+
+[node name="StartButton" type="TouchScreenButton" parent="HUD/TouchControls" unique_id=178996507]
+unique_name_in_owner = true
+position = Vector2(152, 4)
+shape = SubResource("RectangleShape2D_l8g03")
+action = "ui_cancel"
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/TouchControls" unique_id=1321230745]
 unique_name_in_owner = true
@@ -79,6 +88,7 @@ action_down = &"move_down"
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
+visible = false
 mouse_filter = 2
 flicker_noise = SubResource("FastNoiseLite_l8g03")
 flicker_scale = 32.0
