@@ -99,7 +99,7 @@ metadata/_custom_type_script = "uid://cv3cuec68q6kx"
 
 [node name="CameraTraumaTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1904659664]
 script = ExtResource("7_0s8pm")
-trauma = 1.5
+trauma = 1.0
 
 [node name="RestartDelayTrigger" type="Node" parent="DelayTrigger/QuakeTrigger" unique_id=1066250200 node_paths=PackedStringArray("next_triggers")]
 script = ExtResource("8_6ivbi")

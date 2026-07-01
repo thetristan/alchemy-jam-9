@@ -129,24 +129,29 @@ start_on_ready = true
 delay = 1.5
 metadata/_custom_type_script = "uid://rbx2ww7trc3f"
 
-[node name="PlayerInputTrigger" type="Node" parent="DelayTrigger" unique_id=56179846 node_paths=PackedStringArray("player")]
+[node name="DelayTrigger" type="Node" parent="DelayTrigger" unique_id=1790613151]
+process_mode = 1
+script = ExtResource("9_0x4rn")
+metadata/_custom_type_script = "uid://rbx2ww7trc3f"
+
+[node name="PlayerInputTrigger" type="Node" parent="DelayTrigger/DelayTrigger" unique_id=56179846 node_paths=PackedStringArray("player")]
 script = ExtResource("9_38ban")
-player = NodePath("../../Node2D/Player")
+player = NodePath("../../../Node2D/Player")
 move = Vector2(1, 0)
-duration = 10.0
+duration = 6.0
 metadata/_custom_type_script = "uid://cfh0v2mhuhlrh"
 
-[node name="DelayTrigger" type="Node" parent="DelayTrigger/PlayerInputTrigger" unique_id=1727383202]
+[node name="DelayTrigger" type="Node" parent="DelayTrigger/DelayTrigger/PlayerInputTrigger" unique_id=1727383202]
 process_mode = 1
 script = ExtResource("9_0x4rn")
 delay = 10.0
 metadata/_custom_type_script = "uid://rbx2ww7trc3f"
 
-[node name="TeleportTrigger" type="Node" parent="DelayTrigger/PlayerInputTrigger/DelayTrigger" unique_id=1846971275 node_paths=PackedStringArray("target", "target_position", "next_triggers")]
+[node name="TeleportTrigger" type="Node" parent="DelayTrigger/DelayTrigger/PlayerInputTrigger/DelayTrigger" unique_id=1846971275 node_paths=PackedStringArray("target", "target_position", "next_triggers")]
 script = ExtResource("11_ld3vp")
-target = NodePath("../../../../Node2D/Player")
-target_position = NodePath("../../../../Node2D/Marker2D")
-next_triggers = [NodePath("../../..")]
+target = NodePath("../../../../../Node2D/Player")
+target_position = NodePath("../../../../../Node2D/Marker2D")
+next_triggers = [NodePath("../../../..")]
 metadata/_custom_type_script = "uid://dlxfj7g0y2k8e"
 
 [node name="PaletteShader" parent="." unique_id=2007337692 instance=ExtResource("4_6wqi4")]

@@ -88,7 +88,6 @@ action_down = &"move_down"
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
-visible = false
 mouse_filter = 2
 flicker_noise = SubResource("FastNoiseLite_l8g03")
 flicker_scale = 32.0
