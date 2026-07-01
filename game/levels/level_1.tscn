@@ -1019,12 +1019,12 @@ face_left = true
 unique_name_in_owner = true
 position = Vector2(3192, 192)
 face_left = true
-volume_scale = 0.5
+volume_scale = 0.7
 
 [node name="Roller8" parent="Hazards" unique_id=1963194574 instance=ExtResource("12_2gpk1")]
 unique_name_in_owner = true
 position = Vector2(3016, 192)
-volume_scale = 0.5
+volume_scale = 0.7
 
 [node name="Roller6" parent="Hazards" unique_id=238388486 instance=ExtResource("12_2gpk1")]
 unique_name_in_owner = true
