@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://su8ton35yd05" path="res://ui/dialogue_panel/dialogue_panel.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://db3vraffoxtba" path="res://ui/time_counter/time_counter.tscn" id="10_3vho3"]
 [ext_resource type="Texture2D" uid="uid://b7xu8t4gjf1a7" path="res://ui/healthbar/healthbar.aseprite" id="12_b686c"]
-[ext_resource type="PackedScene" uid="uid://t1ksuvfa1j8y" path="res://ui/debug_container/debug_container.tscn" id="12_qf6n1"]
 
 [sub_resource type="Gradient" id="Gradient_mhvfb"]
 offsets = PackedFloat32Array(0, 0.80070424)
@@ -18,9 +17,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_mhvfb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmpbt"]
-radius = 24.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8g03"]
 noise_type = 0
@@ -33,6 +29,9 @@ region = Rect2(0, 0, 10, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hb504"]
 atlas = ExtResource("12_b686c")
 region = Rect2(10, 0, 10, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmpbt"]
+radius = 24.0
 
 [node name="Game" type="Node2D" unique_id=111090931]
 script = ExtResource("1_l1rk1")
@@ -47,32 +46,6 @@ visible = false
 position = Vector2(160, 90)
 column_gradient = SubResource("GradientTexture2D_dxwpq")
 column_scale = 0.5
-
-[node name="MarginContainer2" type="MarginContainer" parent="HUD" unique_id=1201014688]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 312.0
-offset_bottom = 172.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="JumpButton" type="TouchScreenButton" parent="HUD/MarginContainer2" unique_id=1500000001]
-unique_name_in_owner = true
-position = Vector2(280, 140)
-shape = SubResource("CircleShape2D_jmpbt")
-action = "jump"
-
-[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/MarginContainer2" unique_id=1321230745]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-joystick_size = 48.0
-tip_size = 24.0
-action_left = &"move_left"
-action_right = &"move_right"
-action_up = &"move_up"
-action_down = &"move_down"
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
@@ -141,4 +114,28 @@ layout_mode = 2
 size_flags_vertical = 4
 offset_transform_enabled = true
 
-[node name="DebugContainer" parent="HUD" unique_id=2076150927 instance=ExtResource("12_qf6n1")]
+[node name="MarginContainer2" type="MarginContainer" parent="HUD" unique_id=1201014688]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 172.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="JumpButton" type="TouchScreenButton" parent="HUD/MarginContainer2" unique_id=1500000001]
+unique_name_in_owner = true
+position = Vector2(280, 140)
+shape = SubResource("CircleShape2D_jmpbt")
+action = "jump"
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/MarginContainer2" unique_id=1321230745]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+joystick_size = 48.0
+tip_size = 24.0
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
