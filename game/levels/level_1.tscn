@@ -24,9 +24,11 @@
 [ext_resource type="Script" uid="uid://3rwumqqu21su" path="res://addons/triggers/switch_trigger.gd" id="13_o0jti"]
 [ext_resource type="PackedScene" uid="uid://diyqpf0b6vf2l" path="res://game/projectile/projectile_container.tscn" id="14_5pykb"]
 [ext_resource type="Script" uid="uid://d1tpuoyppxewn" path="res://game/camera/camera.gd" id="15_fkbjh"]
-[ext_resource type="SpriteFrames" uid="uid://dfbvsw1qedvfy" path="res://game/environment/steam_vent.aseprite" id="16_k3gi7"]
+[ext_resource type="PackedScene" uid="uid://cc18b3d412rud" path="res://game/environment/steam_vent.tscn" id="16_5pykb"]
 [ext_resource type="PackedScene" uid="uid://d0ou4m3fhwgm6" path="res://game/pickup/extra_health.tscn" id="20_g3b4m"]
 [ext_resource type="PackedScene" uid="uid://cl6brln1ls303" path="res://game/earthquake/quake_particles.tscn" id="22_ohfy3"]
+[ext_resource type="AudioStream" uid="uid://doigh07g2ny47" path="res://audio/sfx/ambient_cave/SW005_Planets_08_Imaginary_field_recording_made_on_a_distant_planet_buzzing_entrance_of_cave.mp3" id="28_5pykb"]
+[ext_resource type="AudioStream" uid="uid://brjuocua5r6cb" path="res://audio/sfx/ambient_cave/Wind,Int,Howl,Tonal,Mumble.mp3" id="29_fkbjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phmfx"]
 size = Vector2(16, 120)
@@ -829,35 +831,30 @@ metadata/_custom_type_script = "uid://c5w24g1y4mpjx"
 unique_name_in_owner = true
 position = Vector2(60, 298)
 
-[node name="SteamVent" type="AnimatedSprite2D" parent="." unique_id=1411644475]
+[node name="SteamVent" parent="." unique_id=1955440122 instance=ExtResource("16_5pykb")]
 position = Vector2(788, 16)
-rotation = -1.5707964
-sprite_frames = ExtResource("16_k3gi7")
-autoplay = "default"
 
-[node name="SteamVent2" type="AnimatedSprite2D" parent="." unique_id=302330477]
+[node name="SteamVent2" parent="." unique_id=1400517514 instance=ExtResource("16_5pykb")]
+position = Vector2(748, 416)
+
+[node name="SteamVent6" parent="." unique_id=465594384 instance=ExtResource("16_5pykb")]
 position = Vector2(604, 164)
-rotation = -3.1415925
-sprite_frames = ExtResource("16_k3gi7")
-autoplay = "default"
+rotation = -3.1415927
 
-[node name="SteamVent3" type="AnimatedSprite2D" parent="." unique_id=1906496008]
+[node name="SteamVent7" parent="." unique_id=468759537 instance=ExtResource("16_5pykb")]
 position = Vector2(2140, 156)
-rotation = -3.1415925
-sprite_frames = ExtResource("16_k3gi7")
-autoplay = "default"
+rotation = -3.1415927
 
-[node name="SteamVent4" type="AnimatedSprite2D" parent="." unique_id=1279403900]
+[node name="SteamVent10" parent="." unique_id=497471280 instance=ExtResource("16_5pykb")]
+position = Vector2(1896, 404)
+rotation = -3.1415927
+
+[node name="SteamVent8" parent="." unique_id=1150733115 instance=ExtResource("16_5pykb")]
 position = Vector2(3572, 192)
-rotation = -1.5707964
-sprite_frames = ExtResource("16_k3gi7")
-autoplay = "default"
 
-[node name="SteamVent5" type="AnimatedSprite2D" parent="." unique_id=525095412]
-position = Vector2(3820, 228)
-rotation = 3.1415927
-sprite_frames = ExtResource("16_k3gi7")
-autoplay = "default"
+[node name="SteamVent9" parent="." unique_id=931882922 instance=ExtResource("16_5pykb")]
+position = Vector2(3972, 152)
+rotation = 1.5707964
 
 [node name="Pickups" type="Node2D" parent="." unique_id=1396480857]
 
@@ -1192,3 +1189,67 @@ position = Vector2(1288, 88)
 [node name="QuakeParticles" parent="." unique_id=1147043869 instance=ExtResource("22_ohfy3")]
 unique_name_in_owner = true
 position = Vector2(60, -32)
+
+[node name="AmbientCaveSFX" type="AudioStreamPlayer2D" parent="." unique_id=192881909]
+position = Vector2(352, 192)
+stream = ExtResource("28_5pykb")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientCaveSFX2" type="AudioStreamPlayer2D" parent="." unique_id=305149363]
+position = Vector2(1360, 64)
+stream = ExtResource("28_5pykb")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientCaveSFX3" type="AudioStreamPlayer2D" parent="." unique_id=1954060368]
+position = Vector2(2048, 224)
+stream = ExtResource("28_5pykb")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientCaveSFX4" type="AudioStreamPlayer2D" parent="." unique_id=321740943]
+position = Vector2(2816, 256)
+stream = ExtResource("28_5pykb")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientCaveSFX5" type="AudioStreamPlayer2D" parent="." unique_id=2130028501]
+position = Vector2(3936, 224)
+stream = ExtResource("28_5pykb")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientWindSFX1" type="AudioStreamPlayer2D" parent="." unique_id=1032764942]
+position = Vector2(3840, 432)
+stream = ExtResource("29_fkbjh")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientWindSFX2" type="AudioStreamPlayer2D" parent="." unique_id=517926057]
+position = Vector2(3200, 432)
+stream = ExtResource("29_fkbjh")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"
+
+[node name="AmbientWindSFX3" type="AudioStreamPlayer2D" parent="." unique_id=590914977]
+position = Vector2(2432, 432)
+stream = ExtResource("29_fkbjh")
+volume_db = -8.0
+autoplay = true
+max_distance = 640.0
+bus = &"SFX"

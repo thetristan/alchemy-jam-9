@@ -19,9 +19,12 @@ var flicker_brightness: float = 0.0
 
 @export var enable_flicker: bool = false:
 	set(new_val):
-		# Remove the current flicker contribution when turning flicker off
+		# Remove the current flicker contribution when turning flicker off.
+		# Write straight to the shader so we don't re-enter the brightness setter
+		# (which would recurse back into disabling the flicker).
 		if enable_flicker and not new_val:
-			brightness -= flicker_brightness
+			shader_material.set_shader_parameter(BRIGHTNESS_PARAM,
+				shader_material.get_shader_parameter(BRIGHTNESS_PARAM) - flicker_brightness)
 			flicker_brightness = 0.0
 		enable_flicker = new_val
 @export var flicker_noise: Noise
@@ -38,7 +41,12 @@ var shader_material: ShaderMaterial:
 
 @export var brightness: float:
 	get: return shader_material.get_shader_parameter(BRIGHTNESS_PARAM)
-	set(new_val): shader_material.set_shader_parameter(BRIGHTNESS_PARAM, new_val)
+	set(new_val):
+		# A direct brightness change (from anything other than the flicker) cancels
+		# flickering first, so it can't keep overwriting the value just set.
+		if enable_flicker:
+			enable_flicker = false
+		shader_material.set_shader_parameter(BRIGHTNESS_PARAM, new_val)
 
 @export var use_fixed_palette: bool:
 	get: return shader_material.get_shader_parameter(USE_FIXED_PALETTE_PARAM)
@@ -108,12 +116,12 @@ func _process(delta: float) -> void:
 	flicker_time += FLICKER_INTERVAL * flicker_scale
 	var weight: float = flicker_noise.get_noise_1d(flicker_time) * 0.5 + 0.5
 
-	# Track the flicker offset separately and add it on top of the current
-	# brightness, removing the previous frame's contribution first so it
-	# doesn't accumulate.
-	brightness -= flicker_brightness
+	# Track the flicker offset separately and add it on top of the current base
+	# brightness. Write straight to the shader (not through the brightness setter,
+	# which would treat it as an external change and disable the flicker).
+	var base: float = shader_material.get_shader_parameter(BRIGHTNESS_PARAM) - flicker_brightness
 	flicker_brightness = lerpf(min_flicker, max_flicker, weight)
-	brightness += flicker_brightness
+	shader_material.set_shader_parameter(BRIGHTNESS_PARAM, base + flicker_brightness)
 
 
 func _ready() -> void:
