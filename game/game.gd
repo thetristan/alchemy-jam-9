@@ -59,6 +59,9 @@ static var metrics: Metrics
 @onready var dialogue_panel: PanelContainer = %DialoguePanel
 @onready var palette_shader: PaletteShader = %PaletteShader
 @onready var virtual_joystick: VirtualJoystick = %VirtualJoystick
+@onready var jump_button: TouchScreenButton = %JumpButton
+
+var touch_supported: bool = DisplayServer.is_touchscreen_available()
 
 
 func _ready() -> void:
@@ -142,6 +145,7 @@ func load_level() -> void:
 		level.queue_free()
 
 	virtual_joystick.hide()
+	jump_button.hide()
 	gameplay_hud.hide()
 	lives_counter_container.hide()
 
@@ -167,6 +171,8 @@ func load_level() -> void:
 		first_play = false
 
 	gameplay_hud.show()
-	virtual_joystick.show()
+	if touch_supported:
+		virtual_joystick.show()
+		jump_button.show()
 	level.player.spawn_in()
 	clock_started = true

@@ -19,6 +19,9 @@ gradient = SubResource("Gradient_mhvfb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmpbt"]
+radius = 24.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8g03"]
 noise_type = 0
 frequency = 0.48
@@ -34,7 +37,7 @@ region = Rect2(10, 0, 10, 48)
 [node name="Game" type="Node2D" unique_id=111090931]
 script = ExtResource("1_l1rk1")
 metadata/_edit_horizontal_guides_ = [448.0, 0.0, 432.0]
-metadata/_edit_vertical_guides_ = [3840.0, 0.0]
+metadata/_edit_vertical_guides_ = [3840.0, 0.0, 9.0, 311.0]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1437474444]
 
@@ -45,15 +48,21 @@ position = Vector2(160, 90)
 column_gradient = SubResource("GradientTexture2D_dxwpq")
 column_scale = 0.5
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/StaticFX" unique_id=1201014688]
-offset_left = -152.0
-offset_top = -82.0
-offset_right = 152.0
-offset_bottom = 82.0
+[node name="MarginContainer2" type="MarginContainer" parent="HUD" unique_id=1201014688]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 172.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/StaticFX/MarginContainer" unique_id=1321230745]
+[node name="JumpButton" type="TouchScreenButton" parent="HUD/MarginContainer2" unique_id=1500000001]
+unique_name_in_owner = true
+position = Vector2(280, 140)
+shape = SubResource("CircleShape2D_jmpbt")
+action = "jump"
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HUD/MarginContainer2" unique_id=1321230745]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -67,6 +76,7 @@ action_down = &"move_down"
 
 [node name="PaletteShader" parent="HUD" unique_id=2007337692 instance=ExtResource("6_dxwpq")]
 unique_name_in_owner = true
+visible = false
 flicker_noise = SubResource("FastNoiseLite_l8g03")
 flicker_scale = 32.0
 min_flicker = -0.6

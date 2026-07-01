@@ -75,7 +75,11 @@ func start() -> void:
 	
 
 func _input(event: InputEvent) -> void:
-	if not event.is_action_pressed("jump"):
+	var jump_pressed: bool = event.is_action_pressed("jump")
+	var mouse_clicked: bool = event is InputEventMouseButton \
+		and event.button_index == MOUSE_BUTTON_LEFT \
+		and event.pressed
+	if not jump_pressed and not mouse_clicked:
 		return
 
 	if _cancel_dialogue:
