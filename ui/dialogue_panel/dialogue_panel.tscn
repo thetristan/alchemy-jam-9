@@ -66,6 +66,7 @@ font_size = 5
 font_color = Color(0.972549, 0.9176471, 0.8117647, 1)
 
 [node name="DialoguePanel" type="PanelContainer" unique_id=1228850900]
+custom_minimum_size = Vector2(236, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_a5jdu")
